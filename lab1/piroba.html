@@ -1,0 +1,674 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 1,Lab 1" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 1 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_1";
+var wgTitle = "Lab 1";
+var wgAction = "view";
+var wgArticleId = "1423";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7582";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_1">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 1</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<p><br />
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Preamble"><span class="tocnumber">1</span> <span class="toctext">Preamble</span></a></li>
+<li class="toclevel-1"><a href="#A_Production_Rule_System"><span class="tocnumber">2</span> <span class="toctext">A Production Rule System</span></a>
+<ul>
+<li class="toclevel-2"><a href="#The_anatomy_of_a_rule"><span class="tocnumber">2.1</span> <span class="toctext">The anatomy of a rule</span></a></li>
+<li class="toclevel-2"><a href="#IF_.2F_THEN_Clauses"><span class="tocnumber">2.2</span> <span class="toctext">IF / THEN Clauses</span></a></li>
+<li class="toclevel-2"><a href="#Match_and_Fire"><span class="tocnumber">2.3</span> <span class="toctext">Match and Fire</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#An_Iteration_of_Forward_Chaining"><span class="tocnumber">3</span> <span class="toctext">An Iteration of Forward Chaining</span></a>
+<ul>
+<li class="toclevel-2"><a href="#A_Note_about_NOTs"><span class="tocnumber">3.1</span> <span class="toctext">A Note about NOTs</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Running_the_system"><span class="tocnumber">4</span> <span class="toctext">Running the system</span></a></li>
+<li class="toclevel-1"><a href="#Part_1:_Multiple_Choice"><span class="tocnumber">5</span> <span class="toctext">Part 1: Multiple Choice</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Questions_1-2:_New_assertions"><span class="tocnumber">5.1</span> <span class="toctext">Questions 1-2: New assertions</span></a></li>
+<li class="toclevel-2"><a href="#Questions_3-5:_Hypothetical_cats"><span class="tocnumber">5.2</span> <span class="toctext">Questions 3-5: Hypothetical cats</span></a></li>
+<li class="toclevel-2"><a href="#Questions_6-7:_Pendergast"><span class="tocnumber">5.3</span> <span class="toctext">Questions 6-7: Pendergast</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_2:_Poker_Hands"><span class="tocnumber">6</span> <span class="toctext">Part 2: Poker Hands</span></a></li>
+<li class="toclevel-1"><a href="#Part_3:_Family_relations"><span class="tocnumber">7</span> <span class="toctext">Part 3: Family relations</span></a></li>
+<li class="toclevel-1"><a href="#Goal_trees"><span class="tocnumber">8</span> <span class="toctext">Goal trees</span></a>
+<ul>
+<li class="toclevel-2"><a href="#AND_and_OR_objects"><span class="tocnumber">8.1</span> <span class="toctext">AND and OR objects</span></a></li>
+<li class="toclevel-2"><a href="#Simplifying_Nodes"><span class="tocnumber">8.2</span> <span class="toctext">Simplifying Nodes</span></a></li>
+<li class="toclevel-2"><a href="#The_Joys_of_an_API"><span class="tocnumber">8.3</span> <span class="toctext">The Joys of an API</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Going_Backwards"><span class="tocnumber">9</span> <span class="toctext">Going Backwards</span></a>
+<ul>
+<li class="toclevel-2"><a href="#The_Backward_Chaining_Process"><span class="tocnumber">9.1</span> <span class="toctext">The Backward Chaining Process</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_4:_Backward_Chaining"><span class="tocnumber">10</span> <span class="toctext">Part 4: Backward Chaining</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Taking_advantage_of_your_visual_problem-solving_apparatus"><span class="tocnumber">10.1</span> <span class="toctext">Taking advantage of your visual problem-solving apparatus</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#production.py_API"><span class="tocnumber">11</span> <span class="toctext">production.py API</span></a></li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">12</span> <span class="toctext">Survey</span></a></li>
+<li class="toclevel-1"><a href="#FAQ"><span class="tocnumber">13</span> <span class="toctext">FAQ</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Tuesday, September 17 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab1</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab1</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab1/lab1.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab1/lab1.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab1/lab1.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab1/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab1/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab1/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab1.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab1 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br /> 
+</p>
+<a name="Preamble"></a><h2> <span class="mw-headline"> Preamble </span></h2>
+<p>You will probably want to use the Python feature called <i>list comprehensions</i> at some point in this lab, to apply a function to everything in a list. You can read about them in the <a href="http://docs.python.org/tutorial/datastructures.html#list-comprehensions" class="external text" title="http://docs.python.org/tutorial/datastructures.html#list-comprehensions" rel="nofollow">official Python tutorial</a>.
+</p><p>Those who think recursively may also benefit from the function <tt>functools.reduce</tt>, documented in the <a href="https://docs.python.org/3.0/library/functools.html#functools.reduce" class="external text" title="https://docs.python.org/3.0/library/functools.html#functools.reduce" rel="nofollow">Python library reference</a>. (Did you know: The built-in implementation of <tt>reduce</tt> was removed with the release of Python 3, because <a href="https://docs.python.org/3.0/whatsnew/3.0.html#builtins" class="external text" title="https://docs.python.org/3.0/whatsnew/3.0.html#builtins" rel="nofollow">"99 percent of the time an explicit for loop is more readable"</a>.)
+</p><p>If you're having an issue or a bug that just doesn't make sense, the <a href="/wiki/index.php?title=Lab_1#FAQ" title="Lab 1"> FAQ</a> section below may be helpful. We will update the FAQ section with more questions and answers as new issues come to light.
+</p>
+<dl><dt>A note on nomenclature
+</dt><dd>Wherever possible, we try to be consistent with our use of certain keywords. In particular, the words <i>clause</i>, <i>expression</i>, and <i>statement</i> are often vague and overloaded, but we attempt to use them consistently in this lab:
+</dd></dl>
+<ul><li> IF, THEN, and DELETE commands are <b>clauses</b>.
+</li><li> AND, OR, and NOT commands are <b>expressions</b>.
+</li><li> Simple phrases such as <tt>'opus is a penguin'</tt> or <tt>'sibling (?x) (?y)'</tt> are <b>statements</b>.
+</li><li> AND and OR expressions comprise zero or more <b>statements</b> and expressions; NOT expressions comprise a single <b>statement</b>, which is semantically negated.
+</li></ul>
+<p>We also often refer to rules themselves as expressions. However, the context of use should make the intended meaning clear.
+</p>
+<a name="A_Production_Rule_System"></a><h2> <span class="mw-headline"> A Production Rule System </span></h2>
+<p>In this section, we explain the basic structure of <i>production rule system</i>. There aren't any problems to solve, but please read it carefully anyway.
+</p><p>A production rule system is instantiated with a list of <i>data</i> and a list of <i>rules</i>:
+</p>
+<ul><li> A <b>datum</b> (plural, <b>data</b>) or an <b>assertion</b> is simply a string statement declaring a fact or a relation, e.g. <tt>'Jake is a person'</tt>.
+</li><li> A <b>rule</b> is a combination of a predicate (<i>antecedent</i>) and a resultant action or set of actions (<i>consequent</i>).
+</li></ul>
+<a name="The_anatomy_of_a_rule"></a><h3> <span class="mw-headline"> The anatomy of a rule </span></h3>
+<p>Conceptually, a rule is a mechanism that lets us conclude things, or take some actions, based on what things we already have or know.
+</p><p>Syntactically, a rule is an idiom that contains certain keywords such as IF, AND, OR, NOT, THEN, and DELETE. Importantly, rules can contain variables such as <tt>'(?x)'</tt> or <tt>'(?y)'</tt>. This allows a rule to match more than one possible datum. The consequent of a rule can contain variables that were bound in the antecedent.
+</p><p>Here is an example of a rule:
+</p>
+<code><pre>
+ IF( AND( 'parent (?x) (?y)',
+          'parent (?x) (?z)' ),
+     THEN( 'sibling (?y) (?z)' ))
+</pre></code>
+<p>This could be taken to mean:
+</p>
+<dl><dd>If <i>x</i> is a parent of <i>y</i>, and <i>x</i> is a parent of <i>z</i>, then <i>y</i> is a sibling of <i>z</i>.
+</dd></dl>
+<p>Given the dataset <tt>['parent marge bart','parent marge lisa']</tt>, executing the above rule would produce the datum <tt>'sibling bart lisa'</tt>. (In this particular case, executing it could also produce the datum <tt>'sibling bart bart'</tt>, which illustrates an issue that we will discuss with later.)
+</p><p>Of course, the rule system doesn't know what these arbitrary words such as "parent" and "sibling" mean! It doesn't even care that these words occur at the beginning of the statements. Indeed, the rule could also be written as:
+</p>
+<code><pre>
+ IF (AND( '(?x) is a parent of (?y)',
+          '(?x) is a parent of (?z)' ),
+     THEN( '(?y) is a sibling of (?z)' ))
+</pre></code>
+<p>Then it will expect its data to look such as <tt>'marge is a parent of lisa'</tt>, and so on. Writing data in more human-readable formats such as this does come at a cost: The assertions and rules become wordy, and rule-matching involves unnecessary matching of symbols such as <tt>'is'</tt> and <tt>'a'</tt>. We will use a mixture of these styles in this lab.
+</p><p><i>Just remember that the English is for your benefit, not the computer's.</i> The computer's only concern is to pattern-match the data with the rules.
+</p>
+<a name="IF_.2F_THEN_Clauses"></a><h3> <span class="mw-headline"> IF / THEN Clauses </span></h3>
+<p>In this lab, a rule must always have an IF and a THEN clause. Optionally, a rule can also have a DELETE clause, which specifies some data to delete.
+</p><p>The IF clause (antecedent) is either a single statement or a single AND, OR, or NOT expression:
+</p>
+<ul><li> AND requires that multiple statements are matched in the dataset
+</li><li> OR requires that at least one of multiple statements are matched in the dataset
+</li><li> NOT requires that a statement is <i>not</i> matched in the dataset.
+</li><li> AND, OR, and NOT expressions can be nested within each other. When nested, these expressions form an AND-OR tree (or, perhaps more accurately, an AND-OR-NOT tree). The <i>leaves</i> of this tree are string statements, possibly containing variables.
+</li></ul>
+<p>The THEN clause (consequent) contains at least one statement. When the rule <a href="/wiki/index.php?title=Lab_1#Match_and_Fire" title="Lab 1">fires</a>, each statement in the consequent is added to the dataset (unless already present).
+</p><p>The DELETE clause is optional, and contains at least one statement. When the rule <a href="/wiki/index.php?title=Lab_1#Match_and_Fire" title="Lab 1">fires</a>, each statement specified in the DELETE clause is removed from the dataset (if present).
+</p>
+<a name="Match_and_Fire"></a><h3> <span class="mw-headline"> Match and Fire </span></h3>
+<p>The terms <b>match</b> and <b>fire</b> are important. A rule <b>matches</b> if its antecedent matches the existing data. A rule that matches can then <b>fire</b> if its THEN or DELETE clauses would <i>change</i> the data. Otherwise, it fails to fire.
+</p>
+<a name="An_Iteration_of_Forward_Chaining"></a><h2> <span class="mw-headline"> An Iteration of Forward Chaining </span></h2>
+<p>The rules and assertions of the system are supplied in a specified order.
+</p><p>During an iteration of forward chaining, the system will check each rule in turn: For each rule, the system searches the data, in order, for assertions that match the requirements of the rule's antecedent. Assertions that appear <i>earlier</i> in the data take precedence over assertions that appear <i>later</i> in the data. 
+</p><p>If an AND or OR expression comprises multiple statements, we always try to match those statements <i>in the order given</i>. This policy is particularly important for AND expressions, because if one of the AND expression's statements contains variables, and we match that to a datum, we must apply those same variable bindings to the subsequent statements in the AND expression.
+</p><p>For example, consider the data <tt>['Bill has chocolate','Alex has chocolate','Alex likes eating chocolate']</tt> along with the rule
+</p>
+<code><pre>
+IF (AND( '(?x) has chocolate',
+         '(?x) likes eating chocolate' ),
+  THEN( '(?x) is happy' ))
+</pre></code>
+<p>In an iteration of forward chaining, the system would try to match this rule to the data by doing roughly the following:
+</p>
+<ol><li> Check the first part of the antecedent (<tt>'(?x) has chocolate'</tt>) against the first assertion, <tt>'Bill has chocolate'</tt>. This is a match, binding <tt>(?x) = Bill</tt>.
+</li><li> Apply the binding <tt>(?x) = Bill</tt> to the second part of the antecedent, yielding <tt>'Bill likes eating chocolate'</tt>.
+</li><li> Check <tt>'Bill likes eating chocolate'</tt> against <tt>'Bill has chocolate'</tt>. No possible match.
+</li><li> Check <tt>'Bill likes eating chocolate'</tt> against <tt>'Alex has chocolate'</tt>. No possible match.
+</li><li> Check <tt>'Bill likes eating chocolate'</tt> against <tt>'Alex likes eating chocolate'</tt>. No possible match.
+</li><li> Dead end, so back up.
+</li><li> Check the first part of the antecedent (<tt>'(?x) has chocolate'</tt>) against the second assertion, <tt>'Alex has chocolate'</tt>. This is a match, binding <tt>(?x) = Alex</tt>.
+</li><li> Apply the binding <tt>(?x) = Alex</tt> to the second part of the antecedent, yielding <tt>'Alex likes eating chocolate'</tt>.
+</li><li> Check <tt>'Alex likes eating chocolate'</tt> against <tt>'Bill has chocolate'</tt>. No possible match.
+</li><li> Check <tt>'Alex likes eating chocolate'</tt> against <tt>'Alex has chocolate'</tt>. No possible match.
+</li><li> Check <tt>'Alex likes eating chocolate'</tt> against <tt>'Alex likes eating chocolate'</tt>. This is a match.
+</li><li> Conclude that this rule matches the data with <tt>(?x) = Alex</tt>
+</li></ol>
+<p>Of all the rules that match, the system picks the first such one that can fire, and fires it, adding/deleting assertions as necessary. If no matching rule can fire, forward checking immediately terminates.
+</p>
+<a name="A_Note_about_NOTs"></a><h3> <span class="mw-headline"> A Note about NOTs </span></h3>
+<p>If there is a NOT expression in the antecedent, the data is searched to make sure that <i>no data item</i> matches the pattern.
+</p><p>For example, the antecedent
+</p>
+<code><pre>
+ NOT( 'Mary is a penguin' )
+</pre></code>
+<p>matches the data <tt>['Phil is a penguin','Sue is a penguin']</tt>, because <tt>'Mary is a penguin'</tt> is not a member of the data.
+</p><p>However, the antecedent
+</p>
+<code><pre>
+ NOT( 'Phil is a penguin' )
+</pre></code>
+<p>does <b>not</b> match the data <tt>['Phil is a penguin','Sue is a penguin']</tt>, because <tt>'Phil is a penguin'</tt> is a member of the data.
+</p><p>Things get a little bit more complicated when we introduce variables in NOT expressions.
+</p><p>The antecedent
+</p>
+<code><pre>
+ AND( '(?x) is a bird',
+      NOT( '(?x) is a penguin' ))
+</pre></code>
+<p>describes "things that are birds but not penguins." This antecedent matches the data <tt>['Phil is a penguin','Javier is a bird']</tt>, because...
+</p>
+<ol><li> The only way to match the first constituent of the AND is with the binding <tt>(?x) = Javier</tt>.
+</li><li> Applying the binding to the second constituent of the AND yields <tt>NOT( 'Javier is a penguin' )</tt>.
+</li><li> <tt>'Javier is a penguin'</tt> is not in our data, hence, <tt>NOT( 'Javier is a penguin' )</tt> matches.
+</li><li> So the entire AND expression successfully matches with <tt>(?x) = Javier</tt>.
+</li></ol>
+<p>But what happens if we <i>flip</i> the order of the two constituents? Our new antecedent looks like
+</p>
+<code><pre>
+ AND( NOT( '(?x) is a penguin' ),
+      '(?x) is a bird')
+</pre></code>
+<p>Suppose the data is still <tt>['Phil is a penguin','Sue is a penguin']</tt>. When attempting to match this rule to the data, the matcher first looks at the AND's first constituent, <tt>NOT( '(?x) is a penguin' )</tt>. But what is the value of <tt>(?x)</tt> supposed to be? There are literally an infinite number of bindings for <tt>(?x)</tt> that can make <tt>NOT( '(?x) is a penguin' )</tt> be true. In fact, there are only <i>two</i> values of <tt>(?x)</tt> that would <i>not</i> yield a match: <tt>Phil</tt> and <tt>Sue</tt>. In short, the matcher goes crazy because it has no positive guesses of what to bind <tt>(?x)</tt> to. We wouldn't expect a student to write down an infinite number of possible bindings on a quiz; neither should we expect our matcher to do that. 
+</p><p>So...
+</p><p><b>A NOT expression should never introduce new variables</b>: Our naive matcher will no know what to do with them, and it will certainly not behave as you expect it to.
+</p>
+<a name="Running_the_system"></a><h2> <span class="mw-headline"> Running the system </span></h2>
+<p>If you call <tt>from production import forward_chain</tt>, you gain access to a procedure <tt>forward_chain(rules, data, verbose=False)</tt> that will make inferences as described in the previous sections. It's important to note that in our code, <tt>rules</tt> and <tt>data</tt> may either be supplied as lists or tuples; either is acceptable. However, it may be most appropriate to represent <tt>data</tt> as a list because it's mutable, and data may be added or removed. 
+</p><p>This method returns the final state of its input data.
+</p><p>Here's an example of using <tt>forward_chain</tt> with a very simple rule system:
+</p>
+<code><pre>
+from production import IF, AND, OR, NOT, THEN, DELETE, forward_chain
+
+theft_rule = IF( 'you have (?x)',
+                  THEN( 'i have (?x)' ),
+                  DELETE( 'you have (?x)' ))
+
+data = ( 'you have apple',
+         'you have orange',
+         'you have pear' )
+
+print(forward_chain([theft_rule], data, verbose=True))
+</pre></code>
+<p>We provide the system with a list containing a single rule, called <tt>theft_rule</tt>, which replaces a datum such as <tt>'you have apple'</tt> with <tt>'i have apple'</tt>. Given the three items of data, it will replace each of them in turn.
+</p><p>Here is the output if you ran the code above as a Python script:
+</p>
+<code><pre>
+Rule: IF(you have (?x), THEN('i have (?x)'))
+Added assertion: i have apple
+Rule: IF(you have (?x), THEN('i have (?x)'))
+Deleted assertion: you have apple
+Rule: IF(you have (?x), THEN('i have (?x)'))
+Added assertion: i have orange
+Rule: IF(you have (?x), THEN('i have (?x)'))
+Deleted assertion: you have orange
+Rule: IF(you have (?x), THEN('i have (?x)'))
+Added assertion: i have pear
+Rule: IF(you have (?x), THEN('i have (?x)'))
+Deleted assertion: you have pear
+('i have apple', 'i have orange', 'i have pear')
+</pre></code>
+<p>NOTE: The <tt>Rule:</tt>, <tt>Added assertion:</tt>, and <tt>Deleted assertion:</tt> lines come from the verbose printing.
+The final output is the new list of data after applying the forward chaining procedure.
+</p><p>You can look at a much larger example in the <tt>zookeeper</tt> data in <tt>data.py</tt>, which classifies animals based on their characteristics.
+</p>
+<a name="Part_1:_Multiple_Choice"></a><h2> <span class="mw-headline"> Part 1: Multiple Choice </span></h2>
+<p>As you answer the multiple choice questions below, keep in mind:
+</p>
+<ul><li> that the computer doesn't know English, and anything that reads like English is for the user's benefit only
+</li><li> that there is a difference between a rule having an antecedent that <b>matches</b>, and a rule actually <b>firing</b>
+</li></ul>
+<p>Indicate your answers as strings assigned to <tt>ANSWER_i</tt> in <tt>lab1.py</tt> under "Part 1".
+</p>
+<a name="Questions_1-2:_New_assertions"></a><h3> <span class="mw-headline"> Questions 1-2: New assertions </span></h3>
+<p><b>Question 1:</b> In forward chaining, after all the variables in a rule have been bound, which part of the rule may appear as a new assertion in the data?
+</p><p>1. the antecedent
+</p><p>2. the consequent
+</p><p>3. both
+</p><p>4. neither
+</p><p><tt>ANSWER_1</tt> should be <tt>'1'</tt>, <tt>'2'</tt>, <tt>'3'</tt>, or <tt>'4'</tt>.
+</p><p><br />
+<b>Question 2:</b> In backward chaining, after all the variables in a rule have been bound, which part of the rule may appear as a new assertion in the data? (Note, backward chaining is covered in more detail later on in the lab. If you are looking for more background information, see below.)
+</p><p>1. the antecedent
+</p><p>2. the consequent
+</p><p>3. both
+</p><p>4. neither
+</p><p><tt>ANSWER_2</tt> should be <tt>'1'</tt>, <tt>'2'</tt>, <tt>'3'</tt>, or <tt>'4'</tt>.
+</p>
+<a name="Questions_3-5:_Hypothetical_cats"></a><h3> <span class="mw-headline"> Questions 3-5: Hypothetical cats </span></h3>
+<p>Consider the following rules about hypothetical cats.
+</p>
+<pre>
+rule1 = IF( AND( '(?x) is a hypothetical cat',
+                 '(?x) is alive',
+                 NOT('(?x) is alive')),
+            THEN( '(?x) is a paradox' ) )
+
+rule2 = IF( AND( '(?x) is a hypothetical cat',
+                 '(?x) is alive',
+                 '(?x) is dead'),
+            THEN( &quot;(?x) is Schrodinger's cat&quot; ) )
+
+rule3 = IF( AND( '(?x) is a hypothetical cat',
+                 NOT('(?x) is alive'),
+                 NOT('(?x) is dead')),
+            THEN( '(?x) is amortal' ) )
+</pre>
+<p><b>Question 3:</b>
+Consider the following set of assertions about Kitty.
+</p>
+<pre>assertions = ( 'Kitty is a hypothetical cat',
+               'Kitty is alive',
+               'Kitty is dead' )
+</pre>
+<p>Which rules would match in the first round of forward chaining?  Answer with a string of numbers in <tt>ANSWER_3</tt>.  (For example, if the assertions match <tt>rule1</tt> and <tt>rule2</tt>, answer <tt>'12'</tt>.)  If no rules match, answer <tt>'0'</tt>.
+</p><p><b>Question 4:</b>
+Consider the following set of assertions about Nyan.
+</p>
+<pre>assertions = ( 'Nyan is a hypothetical cat',
+               'Nyan is alive',
+               'Nyan is not alive' )
+</pre>
+<p>Which rules would match in the first round of forward chaining?  Answer with a string of numbers in <tt>ANSWER_4</tt>.  If no rules match, answer <tt>'0'</tt>.
+</p><p><b>Question 5:</b>
+Consider the following set of assertions about Garfield.
+</p>
+<pre>assertions = ( 'Garfield is a hypothetical cat',
+               'Garfield likes lasagna' )
+</pre>
+<p>Which rules would match in the first round of forward chaining?  Answer with a string of numbers in <tt>ANSWER_5</tt>.  If no rules match, answer <tt>'0'</tt>.
+</p><p><br />
+</p>
+<a name="Questions_6-7:_Pendergast"></a><h3> <span class="mw-headline"> Questions 6-7: Pendergast </span></h3>
+<p>In a completely different scenario, suppose we have the following two rules:
+</p>
+<pre>rule1 = IF( AND( '(?x) has feathers',
+                 '(?x) has a beak' ),
+            THEN( '(?x) is a bird' ))
+rule2 = IF( AND( '(?y) is a bird',
+                 '(?y) cannot fly',
+                 '(?y) can swim' ),
+            THEN( '(?y) is a penguin' ) )
+</pre>
+<p>and the following list of initial data:
+</p>
+<pre>( 'Pendergast is a penguin',
+  'Pendergast has feathers',
+  'Pendergast has a beak',
+  'Pendergast cannot fly',
+  'Pendergast can swim' )
+</pre>
+<p><b>Question 6:</b> After starting the system, which rule fires first?  In <tt>ANSWER_6</tt>, answer <tt>'1'</tt> or <tt>'2'</tt>, or <tt>'0'</tt> if neither rule fires.
+</p><p><b>Question 7:</b> Which rule fires second?  In <tt>ANSWER_7</tt>, answer <tt>'1'</tt> or <tt>'2'</tt>, or <tt>'0'</tt> if neither rule fires.
+</p><p><br />
+If you're confused about any of the answers, look in <tt>tests.py</tt> for an explanation.
+</p>
+<a name="Part_2:_Poker_Hands"></a><h2> <span class="mw-headline"> Part 2: Poker Hands </span></h2>
+<p>We can use a production system to rank types of poker hands against each other. If we tell it basic things such as <tt>'three-of-a-kind beats two-pair'</tt> and <tt>'two-pair beats pair'</tt>, it would make sense for it to be able to deduce by transitivity that <tt>'three-of-a-kind beats pair'</tt>.
+</p><p>You're given this data about poker hands:
+</p>
+<pre>
+poker_data = [ 'two-pair beats pair',
+               'three-of-a-kind beats two-pair',
+               'straight beats three-of-a-kind',
+               'flush beats straight',
+               'full-house beats flush',
+               'straight-flush beats full-house' ]
+</pre>
+<p>Write a one-rule system that finds all other combinations of which poker hands beat which, transitively, given some of the rankings already.  For example, it should be able to deduce that a three-of-a-kind beats a pair, because a three-of-a-kind beats two-pair and a two-pair beats a pair.  The rankings (data) are all provided in the form <tt>'(?x) beats (?y)'</tt>.
+</p><p><b>Put your one rule in the section "Part 2" of <tt>lab1.py</tt>, and assign it to the variable <tt>transitive_rule</tt></b>, so that your list of rules is <tt>[transitive_rule]</tt>.
+</p><p>You can test your <tt>transitive_rule</tt> on two additional data sets by uncommenting some or all of the <tt>pprint</tt> (short for pretty print) statements in <tt>lab1.py</tt>:
+</p>
+<pre>
+pprint(forward_chain([transitive_rule], abc_data))
+pprint(forward_chain([transitive_rule], poker_data))
+pprint(forward_chain([transitive_rule], minecraft_data))
+</pre>
+<p>Note, after uncommenting one of the pretty print statements, you can execute lab1.py directly so that you don't have to run the full tester every time.
+</p>
+<a name="Part_3:_Family_relations"></a><h2> <span class="mw-headline"> Part 3: Family relations </span></h2>
+<p>You will be given data that includes two kinds of statements:
+</p>
+<ul><li> <tt>'person (?x)'</tt>: <i>x</i> is a person
+</li><li> <tt>'parent (?x) (?y)'</tt>: <i>x</i> is a parent of <i>y</i>
+</li></ul>
+<p>Every person in the data set will be explicitly defined as a person.
+</p><p>Your task is to deduce, wherever you can, the following relations:
+</p>
+<ul><li> <tt>'sibling (?x) (?y)'</tt>: <i>x</i> is the sibling of <i>y</i> (<i>x</i> and <i>y</i> are different people, but share at least one parent)
+</li><li> <tt>'child (?x) (?y)'</tt>: <i>x</i> is the child of <i>y</i>
+</li><li> <tt>'cousin (?x) (?y)'</tt>: <i>x</i> and <i>y</i> are cousins (a parent of <i>x</i> and a parent of <i>y</i> are siblings, but <i>x</i> and <i>y</i> are not siblings)
+</li><li> <tt>'grandparent (?x) (?y)'</tt>: <i>x</i> is the grandparent of <i>y</i>
+</li><li> <tt>'grandchild (?x) (?y)'</tt>: <i>x</i> is the grandchild of <i>y</i>
+</li></ul>
+<p><br />
+Note that for this problem, you are <b>not</b> limited to only defining rules that generate one of the five familial relations enumerated above. You are welcome to include rules that inform other relations. You're also welcome to implement additional familial relations such as <tt>great-grandparent</tt> or <a href="https://en.wiktionary.org/wiki/nibling" class="external text" title="https://en.wiktionary.org/wiki/nibling" rel="nofollow"><tt>nibling</tt></a>, if you feel so inclined.
+</p><p>Keep in mind that some relations are symmetric, so you need to include them both ways. For example, if <i>a</i> is a cousin of <i>b</i>, then <i>b</i> is a cousin of <i>a</i>.
+</p><p>First, define all your rules individually -- that is, give them names by assigning them to variables.  This will enable you to refer to the rules by name and easily rearrange them if you need to.  Then, put them together into a list in order, and call it <tt>family_rules</tt>, so that the rules can be plugged into the forward-chaining system.
+</p><p>We've given you two larger sets of test data -- one for the Simpsons family, and one for the Black family from Harry Potter -- as well as a couple smaller data sets to help with debugging.  To debug what happened in your rules, you can set <tt>verbose=True</tt>.
+</p><p><b>You will write your solution in <tt>lab1.py</tt> in the section labeled "Part 3"</b>. Note that <tt>lab1.py</tt> will automatically define a variable called <tt>black_family_cousins</tt> which will include all the <tt>'cousin (?x) (?y)'</tt> relations you find in the Black family, per your rule set. There should be 14 of them.
+</p><p>IMPORTANT: Make sure you implement all five relations defined above.  In this lab, the online tester will be stricter, and may test some relations not tested offline.
+</p>
+<a name="Goal_trees"></a><h2> <span class="mw-headline"> Goal trees </span></h2>
+<p>For the next problem, we're going to need a representation of goal trees. Specifically, we want to make trees out of AND and OR nodes (expressions), much like the ones that can be in the antecedents of rules. (There won't be any NOT nodes in this problem.) They will be represented as <tt>AND(...)</tt> and <tt>OR(...)</tt> objects.
+</p>
+<a name="AND_and_OR_objects"></a><h3> <span class="mw-headline"> <tt>AND</tt> and <tt>OR</tt> objects </span></h3>
+<p>In our production code, <tt>AND</tt> and <tt>OR</tt> are subclasses of <tt>RuleExpression</tt>, which itself is a subclass of the Python built-in type <tt>list</tt>. Hence, you may iterate, slice, index into, and otherwise do any other standard list-like operation on <tt>AND</tt> and <tt>OR</tt> objects.
+</p><p>The leaves of the goal tree are string assertions. The goal atoms may simply be arbitrary symbols or numbers such as <tt>g1</tt> or <tt>3</tt>.
+</p><p>An <b>AND node</b> represents a list of sub-goals that are required to complete a particular goal. If all the branches of an AND node succeed, the AND node succeeds. <tt>AND(g1, g2, g3)</tt> describes a goal that is completed by completing g1, g2, and g3 in order. Similarly, <tt>AND</tt> can take in an iterable of arguments, so <tt>AND([g1, g2, g3])</tt> is equivalent to <tt>AND(g1, g2, g3)</tt>.
+</p><p>An <b>OR node</b> is a list of options for how to complete a goal. If any one of the branches of an OR node succeeds, the OR node succeeds. <tt>OR(g1, g2, g3)</tt> is a goal that you complete by first trying g1, then g2, then g3. Similarly, <tt>OR</tt> can take in an iterable of arguments, so e.g. <tt>OR([g1, g2, g3])</tt> is equivalent to <tt>OR(g1, g2, g3)</tt>.
+</p><p><b>Unconditional success</b> is represented by an AND node with no requirements: <tt>AND()</tt>.
+</p><p><b>Unconditional failure</b> is represented by an OR node with no options: <tt>OR()</tt>.
+</p>
+<a name="Simplifying_Nodes"></a><h3> <span class="mw-headline"> Simplifying Nodes </span></h3>
+<p>A problem with goal trees is that you can end up with trees that are described differently but mean exactly the same thing. For example, 
+</p>
+<pre>AND(g1, AND(g2, AND(AND(), g3, g4)))
+</pre>
+<p>is more reasonably expressed as 
+</p>
+<pre>AND(g1, g2, g3, g4)
+</pre>
+<p>So, we've provided a function called <tt>simplify</tt> that reduces some of these cases to the same tree. <tt>simplify</tt> won't change the order of any nodes, but it will prune some nodes that are fruitless to check, and otherwise simplify more complicated nodes when possible.
+</p><p><b>We have provided this code for you.</b> However, you should still understand what it's doing, because you can benefit from its effects. You may want to write code that produces "messy" and unsimplified goal trees, because it's easier, and then simplify them with the <tt>simplify</tt> function.
+</p><p>This is how <tt>simplify</tt> simplifies goal trees:
+</p>
+<ol><li> If a node contains another node of the same type, absorb it into the parent node. So <tt>OR(g1, OR(g2, g3), g4)</tt> becomes <tt>OR(g1 g2 g3 g4)</tt>.
+</li><li> Any AND node that contains an unconditional failure (<tt>OR()</tt>) has no way to succeed, so replace it with unconditional failure.
+</li><li> Any OR node that contains an unconditional success (<tt>AND()</tt>) will always succeed, so replace it with unconditional success.
+</li><li> If a node has only one branch, replace it with that branch. <tt>AND(g1)</tt>, <tt>OR(g1)</tt>, and <tt>g1</tt> all represent the same goal.
+</li><li> If a node has multiple instances of a variable, replace these with only one instance. <tt>AND(g1, g1, g2)</tt> is the same as <tt>AND(g1, g2)</tt>.
+</li></ol>
+<p>Below are some examples of <tt>simplify</tt> in action:
+</p>
+<code><pre>
+ simplify(OR(1, 2, AND()))                                     =&gt; AND()
+ simplify(OR(1, 2, AND(3, AND(4)), AND(5)))                    =&gt; OR(1, 2, AND(3, 4), 5)
+ simplify(AND('g1', AND('g2', AND('g3', AND('g4', AND())))))   =&gt; AND('g1', 'g2', 'g3', 'g4')
+ simplify(AND('g'))                                            =&gt; 'g'
+ simplify(AND('g1', 'g1', 'g2'))                               =&gt; AND('g1', 'g2')
+</pre></code>
+<a name="The_Joys_of_an_API"></a><h3> <span class="mw-headline"> The Joys of an API </span></h3>
+<p>We've provided an abstraction for AND and OR nodes, as well as the function that simplifies them, in <tt>production.py</tt>. Everything you need to know about <tt>production.py</tt> is <a href="#production.py_API" title=""> described below</a>, so you shouldn't need to read the source code. There is nothing for you to code in this section, but please make sure to understand this representation, because you are going to be building goal trees in the next section.
+</p>
+<a name="Going_Backwards"></a><h2> <span class="mw-headline"> Going Backwards </span></h2>
+<p><i>Backward chaining</i> is the opposite of forward chaining: we run a production rule system in reverse. We start with a conclusion (the hypothesis), and then we find which rules, when fired, would yield that hypothesis. Then, we test those rules' antecedents to figure out how we can successfully match them against data we have or other rules' consequents.
+</p>
+<a name="The_Backward_Chaining_Process"></a><h3> <span class="mw-headline"> The Backward Chaining Process </span></h3>
+<p>Here's the general theory behind backward chaining:
+</p>
+<ul><li> Given a hypothesis, you want to see what rules can produce it, by matching the consequents of those rules against your hypothesis. All of the rules' consequents that match are possible options, so you'll take the corresponding antecedents and group them together in an OR node: it is sufficient for any <i>one</i> matching rule to fire and yield the hypothesis.
+</li><li> The hypothesis itself should be added as a (leaf) node to the OR node, because existence of the hypothesis in the data is sufficient to conclude the hypothesis.
+</li><li> If a consequent matches, keep track of the variables that are bound. Look up the antecedent of that rule, and instantiate those same variables in the antecedent (that is, replace the variables with their values). This instantiated antecedent is a new hypothesis.
+</li><li> The antecedent may have AND or OR expressions. This means that the goal tree for the antecedent is already partially formed. But you need to check the leaves of that AND-OR tree, and recursively backward chain on them.
+</li></ul>
+<p>A few things you should be aware of:
+</p>
+<ul><li> The branches of the goal tree should be in order: the goal trees for earlier rules should appear before (to the left of) the goal trees for later rules. Intermediate nodes should appear before their expansions.
+</li><li> The output should be fully simplified (you can use the <tt>simplify</tt> function).
+</li><li> If two different rules tell you to check the same hypothesis, the goal tree for that hypothesis should be included both times, even though it's largely redundant.
+</li></ul>
+<a name="Part_4:_Backward_Chaining"></a><h2> <span class="mw-headline"> Part 4: Backward Chaining </span></h2>
+<p>In this problem, we will do backward chaining by starting from a conclusion, and generating a goal tree of <i>all</i> of the statements we may need to test. The leaves of the goal tree will be sentences (strings) such as <tt>'opus swims'</tt>, indicating atomic failure or success based on whether or not 'opus swims' is in our assertions list.
+</p><p>We'll run this backward chainer on the <tt>zookeeper</tt> system of rules, a simple set of production rules for classifying animals, which you will find in <tt>data.py</tt>. As an example, here is the goal tree generated for the hypothesis <tt>'opus is a penguin'</tt>:
+</p>
+<code><pre>
+OR(
+  'opus is a penguin',
+  AND(
+    OR('opus is a bird', 'opus has feathers', AND('opus flies', 'opus lays eggs'))
+    'opus does not fly',
+    'opus swims',
+    'opus has black and white color' ))
+</pre></code>
+<p>You will write a procedure, <tt>backchain_to_goal_tree(rules, hypothesis)</tt> (in "Part 4" of <tt>lab1.py</tt>), which outputs the goal tree containing the statements you would need to test to prove the hypothesis.  Note that this function is supposed to be a general backchainer, so you should not hard-code anything that is specific to a particular rule set.  The backchainer will be tested on rule sets other than <tt>zookeeper_rules</tt>.
+</p><p>The rules you work with will be limited in scope, because general-purpose backward chainers are difficult to write. In particular, for this problem, make the following assumptions:
+</p>
+<ul><li> All variables that appear in a rule's antecedent also appear in its consequent (so there are no "unknown" variables in the antecedent). In other words, you will not need to do backtracking.
+</li><li> All assertions are positive: no rules will have DELETE clauses or NOT expressions.
+</li><li> Rule antecedents never have nested <tt>RuleExpression</tt> nodes. For example, an expression such as <tt>(OR (AND x y) (AND z w))</tt> will never appear within an antecedent, because that contains an AND expression nested under an OR expression.
+</li><li> Rule consequents always have just a single statement.
+</li></ul>
+<p>Note that an antecedent can be a single hypothesis (a string) or a <tt>RuleExpression</tt>.
+</p>
+<a name="Taking_advantage_of_your_visual_problem-solving_apparatus"></a><h3> <span class="mw-headline"> Taking advantage of your visual problem-solving apparatus </span></h3>
+<p>As a species, humans are very visual learners. If you're having trouble conceptualizing what should be going on in the backward chaining algorithm, we strongly recommend drawing a diagram and working your way down the goal tree by hand.
+</p>
+<a name="production.py_API"></a><h2> <span class="mw-headline"> production.py API </span></h2>
+<p>The code in <tt>production.py</tt> has been written by 6.034 staff. It contains all of the infrastructure supporting IF/THEN rules and how they're processed. So that you don't have to trawl through our code trying to figure out how everything works, we use this section to provide you with a quick explanation of which functions you will find useful and how you should interact with them.
+</p>
+<dl><dt><tt>match(pattern, datum)</tt>
+</dt><dd>This attempts to assign values to variables so that <tt>pattern</tt> and <tt>datum</tt> are the same. You can <tt>match(leaf_a, leaf_b)</tt>, which returns either <tt>None</tt> if <tt>leaf_a</tt> didn't match <tt>leaf_b</tt>, or a set of bindings if it did (even empty bindings: <tt>{}</tt>).
+</dd></dl>
+<dl><dd>Examples:
+<dl><dd><tt>match("(?x) is a (?y)", "John is a student") =&gt; { x: "John", y: "student" }</tt>
+</dd><dd><tt>match("foo", "bar") =&gt; None</tt>
+</dd><dd><tt>match("foo", "foo") =&gt; {}</tt>
+</dd></dl>
+</dd></dl>
+<dl><dd>Both arguments to <tt>match</tt> must be strings.
+</dd></dl>
+<dl><dd>Note: <tt>{}</tt> and <tt>None</tt> are both <tt>False</tt>-like values in Python, so you should make sure to explicitly check if <tt>match</tt>'s return value is <tt>None</tt> (i.e., don't use idioms such as "<tt>if match(a, b):</tt>"). If <tt>match</tt> returns <tt>{}</tt>, that means that the statements match but there are no variables that need to be bound, whereas if <tt>match</tt> returns <tt>None</tt>, that means it's not possible for the statements to match at all!
+</dd></dl>
+<dl><dt><tt>populate(exp, bindings)</tt>
+</dt><dd>Given an expression with variables in it, look up the values of those variables in <tt>bindings</tt> and replace the variables with their values. You can use the bindings from <tt>match(leaf_a, leaf_b)</tt> with <tt>populate(leaf, bindings)</tt>, which will fill in any free variables using the bindings. Note that the expression input to <tt>populate</tt> may either be a string or a more complicated tree.
+</dd></dl>
+<dl><dd>Examples:
+<dl><dd><tt>populate("(?x) is a (?y)", { x: "John", y: "student" }) =&gt; "John is a student"</tt>
+</dd><dd><tt>populate(AND("(?x) is a (?y)", "(?x) loves (?z)"), { x: "John", y: "student" }) =&gt; AND("John is a student", "John loves (?z)")</tt>
+</dd></dl>
+</dd></dl>
+<dl><dt><tt>rule.antecedent()</tt>
+</dt><dd>Returns the IF part of a rule, which is either a leaf or a <tt>RuleExpression</tt>.
+</dd></dl>
+<dl><dd>Recall that <tt>RuleExpression</tt> objects act like lists, so you can iterate over them. If you need to know to what class an antecedent belongs, you may find the <tt>isinstance</tt> function to be helpful. For example, <tt>isinstance(my_antecedent, OR) </tt> returns <tt>True</tt> if <tt>my_antecedent</tt> is an <tt>OR</tt> object, otherwise it returns <tt>False</tt>.
+</dd></dl>
+<dl><dt><tt>rule.consequent()</tt>
+</dt><dd>Returns the THEN part of a rule, which is <i>always a single statement</i> for the purposes of this lab. (Note that <tt>rule.consequent()</tt> does <i>not</i> return a <tt>THEN</tt> object; it returns the datum enclosed by the <tt>THEN</tt> object.)
+</dd></dl>
+<p><br />
+</p>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<a name="FAQ"></a><h2> <span class="mw-headline"> FAQ </span></h2>
+<p><b>Q:</b> I'm getting a somewhat baffling "unhashable type: list" error when working on the family rules part.
+</p><p><b>A:</b> This probably means your syntax for THENs is incorrect.  A THEN with multiple consequents should look like THEN('consequent 1', 'consequent 2', 'consequent 3').
+</p><p><br />
+</p><p><br />
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 325/1000000
+Post-expand include size: 1691/2097152 bytes
+Template argument size: 28/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1423-0!1!0!!en!2!edit=0 and timestamp 20200505173724 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_1">https://ai6034.mit.edu/wiki/index.php?title=Lab_1</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_1" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_1&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_1&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_1&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_1" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_1" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_1" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_1&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_1&amp;oldid=7582" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 10 September 2019, at 22:53.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.200 secs. --></body></html>

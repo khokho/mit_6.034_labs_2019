@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 4" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 4 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_4";
+var wgTitle = "Lab 4";
+var wgAction = "view";
+var wgArticleId = "1445";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7738";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_4">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 4</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<p><br />
+This lab is due by <b>Tuesday, October 08 at 10:00pm</b>.
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#A_Working_Vocabulary"><span class="tocnumber">1</span> <span class="toctext">A Working Vocabulary</span></a></li>
+<li class="toclevel-1"><a href="#Part_1:_Warm-up"><span class="tocnumber">2</span> <span class="toctext">Part 1: Warm-up</span></a></li>
+<li class="toclevel-1"><a href="#Part_2:_Writing_a_depth-first_search_solver"><span class="tocnumber">3</span> <span class="toctext">Part 2: Writing a depth-first search solver</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Benchmarks"><span class="tocnumber">3.1</span> <span class="toctext">Benchmarks</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_3:_Forward_checking_streamlines_search_by_eliminating_impossible_assignments"><span class="tocnumber">4</span> <span class="toctext">Part 3: Forward checking streamlines search by eliminating impossible assignments</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Finding_inconsistent_values_in_neighbors"><span class="tocnumber">4.1</span> <span class="toctext">Finding inconsistent values in neighbors</span></a></li>
+<li class="toclevel-2"><a href="#Depth-first_constraint_solver_with_forward_checking"><span class="tocnumber">4.2</span> <span class="toctext">Depth-first constraint solver with forward checking</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_4:_Propagation.21"><span class="tocnumber">5</span> <span class="toctext">Part 4: Propagation!</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Domain_reduction"><span class="tocnumber">5.1</span> <span class="toctext">Domain reduction</span></a></li>
+<li class="toclevel-2"><a href="#Propagation_through_reduced_domains"><span class="tocnumber">5.2</span> <span class="toctext">Propagation through reduced domains</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_5A:_Generic_propagation"><span class="tocnumber">6</span> <span class="toctext">Part 5A: Generic propagation</span></a></li>
+<li class="toclevel-1"><a href="#Part_5B:_A_generic_constraint_solver"><span class="tocnumber">7</span> <span class="toctext">Part 5B: A generic constraint solver</span></a></li>
+<li class="toclevel-1"><a href="#Part_6:_Defining_your_own_constraints"><span class="tocnumber">8</span> <span class="toctext">Part 6: Defining your own constraints</span></a></li>
+<li class="toclevel-1"><a href="#API"><span class="tocnumber">9</span> <span class="toctext">API</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Constraint_Satisfaction_Problems"><span class="tocnumber">9.1</span> <span class="toctext">Constraint Satisfaction Problems</span></a></li>
+<li class="toclevel-2"><a href="#Constraint_objects"><span class="tocnumber">9.2</span> <span class="toctext">Constraint objects</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Appendix:_Setting_up_a_Constraint_Satisfaction_Problem"><span class="tocnumber">10</span> <span class="toctext">Appendix: Setting up a Constraint Satisfaction Problem</span></a></li>
+<li class="toclevel-1"><a href="#FAQ"><span class="tocnumber">11</span> <span class="toctext">FAQ</span></a></li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">12</span> <span class="toctext">Survey</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab4</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab4</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab4/lab4.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab4/lab4.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab4/lab4.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab4/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab4/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab4/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab4.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab4 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="A_Working_Vocabulary"></a><h2> <span class="mw-headline"> A Working Vocabulary </span></h2>
+<p>Before beginning, you may want to (re)familiarize yourself with the following terms:
+</p>
+<ul><li> <b>variable</b>: something that can receive an assignment value
+</li><li> <b>value</b>: something that can be assigned
+</li><li> <b>domain</b>: a set of values
+</li><li> <b>constraint</b>: a condition that limits domains of possible values
+</li></ul>
+<a name="Part_1:_Warm-up"></a><h2> <span class="mw-headline"> Part 1: Warm-up </span></h2>
+<p>In this lab, you'll write programs that solve constraint satisfaction problems (CSPs). A CSP consists of variables, assignments, and constraints, and is represented by a <tt>ConstraintSatisfactionProblem</tt> object as described in <a href="#API" title=""> the API</a>.
+</p><p>First, we'll get familiarity with CSPs by writing a few helper routines.
+</p>
+<ul><li> <tt>has_empty_domains(csp)</tt>: returns <tt>True</tt> if the supplied problem has one or more empty domains. Otherwise, returns <tt>False</tt>.
+</li><li> <tt>check_all_constraints(csp)</tt>: returns <tt>False</tt> if the problem's <b>assigned values</b> violate some constraint. Otherwise, returns <tt>True</tt>.
+</li></ul>
+<p>Each function takes in an argument <tt>csp</tt>, which is a <a href="#Constraint_Satisfaction_Problems" title=""><tt>ConstraintSatisfactionProblem</tt></a> instance.
+</p>
+<a name="Part_2:_Writing_a_depth-first_search_solver"></a><h2> <span class="mw-headline"> Part 2: Writing a depth-first search solver </span></h2>
+<p>Now you can use your helper functions to write the constraint solver:
+</p>
+<pre>def solve_constraint_dfs(problem)&nbsp;:
+</pre>
+<p>This is just like depth-first search as implemented in the search lab, but this time the items in the agenda are partially-solved problems instead of paths. Additionally, for this problem, we will also want to track the number of extensions so we can compare the different strategies for constraint propagation. At the end, instead of returning just a solution, you will return a tuple <tt>(solution, num_extensions)</tt>, where
+</p>
+<ul><li> <tt>solution</tt> is the solution to this problem as a dictionary mapping variables to assigned values (see API for details); or <tt>None</tt> if there is no solution to the problem.
+</li><li> <tt>num_extensions</tt> is the number of extensions performed during the search. Recall that as before, an extension occurs whenever a problem is <b>removed</b> from the agenda for processing.
+</li></ul>
+<p>Here is a rough outline of how to proceed:
+</p>
+<ol><li> Initialize your agenda and the extension count.
+</li><li> Until the agenda is empty, pop the first problem off the list and increment the extension count.
+</li><li> If any variable's domain is empty or if any constraints are violated, the problem is <i>unsolvable</i> with the current assignments.
+</li><li> If none of the constraints have been violated, check whether the problem has any unassigned variables. If not, you've found a complete solution! 
+</li><li> However, if the problem has some unassigned variables:
+<ol><li> Take the first unassigned variable off the list using <code>csp.pop_next_unassigned_var()</code>.
+</li><li> For each value in the variable's domain, create a new problem with that value assigned to the variable, and add it to a list of new problems. Then, add the new problems to the appropriate end of the agenda.
+</li></ol>
+</li><li> Repeat steps 2 through 6 until a solution is found or the agenda is empty.
+</li></ol>
+<a name="Benchmarks"></a><h3> <span class="mw-headline"> Benchmarks </span></h3>
+<p>So that we can compare the efficiency of different types of constraint-satisfaction algorithms, we'll compute how many extensions (agenda dequeues) each algorithm requires when solving a particular CSP. Our test problem will be the Pokemon problem from <a href="http://courses.csail.mit.edu/6.034f/Examinations/2012q2.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/Examinations/2012q2.pdf" rel="nofollow">2012 Quiz 2</a>, pages 2-4.
+</p><p>You can solve the Pokemon problem by calling <tt>solve_constraint_dfs(pokemon_problem)</tt> directly. Note that the Pokemon problem is already defined for you in test_problems.py. To get a copy of it, use the method get_pokemon_problem() in lab4.py.
+</p><p>Please answer the following questions in your lab file:
+</p>
+<dl><dt>Question 1
+</dt><dd>How many extensions does it take to solve the Pokemon problem with just DFS?
+</dd></dl>
+<p>Put your answer (as an integer) in for <tt>ANSWER_1</tt>.
+</p>
+<a name="Part_3:_Forward_checking_streamlines_search_by_eliminating_impossible_assignments"></a><h2> <span class="mw-headline"> Part 3: Forward checking streamlines search by eliminating impossible assignments </span></h2>
+<p>One problem with the <tt>solve_constraint_dfs</tt> algorithm is that it explores all possible branches of the tree. We can use a trick called forward checking to avoid exploring branches that cannot possibly lead to a solution: each time we assign a value to a variable, we'll eliminate incompatible or <i>inconsistent</i> values from that variable's neighbors.
+</p>
+<a name="Finding_inconsistent_values_in_neighbors"></a><h3> <span class="mw-headline"> Finding inconsistent values in neighbors </span></h3>
+<p>First, we will write a helper function to eliminate <i>inconsistent</i> values from a variable's neighbors' domains:
+</p>
+<dl><dd> Suppose V is a variable with neighbor W.  If W's domain contains a value w which violates a constraint with <b>every value in V's domain</b>, then the assignment W=w can't be part of the solution we're constructing &mdash; we can safely eliminate w from W's domain.
+</dd></dl>
+<p>(Note that unlike the <tt>check_all_constraints</tt> function above, <tt>eliminate_from_neighbors</tt> checks all combinations of values, and is not restricted to comparing only variables that have assigned values.)
+</p><p><br />
+This function should return an alphabetically sorted list of the neighbors whose domains were reduced (i.e. which had values eliminated from their domain), with each neighbor appearing <b>at most once</b> in the list. If no domains were reduced, return an empty list; if a domain is reduced to size 0, quit and immediately return <tt>None</tt>. This method <b>should</b> modify the input CSP. Hint: You can remove values from a variable's domain using csp.eliminate(var, val). But don't eliminate values from a variable while iterating over its domain, or Python will get confused!
+</p>
+<pre>def eliminate_from_neighbors(csp, var)&nbsp;:
+</pre>
+<p>We strongly suggest working out examples on paper to get a feel for how the forward checker should find inconsistent values. 
+</p><p>To reduce the amount of nested for-loops and to make debugging easier, you may find it helpful to write a small helper function that, for example, takes in two variables V and W, and two values v and w in their respective domains, and checks if there are any constraint violations between V=v and W=w.
+</p>
+<a name="Depth-first_constraint_solver_with_forward_checking"></a><h3> <span class="mw-headline"> Depth-first constraint solver with forward checking </span></h3>
+<p>Now, we will write our improved CSP solver which uses <tt>eliminate_from_neighbors</tt> above to apply forward checking while searching for variable assignments.
+</p>
+<pre>def solve_constraint_forward_checking(problem)&nbsp;:
+</pre>
+<p>The implementation for this function will be very similar to that of <tt>solve_constraint_dfs</tt>, except now the solver must apply forward checking (<tt>eliminate_from_neighbors</tt>) after each assignment, to eliminate incompatible values from the assigned variable's neighbors.
+</p><p>Note that if <tt>eliminate_from_neighbors</tt> eliminates all values from a variable's domain, the problem will be recognized as unsolvable when it is <i>next</i> popped off the agenda: do not preemptively remove it from consideration.
+</p><p>Answer the following question in your <tt>lab4.py</tt> file:
+</p>
+<dl><dt>Question 2
+</dt><dd>How many extensions does it take to solve the Pokemon problem with forward checking?
+</dd></dl>
+<p>Put your answer (as an integer) in for <tt>ANSWER_2</tt>.
+</p>
+<a name="Part_4:_Propagation.21"></a><h2> <span class="mw-headline"> Part 4: Propagation! </span></h2>
+<p>Forward checking is a useful tool for checking ahead for inconsistencies and reducing the search space. However, in many situations, it's ideal to prune inconsistent states even faster.
+</p>
+<a name="Domain_reduction"></a><h3> <span class="mw-headline"> Domain reduction </span></h3>
+<p>A far-reaching strategy called <i>domain reduction</i> eliminates incompatible values not just between neighbors, but across all variables in the problem. You can apply domain reduction either <i>before search</i> (this is what Sudoku players do when they narrow down options before tentatively guessing a value) or <i>after assigning each variable during search</i> (as a more powerful variation of forward-checking).
+</p><p>As it turns out, the implementation for both of these are effectively identical:
+</p>
+<ol><li> Establish a queue. If using domain reduction <i>during</i> search, this queue should initially contain only the variable that was just assigned. If before search (or if no queue is specified), the queue can contain all variables in the problem.  (Hint: <tt>csp.get_all_variables()</tt> will make a copy of the variables list.)
+</li><li> Until the queue is empty, pop the first variable <tt>var</tt> off the queue.
+</li><li> Iterate over that <tt>var</tt>'s neighbors: if some neighbor <tt>n</tt> has values that are incompatible with the constraints between <tt>var</tt> and <tt>n</tt>, remove the incompatible values from <tt>n</tt>'s domain. If you reduce a neighbor's domain, add that neighbor to the queue (unless it's already in the queue).  
+</li><li> If any variable has an empty domain, quit immediately and return <tt>None</tt>.
+</li><li> When the queue is empty, domain reduction has finished. Return a list of all variables that were dequeued, in the order they were removed from the queue. Variables may appear in this list multiple times.
+</li></ol>
+<p>Note that when the queue initially contains only the assigned variable, the first step of propagation is just forward checking of the assigned variable's neighbors. "Propagation" occurs as we add more variables to the queue, checking neighbors of neighbors, etc.
+</p><p><br />
+You will now implement <tt>domain_reduction</tt>, which applies forward checking (checking for neighboring values' inconsistencies) with propagation through any domains that are reduced.
+</p><p>Recall that domain reduction utilizes a queue to keep track of the variables whose neighbors should be explored for inconsistent domain values. If you are not explicitly provided a queue from the caller, your queue should start out with all of the problem's variables in it, in their default order.
+</p><p>When doing domain reduction, you should keep track of the order in which variables were dequeued; the function should return this ordered list of variables that were dequeued. 
+</p><p>If at any point in the algorithm a domain becomes empty, immediately return <tt>None</tt>.
+</p>
+<pre>def domain_reduction(csp, queue=None)&nbsp;:
+</pre>
+<p>This method <b>should</b> modify the input CSP.
+</p><p>Hint: You can remove values from a variable's domain using <tt>csp.eliminate(var, val)</tt>. But <b>don't</b> eliminate values from a variable while iterating over its domain, or Python will get confused!
+</p><p>Answer the following question in your <tt>lab4.py</tt> file:
+</p>
+<dl><dt>Question 3
+</dt><dd>How many extensions does it take to solve the Pokemon problem with DFS (no forward checking) if you do domain reduction before solving it?
+</dd></dl>
+<p>Put your answer (as an integer) in for <tt>ANSWER_3</tt>.
+</p>
+<a name="Propagation_through_reduced_domains"></a><h3> <span class="mw-headline"> Propagation through reduced domains </span></h3>
+<p>Now we'll see how we can take advantage of domain reduction during the search procedure itself.
+</p><p>When used during search, domain reduction makes use of the assignments you've made to progressively reduce the search space. The result is a new, faster, CSP solution method: propagation through reduced domains.  After each assignment, propagation through reduced domains uses the domain_reduction subroutine to "propagate" the consequences of the assignment: to neighbors, then to neighbors of neighbors, and so on.
+</p>
+<pre>def solve_constraint_propagate_reduced_domains(problem)&nbsp;:
+</pre>
+<p>Note that if <tt>domain_reduction</tt> eliminates all values from a variable's domain, the problem will be recognized as unsolvable when it is <i>next</i> popped off the agenda: do not preemptively remove it from consideration.
+</p><p>Debugging hint: be sure to look at the return types of functions that you call!
+</p><p>Answer the following question in your <tt>lab4.py</tt> file:
+</p>
+<dl><dt>Question 4
+</dt><dd>How many extensions does it take to solve the Pokemon problem with forward checking and propagation through reduced domains? (Don't use domain reduction before solving it.)
+</dd></dl>
+<p>Put your answer (as an integer) in for <tt>ANSWER_4</tt>.
+</p>
+<a name="Part_5A:_Generic_propagation"></a><h2> <span class="mw-headline"> Part 5A: Generic propagation </span></h2>
+<p>The <tt>domain_reduction</tt> procedure is comprehensive, but expensive: it eliminates as many values as possible, but it continually adds more variables to the queue. As a result, it is an effective algorithm to use <i>before</i> solving a constraint satisfaction problem, but is often too expensive to call repeatedly during search.
+</p><p>Instead of comprehensively reducing all the domains in a problem, as <tt>domain_reduction</tt> does, you can instead reduce only <i>some</i> of the domains. This idea underlies <i>propagation through singleton domains</i> — a reduction algorithm which does not detect as many dead ends, but which is significantly faster.
+</p><p>Instead of again patterning our propagation-through-singleton-domains algorithm off of <tt>domain_reduction</tt>, we'll write a fully general propagation algorithm called <tt>propagate</tt> that encapsulates all three checking strategies we've seen: forward checking, propagation through all reduced domains, and propagation through singleton domains.
+</p><p>The function <code>propagate</code> will be similar to the propagation algorithms you've already defined. The difference is that it will take an argument <tt>enqueue_condition_fn</tt>, a function that takes a problem and a variable, and outputs whether the variable should be added to the propagation queue.
+</p>
+<pre>def propagate(enqueue_condition_fn, csp, queue = None)&nbsp;:
+</pre>
+<p>Propagation through singletons is like propagation through reduced domains, except that variables must pass a test in order to be added to the queue: 
+</p>
+<dl><dd>In propagation through singleton domains, you only append a variable to the queue if it has exactly one value left in its domain.
+</dd></dl>
+<p><b>Common misconception</b>: Please note that propagation <b>never</b> <i>assigns</i> values to variables; it only <i>eliminates</i> values. There is a distinction between variables with one value in their domain, and assigned variables: a variable can have one value in its domain without any value being assigned yet.
+</p>
+<hr />
+<p>As a review, propagation eliminates incompatible options from neighbors of variables in the queue. When used during search, the propagation queue initially contains only the just-assigned variable. The three enqueueing conditions we've seen are:
+</p>
+<ol><li> <i>forward checking</i>: never adds other variables to the queue
+</li><li> <i>propagation through singleton domains</i>: adds a neighboring variable to the queue if its domain has exactly one value in it
+</li><li> <i>domain reduction / propagation through reduced domains</i>: adds a neighboring variable to the queue if its domain has been reduced in size
+</li></ol>
+<p>Write functions that represent the enqueueing conditions (predicates) for each of these. Each predicate function below takes in a CSP and the variable in question, returning <tt>True</tt> if that variable should be added to the propagation queue, otherwise <tt>False</tt>.
+</p>
+<pre>
+ def condition_domain_reduction(csp, var)&nbsp;:
+
+ def condition_singleton(csp, var)&nbsp;:
+
+ def condition_forward_checking(csp, var)&nbsp;:
+</pre>
+<a name="Part_5B:_A_generic_constraint_solver"></a><h2> <span class="mw-headline"> Part 5B: A generic constraint solver </span></h2>
+<p>Now, you can use <tt>propagate</tt> to write a generic constraint solver. Write an algorithm that can solve a problem using any enqueueing strategy. As a special case, if the <tt>enqueue_condition</tt> is <code>None</code>, default to ordinary dfs instead --- don't eliminate options from neighbors (don't use any forward checking or propagation) at all.
+</p>
+<pre>def solve_constraint_generic(problem, enqueue_condition=None)&nbsp;:
+</pre>
+<p>Answer the following question in your <tt>lab4.py</tt> file:
+</p>
+<dl><dt>Question 5
+</dt><dd>How many extensions does it take to solve the Pokemon problem with forward checking and propagation through singleton domains? (Don't use domain reduction before solving it.)
+</dd></dl>
+<p>Put your answer (as an integer) in for <tt>ANSWER_5</tt>.
+</p>
+<a name="Part_6:_Defining_your_own_constraints"></a><h2> <span class="mw-headline"> Part 6: Defining your own constraints </span></h2>
+<p>In this section, you will create some constraint functions yourself.
+</p><p>Assuming <tt>m</tt> and <tt>n</tt> are integers, write a function that returns <tt>True</tt> if <tt>m</tt> and <tt>n</tt> are adjacent values (i.e. if they differ by exactly one) and <tt>False</tt> otherwise.
+</p>
+<pre>def constraint_adjacent(m, n)&nbsp;:
+</pre>
+<p>Also write one for being non-adjacent.
+</p>
+<pre>def constraint_not_adjacent(m, n)&nbsp;:
+</pre>
+<p>The following example shows how you build a constraint object that requires two variables — call them A and B — to be different.
+</p>
+<pre>example_constraint = Constraint("A","B", constraint_different)
+</pre>
+<p>Some constraint problems include a constraint that requires all of the variables to be different from one another. It can be tedious to list all of the pairwise constraints by hand, so we won't. Instead, write a function that takes a list of variables and returns a list containing, for each pair of variables, a constraint object requiring the variables to be different from each other. (You can model the constraints on the example above.) Note that for this <i>particular</i> constraint (the must-be-different constraint), order does NOT matter, because inequality is a symmetric relation. Hence, in you should only have <i>one</i> constraint between each pair of variables (e.g. have
+a constraint between A and B, <b>OR</b> have a constraint between B and A, but not both).
+</p>
+<pre>def all_different(variables)&nbsp;:
+</pre>
+<p>Note: You should only use constraint functions that have already been defined. Don't try to create a new constraint function and use it in this function, because our tester will get confused.
+</p><p><br />
+</p>
+<a name="API"></a><h2> <span class="mw-headline"> API </span></h2>
+<p>In this lab, we provide an API for representing and manipulating partial solutions to constraint satisfaction problems.
+</p>
+<a name="Constraint_Satisfaction_Problems"></a><h3> <span class="mw-headline"> Constraint Satisfaction Problems </span></h3>
+<p>A <tt>ConstraintSatisfactionProblem</tt> is an object representing a partially solved constraint satisfaction problem. Its fields are:
+</p>
+<dl><dt><tt>variables</tt>
+</dt><dd>A list containing the names of all the variables in the problem, in alphabetical order.
+</dd></dl>
+<dl><dt><tt>domains</tt>
+</dt><dd>A dictionary associating each variable in the problem with its list of remaining values.
+</dd></dl>
+<dl><dt><tt>assignments</tt>
+</dt><dd>A dictionary. Each variable that has already been assigned a value is associated with that value here. When the problem is entirely solved, <tt>assignments</tt> contains the solution.
+</dd></dl>
+<dl><dt><tt>unassigned_vars</tt>
+</dt><dd>An ordered list of all the variables that still need to have a value assigned to them.
+</dd></dl>
+<dl><dt><tt>constraints</tt>
+</dt><dd>A list of the constraints between the variables in the problem. Each constraint is a <tt>Constraint</tt> object.
+</dd></dl>
+<p>Note: While you may <i>read</i> any of the above variables, you should probably not modify them directly;<tt> instead, you should use the following API methods:</tt>
+</p>
+<dl><dt><tt>get_domain(var)</tt>
+</dt><dd>Returns the list of values in the variable's domain.
+</dd></dl>
+<dl><dt><tt>set_domain(var, domain)</tt>
+</dt><dd>Sets the domain of the variable to the specified list of values, sorted alphabetically/numerically.
+</dd></dl>
+<dl><dt><tt>set_all_domains(domains_dict)</tt>
+</dt><dd>Sets the <tt>domains</tt> field to the specified dictionary. Does not sort domains.
+</dd></dl>
+<dl><dt><tt>get_all_variables()</tt>
+</dt><dd>Returns a list of all the variables in the problem.
+</dd></dl>
+<dl><dt><tt>get_all_constraints()</tt>
+</dt><dd>Returns a list of all the <a href="#Constraint_objects" title=""> constraints</a> in the problem.
+</dd></dl>
+<dl><dt><tt>pop_next_unassigned_var()</tt>
+</dt><dd>Returns first unassigned variable, or <tt>None</tt> if all variables are assigned. Modifies <tt>unassigned_vars</tt> list.
+</dd></dl>
+<dl><dt><tt>set_unassigned_vars_order(unassigned_vars_ordered)</tt>
+</dt><dd>Given an ordered list of unassigned variables, sets <tt>unassigned_vars</tt>. (By default, the <tt>unassigned_vars</tt> list is initialized in alphabetical order.)
+</dd></dl>
+<dl><dt><tt>eliminate(var, val)</tt>
+</dt><dd>Removes the value from the variable's domain, returning <tt>True</tt> if the value was found in the domain, otherwise <tt>False</tt> if the value wasn't found.
+</dd></dl>
+<dl><dt><tt>get_assignment(var)</tt>
+</dt><dd>If the variable has been assigned a value, retrieve it. Returns <tt>None</tt> if the variable hasn't been assigned yet.
+</dd></dl>
+<dl><dt><tt>set_assignment(var, val)</tt>
+</dt><dd>Sets the assigned value of the variable to <tt>val</tt>, returning a modified copy of the constraint satisfaction problem. Throws an error if <tt>val</tt> is not in the domain of <tt>var</tt>, or if <tt>var</tt> has already been assigned a value. For convenience, also modifies the variable's domain to contain only the assigned value.
+</dd></dl>
+<dl><dt><tt>constraints_between(var1, var2)</tt>
+</dt><dd>Returns a list of all <a href="#Constraint_objects" title=""> constraints</a> between <tt>var1</tt> and <tt>var2</tt>. Arguments that are <tt>None</tt> will match anything: for example, <tt>constraints_between('X',None)</tt> will return all constraints involving <tt>X</tt> and any other variable, and <tt>constraints_between(None, None)</tt> will return all of the constraints in the problem.
+</dd><dd>Note: For your convenience, the constraints returned will always be altered to match the order of the arguments you passed to this method. For example, <tt>csp.constraints_between(None, 'Y')</tt> will return a list of all constraints involving <tt>'Y'</tt> — and the constraints will be altered so that <tt>'Y'</tt> is their <i>second</i> variable (<tt>var2</tt>) in every case.
+</dd></dl>
+<dl><dt><tt>get_neighbors(var)</tt>
+</dt><dd>Returns a list of all the variables that share constraints with the given variable, ordered alphabetically.
+</dd></dl>
+<dl><dt><tt>add_constraint(var1, var2, constraint_fn)</tt>
+</dt><dd>Given two variables and a function to act as a constraint between them, creates a <a href="#Constraint_objects" title=""> <tt>Constraint</tt> object</a> and adds it to the <tt>constraints</tt> list. The function <tt>constraint_fn</tt> must be a binary predicate function: it takes two arguments (a value for the first variable, and a value for the second variable) and returns <tt>True</tt> if the values satisfy the constraint, or <tt>False</tt> otherwise.
+</dd></dl>
+<dl><dt><tt>add_constraints(list_of_constraints)</tt>
+</dt><dd>Add a list of <a href="#Constraint_objects" title=""> <tt>Constraint</tt> objects</a> to the <tt>constraints</tt> list. Useful for when you want to add several constraints to the problem at once, rather than one at a time using <code>.add_constraint</code>.
+</dd></dl>
+<dl><dt><tt>copy()</tt>
+</dt><dd>Return a (deep) copy of this constraint satisfaction problem. This method is particularly useful because you will want to make a copy of the CSP every time you assign a value to a variable.
+</dd></dl>
+<a name="Constraint_objects"></a><h3> <span class="mw-headline"> Constraint objects </span></h3>
+<p>A <tt>Constraint</tt> is a fairly basic object representing a constraint between two variables. A <tt>Constraint</tt> object has three fields:
+</p>
+<dl><dt><tt>var1</tt>
+</dt><dd>The first variable associated with this constraint
+</dd></dl>
+<dl><dt><tt>var2</tt>
+</dt><dd>The second variable associated with this constraint
+</dd></dl>
+<dl><dt><tt>constraint_fn</tt>
+</dt><dd>A function that takes in two arguments, returning <tt>True</tt> or <tt>False</tt> depending on whether or not the given constraint is satisfied by the two arguments. For example,
+<ul><li> <tt>constraint_equal(a, b)</tt> is a function requiring that <tt>a</tt> and <tt>b</tt> are equal.
+</li><li> <tt>constraint_different(a, b)</tt> is a function requiring that <tt>a</tt> and <tt>b</tt> are not equal.
+</li></ul>
+</dd><dd>These two functions are already defined in <tt>constraint_api.py</tt>, and can be accessed directly from <tt>lab4.py</tt>.
+</dd></dl>
+<hr />
+<p>A <tt>Constraint</tt> object has just one method associated with it:
+</p>
+<dl><dt><tt>check(val1, val2)</tt>
+</dt><dd>Applies this object's <tt>constraint_fn</tt> to two <i>values</i> (<b>not</b> variables), returning <tt>True</tt> if the values satisfy the constraint, or <tt>False</tt> otherwise.
+</dd></dl>
+<p><b>Note:</b> Due to certain limitations in our tester, a <code>Constraint</code> object constructor must take a <b>named</b> <code>constraint_fn</code> as an argument, <b>NOT</b> a lambda function.
+</p>
+<a name="Appendix:_Setting_up_a_Constraint_Satisfaction_Problem"></a><h2> <span class="mw-headline"> Appendix: Setting up a Constraint Satisfaction Problem </span></h2>
+<p>The Pokemon problem from <a href="http://courses.csail.mit.edu/6.034f/Examinations/2012q2.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/Examinations/2012q2.pdf" rel="nofollow">2012 Quiz 2</a>, pages 2-4, is an example of a problem that can be solved using constrained search.
+</p><p>In this section, we will show you how to convert this problem into a <tt>ConstraintSatisfactionProblem</tt> instance using our <a href="#API" title="">constraint satisfaction API</a>.
+</p><p>To set up a problem, we first establish a new <code>ConstraintSatisfactionProblem</code> instance. For the Pokemon problem, there are five variables which we pass an an argument in a list: these are the five "questions" that need to be answered.
+</p>
+<pre>pokemon_problem = ConstraintSatisfactionProblem(["Q1","Q2","Q3","Q4","Q5"])
+</pre>
+<p>Here, we specify the values in each variable's domain:
+</p>
+<pre>
+pokemon_problem.set_domain(&quot;Q1&quot;,[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;])
+pokemon_problem.set_domain(&quot;Q2&quot;,[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;])
+pokemon_problem.set_domain(&quot;Q3&quot;,[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;])
+pokemon_problem.set_domain(&quot;Q4&quot;,[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;])
+pokemon_problem.set_domain(&quot;Q5&quot;,[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;])
+</pre>
+<p>Next, we set up constraints. Each constraint takes two variable names, and a <i>named</i> <a href="#API" title="">binary predicate</a> (constraint function), not a lambda function:
+</p>
+<pre>
+pokemon_problem.add_constraint(&quot;Q1&quot;,&quot;Q4&quot;, constraint_different)
+pokemon_problem.add_constraint(&quot;Q1&quot;,&quot;Q2&quot;, constraint_equal)
+pokemon_problem.add_constraint(&quot;Q3&quot;,&quot;Q2&quot;, constraint_different)
+pokemon_problem.add_constraint(&quot;Q3&quot;,&quot;Q4&quot;, constraint_different)
+pokemon_problem.add_constraint(&quot;Q4&quot;,&quot;Q5&quot;, constraint_equal)
+</pre>
+<p>By default, the <tt>unassigned_vars</tt> list is initialized in alphabetical order.
+</p><p>To specify the order yourself, you can call <tt>.set_unassigned_vars_order</tt> with an ordered list of the unassigned variables:
+</p>
+<pre>
+# How to set the order of unassigned variables (not actually used for the Pokemon problem)
+pokemon_problem.set_unassigned_vars_order([&quot;Q4&quot;,&quot;Q2&quot;,&quot;Q3&quot;,&quot;Q1&quot;,&quot;Q5&quot;])
+</pre>
+<p>For some problems, efficiently re-ordering the variables can make a large difference in performance.
+</p>
+<hr />
+<p>Note that the Pokemon problem is already defined for you in <tt>test_problems.py</tt>. To get a copy of it, use the method <tt>get_pokemon_problem()</tt> in <tt>lab4.py</tt>.
+</p><p><br />
+</p>
+<a name="FAQ"></a><h2> <span class="mw-headline"> FAQ </span></h2>
+<p><b>Q</b>: I am getting the right output but the wrong number of evaluations
+</p><p><b>A</b>: Check that, when reducing domains, you are correctly considering the possibility of having multiple different constraints between two variables. (What does it mean if you have two contradictory constraints between two variables?)
+</p><p><br />
+</p>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 207/1000000
+Post-expand include size: 1690/2097152 bytes
+Template argument size: 26/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1445-0!1!0!!en!2!edit=0 and timestamp 20200506093649 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_4">https://ai6034.mit.edu/wiki/index.php?title=Lab_4</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_4" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_4&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_4&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_4&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_4" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_4" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_4" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_4&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_4&amp;oldid=7738" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 29 September 2019, at 20:01.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.135 secs. --></body></html>

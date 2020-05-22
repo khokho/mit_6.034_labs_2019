@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 2" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 2 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_2";
+var wgTitle = "Lab 2";
+var wgAction = "view";
+var wgArticleId = "1422";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7673";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_2">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 2</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<p><br />
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Python_Advice"><span class="tocnumber">1</span> <span class="toctext">Python Advice</span></a></li>
+<li class="toclevel-1"><a href="#Search_Overview"><span class="tocnumber">2</span> <span class="toctext">Search Overview</span></a>
+<ul>
+<li class="toclevel-2"><a href="#The_Agenda"><span class="tocnumber">2.1</span> <span class="toctext">The Agenda</span></a></li>
+<li class="toclevel-2"><a href="#Extending_a_Path"><span class="tocnumber">2.2</span> <span class="toctext">Extending a Path</span></a></li>
+<li class="toclevel-2"><a href="#An_extended_set_makes_optimal_search_more_efficient"><span class="tocnumber">2.3</span> <span class="toctext">An extended set makes optimal search more efficient</span></a></li>
+<li class="toclevel-2"><a href="#When_to_Exit_a_Search"><span class="tocnumber">2.4</span> <span class="toctext">When to Exit a Search</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Types_of_Search"><span class="tocnumber">3</span> <span class="toctext">Types of Search</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Blind_Search"><span class="tocnumber">3.1</span> <span class="toctext">Blind Search</span></a></li>
+<li class="toclevel-2"><a href="#Heuristic_Search"><span class="tocnumber">3.2</span> <span class="toctext">Heuristic Search</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Hill_Climbing"><span class="tocnumber">3.2.1</span> <span class="toctext">Hill Climbing</span></a></li>
+<li class="toclevel-3"><a href="#Best-First_Search"><span class="tocnumber">3.2.2</span> <span class="toctext">Best-First Search</span></a></li>
+<li class="toclevel-3"><a href="#Beam_Search"><span class="tocnumber">3.2.3</span> <span class="toctext">Beam Search</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Optimal_Search"><span class="tocnumber">3.3</span> <span class="toctext">Optimal Search</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Branch_.26_Bound"><span class="tocnumber">3.3.1</span> <span class="toctext">Branch &amp; Bound</span></a></li>
+<li class="toclevel-3"><a href="#Branch_.26_Bound:_Variations"><span class="tocnumber">3.3.2</span> <span class="toctext">Branch &amp; Bound: Variations</span></a></li>
+<li class="toclevel-3"><a href="#A.2A"><span class="tocnumber">3.3.3</span> <span class="toctext">A*</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Problems"><span class="tocnumber">4</span> <span class="toctext">Problems</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Part_1:_Utility_Functions"><span class="tocnumber">4.1</span> <span class="toctext">Part 1: Utility Functions</span></a></li>
+<li class="toclevel-2"><a href="#Part_2:_Basic_Search"><span class="tocnumber">4.2</span> <span class="toctext">Part 2: Basic Search</span></a></li>
+<li class="toclevel-2"><a href="#Part_3:_Generic_Search"><span class="tocnumber">4.3</span> <span class="toctext">Part 3: Generic Search</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Inputs_for_generic_search"><span class="tocnumber">4.3.1</span> <span class="toctext">Inputs for generic_search</span></a></li>
+<li class="toclevel-3"><a href="#Examples_for_using_generic_search"><span class="tocnumber">4.3.2</span> <span class="toctext">Examples for using generic_search</span></a></li>
+<li class="toclevel-3"><a href="#Your_Task"><span class="tocnumber">4.3.3</span> <span class="toctext">Your Task</span></a></li>
+<li class="toclevel-3"><a href="#Optional:_Generic_Beam_Search"><span class="tocnumber">4.3.4</span> <span class="toctext">Optional: Generic Beam Search</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Part_4:_Heuristics"><span class="tocnumber">4.4</span> <span class="toctext">Part 4: Heuristics</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Admissibility_and_Consistency"><span class="tocnumber">4.4.1</span> <span class="toctext">Admissibility and Consistency</span></a></li>
+<li class="toclevel-3"><a href="#Optional:_Picking_Heuristics"><span class="tocnumber">4.4.2</span> <span class="toctext">Optional: Picking Heuristics</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Part_5:_Multiple_Choice"><span class="tocnumber">4.5</span> <span class="toctext">Part 5: Multiple Choice</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#API:_Graphs_and_Edges"><span class="tocnumber">5</span> <span class="toctext">API: Graphs and Edges</span></a>
+<ul>
+<li class="toclevel-2"><a href="#UndirectedGraph"><span class="tocnumber">5.1</span> <span class="toctext">UndirectedGraph</span></a></li>
+<li class="toclevel-2"><a href="#Edge"><span class="tocnumber">5.2</span> <span class="toctext">Edge</span></a></li>
+<li class="toclevel-2"><a href="#Resource:_Graphs_for_Testing"><span class="tocnumber">5.3</span> <span class="toctext">Resource: Graphs for Testing</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">6</span> <span class="toctext">Survey</span></a></li>
+<li class="toclevel-1"><a href="#FAQ"><span class="tocnumber">7</span> <span class="toctext">FAQ</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Friday, September 20 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab2</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab2</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab2/lab2.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab2/lab2.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab2/lab2.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab2/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab2/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab2/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab2.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab2 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="Python_Advice"></a><h2> <span class="mw-headline"> Python Advice </span></h2>
+<p>In this lab, you will undoubtedly need to sort Python lists during this lab (using either the in-place <tt>.sort</tt> method or <tt>sorted</tt> function). Python has <a href="https://wiki.python.org/moin/HowTo/Sorting" class="external text" title="https://wiki.python.org/moin/HowTo/Sorting" rel="nofollow">built-in sorting functionality</a>.
+</p><p>You will also need to know how to access particular elements in lists and dictionaries. For some portions of this lab, you may want to <a href="https://docs.python.org/3.4/tutorial/datastructures.html#using-lists-as-stacks" class="external text" title="https://docs.python.org/3.4/tutorial/datastructures.html#using-lists-as-stacks" rel="nofollow">treat lists like either stacks or queues</a>. However, you should <i>not</i> import other modules (such as <tt>collections.deque</tt>) for this purpose because they will confuse the tester.
+</p>
+<a name="Search_Overview"></a><h2> <span class="mw-headline"> Search Overview </span></h2>
+<a name="The_Agenda"></a><h3> <span class="mw-headline"> The Agenda </span></h3>
+<p>Different search techniques explore nodes in different orders, and we will use a Python list that we will call an <b>agenda</b> (sometimes informally referred to as the <b>queue</b>) to keep track of nodes to be explored. The agenda has a <i>front</i> (or <i>beginning</i> or <i>top</i>), and a <i>back</i> (or <i>end</i> or <i>bottom</i>):
+</p>
+<pre>agenda = [front, ..., back]
+</pre>
+<p>We will often refer to putting things onto the <i>front</i> of the agenda. This means putting an item in the agenda's index-<tt>0</tt> position. Similarly, putting an item at the <i>back</i> of the agenda means appending it to the end of the list.
+</p><p>In search, when removing an item from the agenda to explore, we typically remove it from the front of the agenda.
+</p><p>Some search techniques will add paths to the front of the agenda, treating it like a <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)" class="external text" title="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)" rel="nofollow">stack</a>, while others will add to the back of the agenda, treating it like a <a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)" class="external text" title="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)" rel="nofollow">queue</a>. Some agendas are organized by heuristic value, others by path distance, and others by depth in the search tree. Your job will be to demonstrate your knowledge of search techniques by implementing different types of search and making slight modifications to how the agenda is accessed and updated.
+</p>
+<a name="Extending_a_Path"></a><h3> <span class="mw-headline"> Extending a Path </span></h3>
+<p>At a high level, you search for a path through a graph by starting with shorter paths then extending them into progressively longer paths until (ideally) you discover a path that terminates at the goal node. When we talk about extending a partial path, we mean that you consider every possible node that the path could reach next (i.e., all of the nodes that are neighbors of the last node in the path) and create a new, incrementally longer path for each possibility. Algorithmically, you'll collect those longer paths into a list then add them to the agenda in some order. During the search algorithm, you are continually taking paths from the agenda, in order to explore, and adding new extended paths back onto the agenda. 
+</p><p>For example, in the following graph,
+</p><p><a href="/wiki/index.php?title=Image:Graph_3.png" class="image" title="Image:Graph_3.png"><img alt="Image:Graph_3.png" src="/wiki/images/Graph_3.png" width="550" height="301" border="0" /></a>
+</p><p>if your partial path is <i>sxw</i>, then the possible one-node extensions of <i>sxw</i> are <i>sxwy</i>, <i>sxwz</i>, and <i>sxwg</i>. <b>Note</b> that we exclude the possibility <i>sxwx</i> because we want our paths to be as short as possible, and so we always want to ignore any paths with loops. 
+</p><p>Hint: When writing the function <tt>extensions(graph, path)</tt>, you should ensure that the paths you create are new objects. If you try to extend a path by <i>modifying</i> (or "mutating") the existing path (for example, by using list <tt>.append()</tt> or <tt>.pop()</tt>) you may find yourself in a quagmire.
+</p><p><b>Note,</b> for reference, all graphs can be found  <a href="#Resource:_Graphs_for_Testing" title="">here</a>.
+</p>
+<a name="An_extended_set_makes_optimal_search_more_efficient"></a><h3> <span class="mw-headline"> An extended set makes optimal search more efficient </span></h3>
+<p>When you want to find not just any path, but the <i>shortest</i> path between two nodes, it is often useful to keep track of which nodes in the graph you've already extended (i.e., which nodes have been at the end of paths you've extended). We keep track of extended nodes so that we can take advantage of the following fact about paths: 
+</p>
+<dl><dd>If the shortest route from the start to the goal passes through some intermediate node X, then the first part of that route must be shortest path between the start node and X.
+</dd></dl>
+<p>Now consider how you can use this principle to avoid unnecessary searching when you use an algorithm, such as branch and bound, which is guaranteed to look at shorter paths before longer paths:  If you extend a node X once, you know that you've found the shortest path from the start to X. Then if you later find a second path that ends in X, you can safely reject the second path; the second path takes longer to reach X than the first path, and so it cannot be part of the shortest, most direct path to the goal.
+</p><p>Algorithmically, you employ an extended set by maintaining a set or list of the nodes you've extended so far (i.e., nodes that have been at the end of paths you've extended). Then whenever you remove a path from the agenda, you can check the last node in the path and see if you've extended it already. If you have extended it already, you reject the path and continue with the next iteration of search. If you haven't extended it already, you can add the node to your extended set and proceed as usual.
+</p><p><br /> 
+</p>
+<a name="When_to_Exit_a_Search"></a><h3> <span class="mw-headline"> When to Exit a Search </span></h3>
+<p>Non-optimal searches such as DFS, BFS, hill climbing and beam <b>may</b> exit either
+</p>
+<ul><li> when it finds a path-to-goal in the agenda,  or
+</li><li> when a path-to-goal is first removed from the agenda.  
+</li></ul>
+<p>Optimal searches such as branch &amp; bound and A* <b>must</b> exit
+</p>
+<ul><li> when a path-to-goal is first removed from the agenda.
+</li></ul>
+<p>Why is this the case? Because in an optimal search, the agenda is re-ordered by path length (or heuristic path length) at every iteration. Hence, a path-to-goal is not necessarily the best when it is <i>added</i> to the agenda; but, when it is <i>removed</i> from the agenda, it is guaranteed to have the shortest path length (or heuristic path length).
+</p><p><b>For the sake of consistency, in this lab, you should implement all your searches to exit</b>
+</p>
+<ul><li> <b>when a path-to-goal is first removed from the agenda.</b>
+</li></ul>
+<a name="Types_of_Search"></a><h2> <span class="mw-headline"> Types of Search </span></h2>
+<p>In this section, we will quickly go over the different types of search that we will ask you to code.
+</p><p>Each search algorithm should return an appropriate path from a given start node to a given goal node, or <tt>None</tt> if no such path is found. A path consists of a sequence of nodes, beginning with the start node and following edges in the graph to the goal node. The path should contain both the start and goal node.
+</p><p>In general, we never consider a path that reaches the same node twice (i.e., a path that contains a loop).
+</p>
+<a name="Blind_Search"></a><h3> <span class="mw-headline"> Blind Search </span></h3>
+<p>The first two types of search are "blind" searches.
+</p><p>In depth-first search (DFS), we extend paths from a given node, sorted lexicographically (e.g. the path <tt>['S', 'A', 'Z']</tt> comes before the path <tt>['S', 'Z', 'A']</tt>, because <i>SAZ</i> comes before <i>SZA</i> in the English dictionary). New paths are added to the <i>front</i> of the agenda; in other words, the agenda is treated as a stack data structure. If backtracking is enabled, the algorithm will back up if it reaches a dead end and will continue to look for the goal node. In this lab, you should assume that your DFS <b>allows backtracking</b> and does <b>not</b> use an extended set.
+</p><p>Breadth-first search (BFS) is done similarly, except that new paths are added to the <i>back</i> of the agenda, thus simulating a queue data structure.
+</p><p>For a more detailed explanation of DFS and BFS, refer to <a href="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" rel="nofollow">Chapter 4</a> of the textbook (pages 4-6 of the pdf, pages 66-68 of the textbook).
+</p>
+<a name="Heuristic_Search"></a><h3> <span class="mw-headline"> Heuristic Search </span></h3>
+<p>You also will implement three types of heuristic search.
+</p>
+<a name="Hill_Climbing"></a><h4> <span class="mw-headline"> Hill Climbing </span></h4>
+<p>Hill climbing is very similar to depth-first search.  There is only a slight modification to the ordering of paths that are added to the agenda. In particular, we always order the newly-added paths according to the best (smallest) heuristic distance from the current node to the goal node.
+</p><p>The hill-climbing procedure you define in this lab <i>should</i> use backtracking, for consistency with the other methods, even though hill climbing typically is not implemented with backtracking.  Hill climbing is a fast, greedy algorithm, and it does not use an extended set.
+</p><p>For an explanation of hill climbing, refer to <a href="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" rel="nofollow">Chapter 4</a> of the textbook (pages 8-12 of the pdf, pages 70-74 of the textbook).
+</p>
+<a name="Best-First_Search"></a><h4> <span class="mw-headline"> Best-First Search </span></h4>
+<p>Best-first search is similar to hill climbing in that it uses a heuristic, but best-first search always extends the "best" path in the agenda as determined by heuristic values to the goal.  Like hill climbing and beam search, best-first search sorts paths by <i>only</i> the heuristic value, not the path length (as branch &amp; bound does) or the path length + heuristic value (as A* does). Best-first search uses backtracking, but for this lab, it should not use an extended set.
+</p><p>For a brief explanation of best-first search, refer to <a href="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" rel="nofollow">Chapter 4</a> of the textbook (page 13 of the pdf, page 75 of the textbook).
+</p>
+<a name="Beam_Search"></a><h4> <span class="mw-headline"> Beam Search </span></h4>
+<p>Beam search is very similar to breadth-first search, but there is a modification for which paths are kept in the agenda. <i>At any point in time</i>, the agenda can only have up to <b>w</b> paths of a given length <b>n</b> (for all <b>n</b>), where <b>n</b> corresponds to the level or depth of the search graph; <b>w</b> is also known as the <b>beam width</b>. Beam search can be useful in situations where you want to reduce memory usage, especially when working with large graphs.
+</p><p>You will need to sort your paths by the graph's heuristic to ensure that only the best <b>w</b> paths at each level are in your agenda.  You may want to use an array or dictionary to keep track of paths of different lengths.  Beam search does NOT use an extended set, and does NOT use backtracking to the paths that are eliminated at each level.  
+</p><p>Remember that <b>w</b> is the number of paths to keep at an <i>entire level</i>, not the number of paths to keep from each extended node.
+</p><p>For an explanation and an example of beam search, refer to <a href="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch4.pdf" rel="nofollow">Chapter 4</a> of the textbook (pages 13-14 of the pdf, pages 75-76 of the textbook). However, note that this example is <i>incorrect</i> according to how we do beam search: At the third level, the node B (with heuristic value 6.7, at the end of path S-D-E-B) should not be included: only C and F should be included, because the beam width is 2. Hence, at the fourth level, B should not be extended to A and C.
+</p>
+<a name="Optimal_Search"></a><h3> <span class="mw-headline"> Optimal Search </span></h3>
+<p>The search techniques discussed so far have not taken into account the edge lengths in a graph.  Instead, we were just trying to find one possible solution of many, perhaps with the aid of a heuristic.  Optimal searches try to find the path with the shortest distance from the start node to the goal node.  The search algorithms covered in this class that guarantee optimal solutions are:
+</p>
+<ul><li> <b>branch &amp; bound</b>
+</li><li> <b>A*</b>, but only under certain conditions
+</li></ul>
+<a name="Branch_.26_Bound"></a><h4> <span class="mw-headline"> Branch &amp; Bound </span></h4>
+<p>Branch &amp; bound is a modification of BFS. In particular, it takes into account the total path length so far. At every step, after adding the new paths to the agenda, it re-sorts the agenda by total combined path length so far, and explores the best (shortest) such path. We will ask you to implement this "basic" version of branch &amp; bound which will not use an extended set.
+</p><p>For an explanation of branch &amp; bound, refer to <a href="http://courses.csail.mit.edu/6.034f/ai3/ch5.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch5.pdf" rel="nofollow">Chapter 5</a> of the textbook (starting at page 2 of the pdf, or page 82 of the textbook).
+</p>
+<a name="Branch_.26_Bound:_Variations"></a><h4> <span class="mw-headline"> Branch &amp; Bound: Variations </span></h4>
+<p>One also can add a heuristic to branch &amp; bound, in which case one can consider the path with the least {heuristic estimate + path length} sum, and that is the path taken from the agenda to be explored. 
+</p><p>In this lab, we ask you to implement two different branch &amp; bound variations. The first will be using a heuristic with no extended set, and the second will be using an extended set, but no heuristic.
+</p>
+<a name="A.2A"></a><h4> <span class="mw-headline"> A* </span></h4>
+<p>A* is technically another variation of branch &amp; bound, one that uses both a heuristic and an extended set. Note, however, that if the heuristic used is not consistent, then using an extended set can sometimes prevent A* from finding an optimal solution!
+</p><p>By the way, our definition of A* may differ slightly from others' definitions depending on who you ask, so don't be surprised if you see a different definition of A* in another class.
+</p>
+<a name="Problems"></a><h2> <span class="mw-headline"> Problems </span></h2>
+<a name="Part_1:_Utility_Functions"></a><h3> <span class="mw-headline"> Part 1: Utility Functions </span></h3>
+<p>Your first task is to write four helper functions which may be useful in Parts 2 and 3:
+</p>
+<pre>def path_length(graph, path):
+
+def has_loops(path):
+
+def extensions(graph, path):
+
+def sort_by_heuristic(graph, goalNode, nodes):
+</pre>
+<p>A <b>path</b> is a list of nodes where each neighboring pair is connected by an edge in the graph.  By convention, the start of the path is at index <tt>[0]</tt> and the end of the path is at index <tt>[-1]</tt>.
+</p><p><tt>path_length(graph, path)</tt> should return the length of a path, that is, the sum of the weights of the edges connecting the nodes.  You may assume that the path is a valid sequence of edge-connected nodes in the graph, and that the path has at least one node in it.  You may also assume that all edge-weights between these nodes are not <tt>None</tt>. If there is only one node in the path, your function should return 0. 
+</p><p><tt>has_loops(path)</tt> should return <tt>True</tt> if the path given contains a loop (i.e., reaches a node twice), otherwise <tt>False</tt>.
+</p><p><tt>extensions(graph, path)</tt> should take a path and return a list of possible one-node extensions of that path, <b>in lexicographic order</b>.  That is, your function should return a list of all possible paths that can be created by adding one more node to the given path (as described in <a href="#Extending_a_Path" title="">Extending a Path</a>, above), in lexicographic order.
+</p><p><tt>sort_by_heuristic(graph, goalNode, nodes)</tt> should take a list of any nodes in the graph and sort them based on their heuristic value to the <tt>goalNode</tt>, from smallest to largest.  The function should return the sorted list. (Hint: use <tt>sorted</tt>.)  In case of a tie, sort nodes lexicographically.
+</p><p><b>Note</b> that the <a href="#API:_Graphs_and_Edges" title="">API</a> found at the end of this document will be helpful throughout the lab!
+</p>
+<a name="Part_2:_Basic_Search"></a><h3> <span class="mw-headline"> Part 2: Basic Search </span></h3>
+<p>In this lab, you will implement both depth-first and breadth-first search. 
+</p><p>You may find Professor Winston's general search flowchart from lecture to be helpful. To jog your memory, we provide you rough pseudocode for a depth/breadth-first search:
+</p>
+<pre>
+ 1. Remove first path from agenda. If it ends with the goal node, return that path.
+ 2. Otherwise, extend the path, and add all children to the agenda.
+ 3. Repeat until there is nothing left in the agenda to be removed, in which case terminate with failure.
+</pre>
+<p>Take particular care in how you add children to the agenda. See our <a href="#Blind_Search" title="">explanation of DFS and BFS</a> above.
+</p><p>Your depth-first search should <b>allow backtracking</b> and should <b>not</b> use an extended set.
+</p><p>In the part of <tt>lab2.py</tt> labeled <b>Part 2</b>, implement <tt>basic_dfs(graph, startNode, goalNode)</tt> and <tt>basic_bfs(graph, startNode, goalNode)</tt>, both of which take in an <a href="#API:_Graphs_and_Edges" title=""> <tt>UndirectedGraph</tt></a> object, a start node, and a goal node, returning a path-to-goal if it exists, or <tt>None</tt> if such a path does not exist. Keep in mind that you may want to use the utility functions implemented in Part 1!
+</p>
+<a name="Part_3:_Generic_Search"></a><h3> <span class="mw-headline"> Part 3: Generic Search </span></h3>
+<p>You may have realized just how similar the DFS and BFS functions are: in fact, there is only a single key difference between the two. Indeed, the search methods we cover in 6.034 share many algorithmic similarities, and the implementations of each one may differ from others by only a single line of code. We want to explore these similarities (and differences) so that you can gain a conceptual understanding of how all of these search algorithms relate to each other, instead of feeling overwhelmed by so many different algorithms.
+</p><p>As such, we have created a <i>generic search</i> function generator which encapsulates all of the 6.034 search algorithms we have discussed.
+</p>
+<a name="Inputs_for_generic_search"></a><h4> <span class="mw-headline"> Inputs for <tt>generic_search</tt> </span></h4>
+<p><tt>generic_search</tt> has already been written for you. It takes in four arguments (which you will supply), two of which are functions themselves and two of which are boolean values. <tt>generic_search</tt> returns a function representing a particular search algorithm.
+</p>
+<pre>
+def generic_search(sort_new_paths_fn, add_paths_to_front_of_agenda, sort_agenda_fn, use_extended_set):
+    ...
+    return search_algorithm
+</pre>
+<p>By defining appropriate values for the arguments, you can recreate any of the search algorithms we study in 6.034.
+</p><p>Below, we give an explanation of each of the four arguments to <tt>generic_search</tt>:
+</p>
+<dl><dt><tt>sort_new_paths_fn(graph, goalNode, new_paths)</tt>
+</dt><dd>When you extend a node, you create a list of new paths. Some algorithms will sort these paths before adding them to the agenda. The argument <tt>sort_new_paths_fn</tt> is a function of three arguments (the graph, the goal node, and the list of new paths) that performs the appropriate sorting routine; it returns the sorted list of new paths.  If you don't want any sorting to happen, you can pass a function that simply returns the list of paths without changing it. The function <tt>do_nothing_fn</tt>, provided for you, accomplishes this.
+</dd></dl>
+<dl><dt><tt>add_paths_to_front_of_agenda</tt>
+</dt><dd>Some algorithms will add new paths to the front of the agenda (like a stack). Others will add new paths to the back of the agenda (like a queue). When the argument <tt>add_paths_to_front_of_agenda</tt> is True, paths will get added to the front of the agenda. Otherwise, paths will get added to the back.
+</dd></dl>
+<dl><dt><tt>sort_agenda_fn(graph, goalNode, agenda_paths)</tt>
+</dt><dd>After new paths are added to the agenda, some algorithms will then sort the entire agenda. The argument <tt>sort_agenda_fn</tt> is a function of three arguments (the graph, the goal node, and agenda) that performs the appropriate sorting routine; it returns a sorted agenda. If you don't want any sorting to happen, you can pass a function that simply returns the list of paths without changing them (<tt>do_nothing_fn</tt>). Note that if you do sort the agenda, then the previous two arguments become irrelevant (it no longer matters whether you added new paths to the front, or whether you sorted them before adding them to the agenda).
+</dd></dl>
+<dl><dt><tt>use_extended_set</tt>
+</dt><dd>Some algorithms use an extended set. Set <tt>use_extended_set</tt> to True to maintain an extended set, else set it to False.
+</dd></dl>
+<a name="Examples_for_using_generic_search"></a><h4> <span class="mw-headline"> Examples for using <tt>generic_search</tt> </span></h4>
+<p>To create a search algorithm that does not sort new paths, adds paths to the front of the agenda, does not sort the agenda, and does not use an extended set, you can call generic_search like this:
+</p><p><tt>my_search_fn = generic_search(do_nothing_fn, True, do_nothing_fn, False)</tt>
+</p><p>You can then call your search algorithm on a graph:
+</p><p><tt>my_path = my_search_fn(graph, startNode, goalNode)</tt>
+</p><p>You can also call <tt>generic_search</tt> directly on a list of arguments (such as <tt>generic_dfs</tt>) like this:
+</p><p><tt>path = generic_search(*generic_dfs)(graph, startNode, goalNode)</tt>
+</p><p>If you want to test your search algorithm on a provided graph, you can use one of the graphs shown in <a href="#Resource:_Graphs_for_Testing" title="">Graphs for Testing</a>.  For example:
+</p><p><tt>path = generic_search(*generic_dfs)(graph1, 'S', 'G')</tt>
+</p>
+<a name="Your_Task"></a><h4> <span class="mw-headline"> Your Task </span></h4>
+<p>Please implement the following search algorithms by designing the correct arguments to pass to the generic search algorithm. Your answer to each should be an ordered list of the appropriate four arguments to <tt>generic_search</tt>.  No argument should be <tt>None</tt>. Note that the definitions of these search functions should correspond to the explanations of the search algorithms given in <a href="#Types_of_Search" title="">Types of Search</a>.
+</p>
+<pre>generic_dfs = [None, None, None, None]
+generic_bfs = [None, None, None, None]
+generic_hill_climbing = [None, None, None, None]
+generic_best_first = [None, None, None, None]
+generic_branch_and_bound = [None, None, None, None]
+generic_branch_and_bound_with_heuristic = [None, None, None, None]
+generic_branch_and_bound_with_extended_set = [None, None, None, None]
+generic_a_star = [None, None, None, None]
+</pre>
+<p>For this, you will need to write your own path-sorting functions. Each sorting function should take in a graph, a goal node, and list of paths, and then return a list of paths.  For example: <tt>sorted_paths = my_sorting_fn(graph, goalNode, paths)</tt>. We recommend that you avoid modifying the original list of paths in your sorting function. 
+</p><p>Break ties lexicographically. For your convenience, here is a tie-breaking function that you can add to <tt>lab2.py</tt> to use in your sorting, <tt>extensions</tt>, and <tt>sort_by_heuristic</tt> functions:
+</p>
+<pre>def break_ties(paths):
+    return sorted(paths)
+</pre>
+<a name="Optional:_Generic_Beam_Search"></a><h4> <span class="mw-headline"> Optional: Generic Beam Search </span></h4>
+<p>Beam search is trickier to implement with <tt>generic_search</tt>, so it's optional.  If you want to run local tests to test your <tt>generic_beam</tt>, change the boolean <tt>TEST_GENERIC_BEAM</tt> to <tt>True</tt> in <tt>lab2.py</tt>. There are no online tests for <tt>generic_beam</tt>.
+</p><p>To implement <tt>generic_beam</tt>, fill in the four arguments:
+</p>
+<pre>generic_beam = [None, None, None, None]
+</pre>
+<p>The <tt>sort_agenda_fn</tt> for beam search takes a fourth argument, <tt>beam_width</tt>. For example: 
+</p><p><tt>sorted_beam_agenda = my_beam_sorting_fn(graph, goalNode, paths, beam_width)</tt>
+</p><p>Similarly, the search algorithm produced by <tt>generic_search</tt> for beam search will take an additional argument, <tt>beam_width</tt>. For example:
+</p><p><tt>my_beam_fn = generic_search(*generic_beam)</tt>
+</p><p><tt>my_beam_path = my_beam_fn(graph, startNode, goalNode, beam_width)</tt>
+</p><p><br />
+Hint: You can implement beam search in a way almost identical to BFS. The main difference is that beam search will need to limit the number of paths whenever an entire level has been expanded. You can do this by defining a <tt>sort_agenda_fn</tt> function that checks whether an entire level has been extended. If it has, the function should limit the number of paths in the agenda. If it hasn't, the function should do nothing to the agenda.  
+</p><p><br />
+</p><p><br />
+</p>
+<a name="Part_4:_Heuristics"></a><h3> <span class="mw-headline"> Part 4: Heuristics </span></h3>
+<a name="Admissibility_and_Consistency"></a><h4> <span class="mw-headline"> Admissibility and Consistency </span></h4>
+<p>A heuristic value gives an approximation from a node to a goal. You've learned that in order for the heuristic to be admissible, the heuristic value for every node in a graph must be less than or equal to the distance of the '<i>shortest path</i> from the goal to that node (Hint: have you implemented any search algorithms in Part 3 that are guaranteed to return the shortest path?). In order for a heuristic to be consistent, for each edge in the graph, the edge length must be greater than or equal to the absolute value of the difference between the two heuristic values of its nodes.
+</p><p>For this part, complete the following functions, which return <tt>True</tt> iff the heuristics for the given goal node are admissible or consistent, respectively, and <tt>False</tt> otherwise:
+</p>
+<pre>def is_admissible(graph, goalNode):
+
+def is_consistent(graph, goalNode):
+</pre>
+<p>Hint: For <tt>is_consistent</tt>, it's sufficient to check only neighboring nodes, rather than checking all pairs of nodes in the graph.
+</p>
+<a name="Optional:_Picking_Heuristics"></a><h4> <span class="mw-headline"> Optional: Picking Heuristics </span></h4>
+<dl><dt><b>Warning!</b>
+</dt><dd>You <i>must</i> complete <tt>generic_a_star</tt> (and pass all related tests) before starting this section. Some of the tests in this section will use your A* algorithm.
+</dd></dl>
+<p>This optional section is intended to help you test your understanding of heuristics.  To check your heuristics, you can run local tests by changing the boolean <tt>TEST_HEURISTICS</tt> to <tt>True</tt>.  There are no online tests for this section.
+</p><p>The questions in this section use the following graph:
+</p><p><a href="/wiki/index.php?title=Image:Graph_For_Heuristics.png" class="image" title="Image:Graph_For_Heuristics.png‎"><img alt="Image:Graph_For_Heuristics.png‎" src="/wiki/images/Graph_For_Heuristics.png" width="686" height="299" border="0" /></a>
+</p><p>For <tt>heuristic_1</tt>, pick heuristic values so that, for the goal node G, the heuristic is both admissible and consistent.  Fill in the values by replacing the list of five <tt>None</tt>'s with five numbers:
+</p>
+<pre>[h1_S, h1_A, h1_B, h1_C, h1_G] = [None, None, None, None, None]
+</pre>
+<p>For <tt>heuristic_2</tt>, pick heuristic values so that, for the goal node G, the heuristic is admissible but NOT consistent.
+</p><p>For <tt>heuristic_3</tt>, pick heuristic values so that, for the goal node G, the heuristic is admissible but A* returns a non-optimal (i.e., not the shortest) path to the goal. That is, it should return the non-optimal path (S-B-C-G).
+</p><p>For <tt>heuristic_4</tt>, pick heuristic values so that, for the goal node G, the heuristic is admissible but NOT consistent, yet A* still finds the optimal (shortest) path to the goal, i.e., (S-A-C-G).
+</p><p><br />
+</p>
+<a name="Part_5:_Multiple_Choice"></a><h3> <span class="mw-headline"> Part 5: Multiple Choice </span></h3>
+<p>Fill in the answer to each question in <tt>ANSWER_i</tt> at the bottom of <tt>lab2.py</tt>.  Each answer should be a string: <tt>'1'</tt>, <tt>'2'</tt>, <tt>'3'</tt>, or <tt>'4'</tt>.
+</p><p><br />
+<b>Question 1:</b> You are in a new house and want to know where all the bedrooms are.  You want to find the bedrooms as quickly as possible. Which algorithm should you use?
+</p><p>1. Breadth First Search
+</p><p>2. British Museum 
+</p><p>3. A*
+</p><p>4. Branch and Bound with Extended Set
+</p><p><br />
+<b>Question 2:</b> You are playing a game in which you are in a maze, and you are trying to exit.  All the rooms are different colors, so you know which ones you've been in before, but there is no way of telling where you are in the maze with respect to the exit (until you reach the exit). You win the game if you exit the maze as quickly as possible.  Which algorithm should you use?
+</p><p>1. Breadth First Search
+</p><p>2. British Museum 
+</p><p>3. A*
+</p><p>4. Branch and Bound with Extended Set
+</p><p><br />
+<b>Question 3:</b> Your friend Hammer is an amateur map-maker, and you have asked for directions for a route from your hometown of Oakvale to Bowerstone Marketplace.  Your goal is to reach as <b>few</b> towns as possible along the way.  Hammer is very bad at estimating distances and remembering where she's already been, so she wants to use the simplest algorithm possible to find what path you should take. Which algorithm should Hammer use?
+</p><p>1. Breadth First Search
+</p><p>2. British Museum 
+</p><p>3. A*
+</p><p>4. Branch and Bound with Extended Set
+</p><p><br />
+<b>Question 4:</b> Hammer goes to map-maker school and becomes better at distances and memory. Now you ask her for directions for the shortest distance from Bowerstone Marketplace to Silverpine. Which algorithm should Hammer use?
+</p><p>1. Breadth First Search
+</p><p>2. British Museum 
+</p><p>3. A*
+</p><p>4. Branch and Bound with Extended Set
+</p>
+<a name="API:_Graphs_and_Edges"></a><h2> <span class="mw-headline"> API: Graphs and Edges </span></h2>
+<p>The file <tt>search.py</tt> contains definitions for graphs and edges. The relevant information is described here, so you shouldn't need to read the file.
+</p>
+<a name="UndirectedGraph"></a><h3> <span class="mw-headline"> UndirectedGraph </span></h3>
+<p>A graph is an object of type <tt>UndirectedGraph</tt>.  
+</p><p>An <tt>UndirectedGraph</tt> object has the following attributes (fields):
+</p>
+<dl><dt><tt>nodes</tt>
+</dt><dd>A list of all nodes in the graph.
+</dd></dl>
+<dl><dt><tt>edges</tt>
+</dt><dd>A list of all edges in the graph.
+</dd></dl>
+<p>An <tt>UndirectedGraph</tt> object has the following class methods:
+</p>
+<dl><dt><tt>get_neighbors(node1)</tt>
+</dt><dd>Given a node <tt>node1</tt>, returns a list of all nodes that are directly connected to <tt>node1</tt>
+</dd></dl>
+<dl><dt><tt>get_neighboring_edges(node1)</tt>
+</dt><dd>Given a node <tt>node1</tt>, returns a list of all edges that have <tt>node1</tt> as their <tt>startNode</tt>.
+</dd></dl>
+<dl><dt><tt>get_edge(node1, node2)</tt>
+</dt><dd>Given two nodes, returns the edge that directly connects them (or <tt>None</tt> if there is no such edge).
+</dd></dl>
+<dl><dt><tt>is_neighbor(node1, node2)</tt>
+</dt><dd>Given two nodes, returns <tt>True</tt> if there is an edge that connects them, or <tt>False</tt> if there is no such edge.
+</dd></dl>
+<dl><dt><tt>get_heuristic_value(node1, goalNode)</tt>
+</dt><dd>Given two nodes <tt>node1</tt> and <tt>goalNode</tt>, returns the heuristic estimate of the distance from <tt>node1</tt> to <tt>goalNode</tt>.
+</dd></dl>
+<dl><dt><tt>copy()</tt>
+</dt><dd>Returns a (deep) copy of the graph.
+</dd></dl>
+<a name="Edge"></a><h3> <span class="mw-headline"> Edge </span></h3>
+<p>An edge is an object of type <tt>Edge</tt>. An <tt>Edge</tt> object has the following attributes:
+</p>
+<dl><dt><tt>startNode</tt>
+</dt><dd>The start node of this edge.
+</dd></dl>
+<dl><dt><tt>endNode</tt>
+</dt><dd>The end node of this edge.
+</dd></dl>
+<dl><dt><tt>length</tt>
+</dt><dd>A <i>positive</i> number describing the edge's length, or <tt>None</tt> if the edge has no length specified or if it is irrelevant.
+</dd></dl>
+<p>You can also copy an <tt>Edge</tt> by using the <tt>.copy()</tt> method, which returns a deep copy of the edge.
+</p><p>You can check whether two edges <tt>e1</tt> and <tt>e2</tt> are the same with <tt>e1 == e2</tt>.
+</p><p>Lastly, you should note that we do not have a dedicated class for nodes (vertices). Nodes are represented as strings or integers.
+</p>
+<a name="Resource:_Graphs_for_Testing"></a><h3> <span class="mw-headline"> Resource: Graphs for Testing </span></h3>
+<p>Here are some sample graphs that are used in the tester and which you can use to test and debug your functions. The graphs have been imported into <tt>lab2.py</tt> by their names. In other words, if you want to access (say) GRAPH_2, it's stored in the variable <tt>GRAPH_2</tt>.
+</p><p><a href="/wiki/index.php?title=Image:Graph_0.png" class="image" title="Image:Graph_0.png"><img alt="Image:Graph_0.png" src="/wiki/images/Graph_0.png" width="252" height="342" border="0" /></a>
+</p><p><br />
+<a href="/wiki/index.php?title=Image:Graph_1.png" class="image" title="Image:Graph_1.png"><img alt="Image:Graph_1.png" src="/wiki/images/Graph_1.png" width="501" height="285" border="0" /></a>
+</p><p><br />
+<a href="/wiki/index.php?title=Image:Graph_2.png" class="image" title="Image:Graph_2.png"><img alt="Image:Graph_2.png" src="/wiki/images/Graph_2.png" width="697" height="315" border="0" /></a>
+</p><p><br />
+<a href="/wiki/index.php?title=Image:Graph_3.png" class="image" title="Image:Graph_3.png"><img alt="Image:Graph_3.png" src="/wiki/images/Graph_3.png" width="550" height="301" border="0" /></a>
+</p><p><br />
+The graphs come from the files <tt>graphs.txt</tt> and <tt>read_graphs.py</tt>, which you should not need to read.
+</p>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<a name="FAQ"></a><h2> <span class="mw-headline"> FAQ </span></h2>
+<p>Q: How should A* behave if given a bad (inadmissible or inconsistent) heuristic?
+</p><p>A: The A* algorithm should still search for and return a path; however, the path returned is not guaranteed to be optimal.  In practice, you can patch A* so that it will return the shortest path even if the heuristic is bad (see <a href="http://courses.csail.mit.edu/6.034f/ai3/ch5.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch5.pdf" rel="nofollow">Chapter 5</a> of the textbook) --- but for this lab, we ask you to implement naive A*, which optimistically assumes that the first path it finds to each node is the shortest.
+</p><p><br />
+Q: How should I break ties if two paths have the same length?
+</p><p>A: See <a href="#Your_Task" title=""> tie-breaking</a>, above: Break ties lexicographically. (For example, the path <tt>['S', 'A', 'Z']</tt> comes before the path <tt>['S', 'Z', 'A']</tt>, because <i>SAZ</i> would come before <i>SZA</i> in the English dictionary.) 
+</p><p><br />
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 198/1000000
+Post-expand include size: 1691/2097152 bytes
+Template argument size: 27/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1422-0!1!0!!en!2!edit=0 and timestamp 20200505214915 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_2">https://ai6034.mit.edu/wiki/index.php?title=Lab_2</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_2" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_2&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_2&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_2&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_2" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_2" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_2" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_2&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_2&amp;oldid=7673" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 19 September 2019, at 20:52.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.135 secs. --></body></html>

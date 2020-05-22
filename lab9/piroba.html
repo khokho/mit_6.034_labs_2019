@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 9" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 9 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_9";
+var wgTitle = "Lab 9";
+var wgAction = "view";
+var wgArticleId = "1456";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7996";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_9">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 9</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Boosting_allows_us_to_combine_the_strengths_of_several_different.2C_imperfect_classifiers"><span class="tocnumber">1</span> <span class="toctext">Boosting allows us to combine the strengths of several different, imperfect classifiers</span></a></li>
+<li class="toclevel-1"><a href="#Adaboost"><span class="tocnumber">2</span> <span class="toctext">Adaboost</span></a></li>
+<li class="toclevel-1"><a href="#A_note_about_floats.2C_roundoff_error.2C_and_Fractions"><span class="tocnumber">3</span> <span class="toctext">A note about floats, roundoff error, and Fractions</span></a></li>
+<li class="toclevel-1"><a href="#Part_1:_Helper_functions"><span class="tocnumber">4</span> <span class="toctext">Part 1: Helper functions</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Initialize_weights"><span class="tocnumber">4.1</span> <span class="toctext">Initialize weights</span></a></li>
+<li class="toclevel-2"><a href="#Calculate_error_rates"><span class="tocnumber">4.2</span> <span class="toctext">Calculate error rates</span></a></li>
+<li class="toclevel-2"><a href="#Pick_the_best_weak_classifier"><span class="tocnumber">4.3</span> <span class="toctext">Pick the best weak classifier</span></a></li>
+<li class="toclevel-2"><a href="#Calculate_voting_power"><span class="tocnumber">4.4</span> <span class="toctext">Calculate voting power</span></a></li>
+<li class="toclevel-2"><a href="#Is_H_good_enough.3F"><span class="tocnumber">4.5</span> <span class="toctext">Is H good enough?</span></a></li>
+<li class="toclevel-2"><a href="#Update_weights"><span class="tocnumber">4.6</span> <span class="toctext">Update weights</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_2:_Adaboost"><span class="tocnumber">5</span> <span class="toctext">Part 2: Adaboost</span></a></li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">6</span> <span class="toctext">Survey</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Wednesday, December 4 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab9</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab9</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab9/lab9.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab9/lab9.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab9/lab9.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab9/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab9/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab9/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab9.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab9 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="Boosting_allows_us_to_combine_the_strengths_of_several_different.2C_imperfect_classifiers"></a><h2> <span class="mw-headline"> Boosting allows us to combine the strengths of several different, imperfect classifiers </span></h2>
+<p>The machine learning classifiers we've been discussing in class are powerful when used correctly, but they are not perfect. Even the best classifiers, under the best of conditions, misclassify some samples. However, due to the nature of each different machine learning algorithm, different classifiers often make different kinds of mistakes. We can take advantage of this variety in errors, using the (reasonable) assumption that <i>most</i> classifiers will correctly classify each particular point, to construct an even more powerful <b>ensemble</b> or <b>amalgam</b> classifier, H, that can correctly classify all or most samples.
+</p>
+<a name="Adaboost"></a><h2> <span class="mw-headline"> Adaboost </span></h2>
+<p>The boosting algorithm we teach in 6.034 is called Adaboost, short for <i>adaptive boosting</i>. In this lab, you will implement the Adaboost algorithm to perform boosting.
+</p><p>Throughout this lab, we will assume that there are exactly two classifications, meaning that every not-misclassified training point is classified correctly.
+</p>
+<a name="A_note_about_floats.2C_roundoff_error.2C_and_Fractions"></a><h2> <span class="mw-headline"> A note about floats, roundoff error, and <tt>Fraction</tt>s </span></h2>
+<p>Python sometimes rounds floating point numbers, especially when adding them to dictionaries, which can result in two numbers being off by 0.0000000000000001 (10^-16) or more when they should be equal! For example:
+</p>
+<pre>
+&gt;&gt;&gt; 1/3.0
+0.3333333333333333
+&gt;&gt;&gt; 2/3.0
+0.6666666666666666
+&gt;&gt;&gt; 1 - 2/3.0
+0.33333333333333337
+&gt;&gt;&gt; 1/3.0 == 1 - 2/3.0
+False
+</pre>
+<p>To avoid dealing with this roundoff error, we recommend using the <tt>Fraction</tt> class. We've already imported it into the lab for you in <tt>utils.py</tt>, and your <tt>lab9.py</tt> file imports it from there. We've also written a function to convert floats or pairs of numbers (numerator and denominator) into fractions:
+</p>
+<ul><li> <tt>make_fraction(n)</tt>: Returns a <tt>Fraction</tt> approximately equal to <tt>n</tt>, rounding to the nearest fraction with denominator &lt;= 1000.
+</li><li> <tt>make_fraction(n, d)</tt>: If <tt>n</tt> and <tt>d</tt> are both integers, returns a <tt>Fraction</tt> representing <tt>n/d</tt>. Otherwise, returns a <tt>Fraction</tt> approximately equal to <tt>n/d</tt>, rounding to the nearest fraction with denominator &lt;= 1000.
+</li></ul>
+<p>You can manipulate and compare <tt>Fraction</tt>s just like any other number type. In fact, you can even make new <tt>Fraction</tt>s out of them! Here are a few examples:
+</p>
+<pre>
+&gt;&gt;&gt; frac1 = make_fraction(2,6)  # make_fraction can take in two numbers and reduce them to a simple Fraction
+&gt;&gt;&gt; frac1
+1/3
+&gt;&gt;&gt; frac2 = make_fraction(1,4)
+&gt;&gt;&gt; frac2
+1/4
+&gt;&gt;&gt; frac2 == 0.25               # Fractions are considered equal to their equivalent floats or ints
+True
+&gt;&gt;&gt; frac1 + frac2               # You can add, subtract, multiply, and divide Fractions
+7/12
+&gt;&gt;&gt; frac1 * 5                   # You can combine a Fraction and an int to get a new Fraction
+5/3
+&gt;&gt;&gt; make_fraction(frac1, frac2) # You can make a new Fraction out of any two numbers -- including Fractions!
+4/3
+&gt;&gt;&gt; make_fraction(0.9)          # make_fraction can also take in a single number (float, int, long, or Fraction)
+9/10
+&gt;&gt;&gt;
+</pre>
+<p>In this lab, we recommend using <tt>int</tt>s or <tt>Fraction</tt>s, as opposed to floats, for nearly everything numeric. The one exception to this rule is for voting powers, which we recommend representing as floats because they involve logarithms.
+</p>
+<div style="background-color:#ff0; border:1px solid #fdd; padding:1ex;">
+<p><b>With all of that having being said, if you think you've implemented a function correctly but you're not passing all of the tests, make sure you're correctly using <tt>Fraction</tt>s instead of raw floats!</b>
+</p>
+</div>
+<a name="Part_1:_Helper_functions"></a><h2> <span class="mw-headline"> Part 1: Helper functions </span></h2>
+<p>We will implement Adaboost piece-by-piece, modularizing the different steps of the algorithm in a similar way to how we taught Adaboost in recitation. As a brief reminder, here is the general control flow of the Adaboost algorithm:
+</p>
+<ol><li> Initialize all training points' weights.
+</li><li> Compute the error rate of each weak classifier.
+</li><li> Pick the "best" weak classifier <i>h</i>, by some definition of "best."
+</li><li> Use the error rate of <i>h</i> to compute the voting power for <i>h</i>.
+</li><li> Append <i>h</i>, along with its voting power, to the ensemble classifier H.
+</li><li> Update weights in preparation for the next round.
+</li><li> Repeat steps 2-7 until no good classifier remains, we have reached some max number of iterations, or H is "good enough."
+</li></ol>
+<a name="Initialize_weights"></a><h3> <span class="mw-headline"> Initialize weights </span></h3>
+<p>First, implement <tt>initialize_weights</tt> to assign every training point a weight equal to 1/N, where N is the number of training points. This function takes in one argument, <tt>training_points</tt>, which is a list of training points, where each point is represented as a string. The function should return a dictionary mapping points to weights.
+</p>
+<pre>def initialize_weights(training_points):
+</pre>
+<a name="Calculate_error_rates"></a><h3> <span class="mw-headline"> Calculate error rates </span></h3>
+<p>Next, we want to calculate the error rate ε of each classifier. The error rate for a classifier <i>h</i> is the sum of the weights of the training points that <i>h</i> misclassifies.
+</p><p><tt>calculate_error_rates</tt> takes as input two dictionaries:
+</p>
+<ul><li> <tt>point_to_weight</tt>: maps each training point (represented as a string) to its weight (a number).
+</li><li> <tt>classifier_to_misclassified</tt>: maps each classifier (a string) to a list of the training points (strings) that it misclassifies. For example, this dictionary may contain entries such as <tt>"classifier_0": ["point_A", "point_C"]</tt>, indicating <tt>classifier_0</tt> misclassifies points A and C.
+</li></ul>
+<p>Implement <tt>calculate_error_rates</tt> to return a dictionary mapping each weak classifier (a string) to its error rate (a number):
+</p>
+<pre>def calculate_error_rates(point_to_weight, classifier_to_misclassified):
+</pre>
+<a name="Pick_the_best_weak_classifier"></a><h3> <span class="mw-headline"> Pick the best weak classifier </span></h3>
+<p>Once we have calculated the error rate of each weak classifier, we need to select the "best" weak classifier. Implement <tt>pick_best_classifier</tt> to return the name of the "best" weak classifier, or raise a <tt>NoGoodClassifiersError</tt> if the "best" weak classifier has an error rate of exactly 1/2. Note that "best" has two possible definitions:
+</p>
+<ul><li> "smallest error rate" (<tt>use_smallest_error=True</tt>), <i>or</i>,
+</li><li> "error rate furthest from 1/2" (<tt>use_smallest_error=False</tt>)
+</li></ul>
+<pre>def pick_best_classifier(classifier_to_error_rate, use_smallest_error=True):
+</pre>
+<p>If two or more weak classifiers have equally good error rates, return the one that comes first alphabetically.
+</p><p>Hint: Depending on your implementation for this function, you may be interested in using <tt>min</tt> or <tt>max</tt> on a dictionary. Recall that <tt>min</tt> and <tt>max</tt> can take an optional <tt>key</tt> argument, which works similarly to the <tt>key</tt> argument for <tt>sorted</tt>.
+</p>
+<a name="Calculate_voting_power"></a><h3> <span class="mw-headline"> Calculate voting power </span></h3>
+<p>After selecting the best weak classifier, we'll need to compute its voting power. Recall that if ε is the error rate of the weak classifier, then its voting power is:
+</p>
+<pre>1/2 * ln((1-ε)/ε)
+</pre>
+<p>Implement <tt>calculate_voting_power</tt> to compute a classifier's voting power, given its error rate 0 ≤ ε ≤ 1. (For your convenience, the constant <tt>INF</tt> and the natural log function <tt>ln</tt> have been defined in <tt>lab9.py</tt>.)
+</p>
+<pre>def calculate_voting_power(error_rate):
+</pre>
+<p>Hint: What voting power would you give to a weak classifier that classifies all the training points correctly?  What if it misclassifies all the training points?
+</p>
+<a name="Is_H_good_enough.3F"></a><h3> <span class="mw-headline"> Is H good enough? </span></h3>
+<p>One of the three exit conditions for Adaboost is when the overall classifier H is "good enough" -- that is, when H correctly classifies enough of the training points.  
+</p><p>First, implement a helper function to determine which training points are misclassified by H:
+</p>
+<pre>def get_overall_misclassifications(H, training_points, classifier_to_misclassified):
+</pre>
+<p>The function <tt>get_overall_misclassifications</tt> takes in three arguments:
+</p>
+<ul><li> <tt>H</tt>: An overall classifier, represented as a list of <tt>(classifier, voting_power)</tt> tuples. (Recall that each classifier is represented as a string.)
+</li><li> <tt>training_points</tt>: A list of all training points. (Recall that each training point is represented as a string.)
+</li><li> <tt>classifier_to_misclassified</tt>: A dictionary mapping each classifier to a list of the training points that it misclassifies.
+</li></ul>
+<p>The function returns a set containing the training points that H misclassifies.
+</p><p>Each training point's classification is determined by a weighted vote of the weak classifiers in H. Although we don't know any point's true classification (+1 or -1), we do know whether each point was classified correctly or incorrectly by each weak classifier, and we know that this is a binary classification problem, so there is sufficient information to determine which points were misclassified. 
+</p><p><b>If the vote among the weak classifiers in H is ever a tie, consider the training point to be misclassified.</b>
+</p><p>Now, we can determine whether H is "good enough". The function <tt>is_good_enough</tt> takes in the three arguments from <tt>get_overall_misclassifications</tt>, as well as fourth argument:
+</p>
+<ul><li> <tt>mistake_tolerance</tt>: The maximum number of points that H is allowed to misclassify while still being considered "good enough."
+</li></ul>
+<p><tt>is_good_enough</tt> should return <tt>False</tt> if H is misclassifies too many points, otherwise <tt>True</tt> (because H is "good enough").
+</p>
+<pre>def is_good_enough(H, training_points, classifier_to_misclassified, mistake_tolerance=0):
+</pre>
+<a name="Update_weights"></a><h3> <span class="mw-headline"> Update weights </span></h3>
+<p>After each round, Adaboost updates weights in preparation for the next round. The updated weight for each point depends on whether the point was classified correctly or incorrectly by the current weak classifier:
+</p>
+<ul><li> If the point was classified correctly: <tt>new weight = 1/2 * 1/(1-ε) * (old weight)</tt> 
+</li><li> If the point was misclassified: <tt>new weight = 1/2 * 1/ε * (old weight)</tt>
+</li></ul>
+<p><br />
+The function <tt>update_weights</tt> takes in 3 arguments:
+</p>
+<ul><li> <tt>point_to_weight</tt>: A dictionary mapping each point to its current weight. You are allowed to modify this dictionary, but are not required to.
+</li><li> <tt>misclassified_points</tt>: A list of points misclassified by the current weak classifier.
+</li><li> <tt>error_rate</tt>: The error rate ε of the current weak classifier.
+</li></ul>
+<p>Implement <tt>update_weights</tt> to return a dictionary mapping each point to its new weight:
+</p>
+<pre>def update_weights(point_to_weight, misclassified_points, error_rate):
+</pre>
+<a name="Part_2:_Adaboost"></a><h2> <span class="mw-headline"> Part 2: Adaboost </span></h2>
+<p>Using all of the helper functions you've written above, implement the <a href="#Part_1:_Helper_functions" title="">Adaboost algorithm</a>:
+</p>
+<pre>def adaboost(training_points, classifier_to_misclassified,
+             use_smallest_error=True, mistake_tolerance=0, max_rounds=INF):
+</pre>
+<p>The function <tt>adaboost</tt> takes in five arguments:
+</p>
+<ul><li> <tt>training_points</tt>: A list of all training points.
+</li><li> <tt>classifier_to_misclassified</tt>: A dictionary mapping each classifier to a list of the training points that it misclassifies.
+</li><li> <tt>use_smallest_error</tt>: A boolean value indicating which definition of "best" to use: "smallest error rate" (<tt>True</tt>) or "error rate furthest from 1/2" (<tt>False</tt>).
+</li><li> <tt>mistake_tolerance</tt>: The maximum number of points that H is allowed to misclassify.
+</li><li> <tt>max_rounds</tt>: The maximum number of rounds of boosting to perform before returning H. (This is equivalent to the maximum number of tuples that can be added to H.)
+</li></ul>
+<p><tt>adaboost</tt> should return the overall classifier H, represented as a list of <tt>(classifier, voting_power)</tt> tuples.
+</p><p>Keep in mind that Adaboost has three exit conditions:
+</p>
+<ul><li> If H is "good enough" (see <a href="#Is_H_good_enough.3F" title="">Is H good enough?</a>, above)
+</li><li> If it has completed the maximum number of rounds
+</li><li> If the best weak classifier is no good (has an error rate ε = 1/2)
+</li></ul>
+<dl><dt>Important Notes
+</dt><dd>Recall that weight updates are based on the points that were misclassified by the <i>current weak classifier</i>, not by the overall classifier H.
+</dd></dl>
+<dl><dd>If you are failing test cases online but believe your implementation to be correct, please ensure that you are breaking ties correctly in your helper functions.
+</dd></dl>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 119/1000000
+Post-expand include size: 1692/2097152 bytes
+Template argument size: 28/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1456-0!1!0!!en!2!edit=0 and timestamp 20200506162947 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_9">https://ai6034.mit.edu/wiki/index.php?title=Lab_9</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_9" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_9&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_9&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_9&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_9" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_9" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_9" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_9&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_9&amp;oldid=7996" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 17 November 2019, at 16:26.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.127 secs. --></body></html>

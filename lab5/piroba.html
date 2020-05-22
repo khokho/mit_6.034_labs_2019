@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 5,Lab 5: Identification Trees,Lab 5: k-Nearest Neighbors" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 5 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_5";
+var wgTitle = "Lab 5";
+var wgAction = "view";
+var wgArticleId = "1485";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7843";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_5">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 5</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Breaking_down_a_problem_into_smaller_sub-problems"><span class="tocnumber">1</span> <span class="toctext">Breaking down a problem into smaller sub-problems</span></a></li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">2</span> <span class="toctext">Survey</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Wednesday, October 16 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab5</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab5</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab5/lab5.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab5/lab5.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab5/lab5.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab5/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab5/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab5/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab5.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab5 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="Breaking_down_a_problem_into_smaller_sub-problems"></a><h2> <span class="mw-headline"> Breaking down a problem into smaller sub-problems </span></h2>
+<p>For your convenience, we have split this lab into two sections. Part 1 covers the topic of <a href="/wiki/index.php?title=Lab_5:_Identification_Trees" title="Lab 5: Identification Trees"> identification trees</a>, and Part 2 covers <a href="/wiki/index.php?title=Lab_5:_k-Nearest_Neighbors" title="Lab 5: k-Nearest Neighbors"> k-nearest neighbors</a>.
+</p><p>We strongly suggest that you complete <a href="/wiki/index.php?title=Lab_5:_Identification_Trees" title="Lab 5: Identification Trees"> Part 1 (ID Trees)</a> by <b>Friday, October 11</b>.
+</p><p>We strongly suggest that you then complete <a href="/wiki/index.php?title=Lab_5:_k-Nearest_Neighbors" title="Lab 5: k-Nearest Neighbors"> Part 2 (kNN)</a> by <b>Wednesday, October 16</b>.
+</p><p>The final deadline to complete Lab 5 (both  <a href="/wiki/index.php?title=Lab_5:_Identification_Trees" title="Lab 5: Identification Trees"> Part 1 (ID Trees)</a>  and <a href="/wiki/index.php?title=Lab_5:_k-Nearest_Neighbors" title="Lab 5: k-Nearest Neighbors"> Part 2 (kNN)</a>) is <b>Wednesday, October 16</b>. 
+</p><p>Note that if you submit online after completing Part 1 (but before completing Part 2), the tester will fail as expected for kNN tests. Don't fret! <b>As long as you submit and pass all online tests by Wednesday, October 16, you will be awarded full lab credit.</b>
+</p>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 32/1000000
+Post-expand include size: 1691/2097152 bytes
+Template argument size: 28/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1485-0!1!0!!en!2!edit=0 and timestamp 20200506161554 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_5">https://ai6034.mit.edu/wiki/index.php?title=Lab_5</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_5" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_5&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_5&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_5&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_5" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_5" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_5" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_5&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_5&amp;oldid=7843" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 10 October 2019, at 18:03.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.178 secs. --></body></html>

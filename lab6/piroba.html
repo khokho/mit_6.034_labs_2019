@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 6" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 6 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_6";
+var wgTitle = "Lab 6";
+var wgAction = "view";
+var wgArticleId = "1447";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7876";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_6">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 6</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<p><br />
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Neural_Networks_are_Biologically_Inspired"><span class="tocnumber">1</span> <span class="toctext">Neural Networks are Biologically Inspired</span></a></li>
+<li class="toclevel-1"><a href="#The_Anatomy_of_an_Artificial_Neural_Network"><span class="tocnumber">2</span> <span class="toctext">The Anatomy of an Artificial Neural Network</span></a></li>
+<li class="toclevel-1"><a href="#Part_1:_Wiring_a_Neural_Net"><span class="tocnumber">3</span> <span class="toctext">Part 1: Wiring a Neural Net</span></a></li>
+<li class="toclevel-1"><a href="#Part_2:_Coding_Warmup"><span class="tocnumber">4</span> <span class="toctext">Part 2: Coding Warmup</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Exploring_different_threshold_functions"><span class="tocnumber">4.1</span> <span class="toctext">Exploring different threshold functions</span></a></li>
+<li class="toclevel-2"><a href="#Measuring_performance_with_the_accuracy_function"><span class="tocnumber">4.2</span> <span class="toctext">Measuring performance with the accuracy function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_3:_Forward_propagation"><span class="tocnumber">5</span> <span class="toctext">Part 3: Forward propagation</span></a></li>
+<li class="toclevel-1"><a href="#Part_4:_Backward_propagation"><span class="tocnumber">6</span> <span class="toctext">Part 4: Backward propagation</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Gradient_ascent"><span class="tocnumber">6.1</span> <span class="toctext">Gradient ascent</span></a></li>
+<li class="toclevel-2"><a href="#Back_prop_dependencies"><span class="tocnumber">6.2</span> <span class="toctext">Back prop dependencies</span></a></li>
+<li class="toclevel-2"><a href="#Basic_back_propagation"><span class="tocnumber">6.3</span> <span class="toctext">Basic back propagation</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Computing_.CE.B4B"><span class="tocnumber">6.3.1</span> <span class="toctext">Computing δ<sub>B</sub></span></a></li>
+<li class="toclevel-3"><a href="#Updating_weights"><span class="tocnumber">6.3.2</span> <span class="toctext">Updating weights</span></a></li>
+<li class="toclevel-3"><a href="#Putting_it_all_together"><span class="tocnumber">6.3.3</span> <span class="toctext">Putting it all together</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_5:_Training_a_Neural_Net"><span class="tocnumber">7</span> <span class="toctext">Part 5: Training a Neural Net</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Example_datasets"><span class="tocnumber">7.1</span> <span class="toctext">Example datasets</span></a></li>
+<li class="toclevel-2"><a href="#What_training.py_does"><span class="tocnumber">7.2</span> <span class="toctext">What training.py does</span></a></li>
+<li class="toclevel-2"><a href="#How_to_run_training.py"><span class="tocnumber">7.3</span> <span class="toctext">How to run training.py</span></a>
+<ul>
+<li class="toclevel-3"><a href="#On_the_command_line"><span class="tocnumber">7.3.1</span> <span class="toctext">On the command line</span></a></li>
+<li class="toclevel-3"><a href="#At_a_Python_prompt_.28e.g._IDLE.29"><span class="tocnumber">7.3.2</span> <span class="toctext">At a Python prompt (e.g. IDLE)</span></a></li>
+<li class="toclevel-3"><a href="#What_if_I_don.27t_have_Matplotlib_and_NumPy.3F"><span class="tocnumber">7.3.3</span> <span class="toctext">What if I don't have Matplotlib and NumPy?</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Your_task:_Multiple-choice_questions_based_on_training.py"><span class="tocnumber">7.4</span> <span class="toctext">Your task: Multiple-choice questions based on training.py</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Questions_1-5:_How_many_iterations.3F"><span class="tocnumber">7.4.1</span> <span class="toctext">Questions 1-5: How many iterations?</span></a></li>
+<li class="toclevel-3"><a href="#Questions_6-9:_Identifying_parameters"><span class="tocnumber">7.4.2</span> <span class="toctext">Questions 6-9: Identifying parameters</span></a></li>
+<li class="toclevel-3"><a href="#Questions_10-12:_Conceptual_Questions"><span class="tocnumber">7.4.3</span> <span class="toctext">Questions 10-12: Conceptual Questions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#If_you_want_to_do_more..."><span class="tocnumber">7.5</span> <span class="toctext">If you want to do more...</span></a></li>
+<li class="toclevel-2"><a href="#Exploring_the_playground"><span class="tocnumber">7.6</span> <span class="toctext">Exploring the playground</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#API"><span class="tocnumber">8</span> <span class="toctext">API</span></a>
+<ul>
+<li class="toclevel-2"><a href="#NeuralNet"><span class="tocnumber">8.1</span> <span class="toctext">NeuralNet</span></a></li>
+<li class="toclevel-2"><a href="#Wire"><span class="tocnumber">8.2</span> <span class="toctext">Wire</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">9</span> <span class="toctext">Survey</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+</p><p>This lab is due by <b>Wednesday, October 30 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab6</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab6</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab6/lab6.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab6/lab6.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab6/lab6.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab6/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab6/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab6/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab6.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab6 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="Neural_Networks_are_Biologically_Inspired"></a><h2> <span class="mw-headline"> Neural Networks are Biologically Inspired </span></h2>
+<p>An artificial neural network (ANN), commonly referred to as a <i>neural net</i>, is a biologically-inspired machine-learning classification model. It is a network of atomic <i>neurons</i>, each of which takes in one or many inputs, computes a value based on them, and outputs another value that may be consumed by more neurons downstream. 
+</p><p>This design attempts to mimic our understanding of the human brain, which comprises nerve cells (neurons) connected to each other in massive networks via axons and dendrites. Our current understanding of the brain is that a neuron <i>activates</i> when sufficient electric impulses reach the neuron from neighboring, connected neurons; upon activation, the neuron sends an electric impulse down its axon to be received by other neurons.
+</p>
+<a name="The_Anatomy_of_an_Artificial_Neural_Network"></a><h2> <span class="mw-headline"> The Anatomy of an Artificial Neural Network </span></h2>
+<p>A very simple artificial neural network (with just one neuron) might look like this: 
+</p><p><a href="/wiki/index.php?title=Image:Lab6_SimpleNeuron.png" class="image" title="Image:Lab6_SimpleNeuron.png"><img alt="Image:Lab6_SimpleNeuron.png" src="/wiki/images/Lab6_SimpleNeuron.png" width="608" height="340" border="0" /></a>
+</p><p>Each input (In<sub>i</sub>) is multiplied by a constant <i>weight</i> (w<sub>i</sub>); these products are then summed together (In<sub>1</sub>*w<sub>1</sub> + ... + In<sub>n</sub>*w<sub>n</sub>)and put through a <i>threshold function</i> (T) which evaluates the result (which typically ranges from 0 to 1) based on the value of the input.
+</p><p>Indeed, every connection between a neuron and another neuron (or between an input and a neuron) is called a <i>wire</i>, and each wire has a weight associated with it. In practice, artificial neural networks can comprise hundreds or thousands of neurons, with possibly millions of wires and weights! However, in this class, we typically stick to much smaller neural nets.
+</p><p>Here is an example of a more complicated neural net, which is formed by chaining multiple neurons together:
+</p><p><a href="/wiki/index.php?title=Image:Lab6_SimpleNeuralNet.png" class="image" title="Image:Lab6_SimpleNeuralNet.png‎"><img alt="Image:Lab6_SimpleNeuralNet.png‎" src="/wiki/images/Lab6_SimpleNeuralNet.png" width="779" height="279" border="0" /></a>
+</p>
+<a name="Part_1:_Wiring_a_Neural_Net"></a><h2> <span class="mw-headline"> Part 1: Wiring a Neural Net </span></h2>
+<p><i>(Note: We will cover this topic in more detail during recitation.)</i>
+</p><p>Consider a neural net with two inputs <i>x</i> and <i>y</i>, both connecting to a neuron <b>P</b> with weights <i>a</i> and <i>b</i> respectively. This input-layer neuron <b>P</b> draws a line in a 2-dimensional space and shades one side of it, satisfying the inequality <tt><i>a x + b y &gt;= T</i></tt> for some constant threshold <i>T</i>. 
+</p><p>In fact, <i>every</i> input-layer neuron that takes in two inputs <i>x</i> and <i>y</i> will draw a line and shade one side of it in 2-space.
+</p><p>The remaining neurons in the later layers of the neural net perform logic functions on the shadings.
+</p><p>Each of the following pictures can be produced by a neural net with two inputs <i>x</i> and <i>y</i>. For each one, you need to determine the minimum number of neurons necessary to produce the picture. Express your answer as a list indicating the number of nodes per layer. Put your answers in <tt>lab6.py</tt> as assignments to the variables <tt>nn_half</tt>, <tt>...</tt> .
+</p><p>As an example, the neural net shown in the previous section would be represented by the list <tt>[3, 2, 3, 1]</tt>.
+</p><p><a href="/wiki/index.php?title=Image:Lab6_nn_pictures.png" class="image" title="Image:Lab6_nn_pictures.png"><img alt="Image:Lab6_nn_pictures.png" src="/wiki/images/Lab6_nn_pictures.png" width="770" height="1020" border="0" /></a>
+</p><p>If you are still confused about some of the solutions, you're welcome to <a href="http://web.mit.edu/6.034/www/neural-net-visualization.pdf" class="external text" title="http://web.mit.edu/6.034/www/neural-net-visualization.pdf" rel="nofollow">view the detailed explanations here</a>.
+</p>
+<a name="Part_2:_Coding_Warmup"></a><h2> <span class="mw-headline"> Part 2: Coding Warmup </span></h2>
+<a name="Exploring_different_threshold_functions"></a><h3> <span class="mw-headline"> Exploring different threshold functions </span></h3>
+<p>First, you'll code some threshold functions for the neural nets. The <tt>stairstep</tt>, <tt>sigmoid</tt>, and <tt>ReLU</tt> functions are threshold functions; each neuron in a neural net uses a threshold function to determine whether its input stimulation is large enough for it to emit a non-zero output. The mathematical definitions of these three threshold functions are as follows:
+</p>
+<div class="center"><div class="floatnone"><span><a href="/wiki/index.php?title=Image:Nn_threshold_fns.png" class="image" title="Nn threshold fns.png"><img alt="" src="/wiki/images/Nn_threshold_fns.png" width="352" height="171" border="0" /></a></span></div></div>
+<p>Please implement each of the functions below.
+</p><p><tt>stairstep</tt>: Computes the output of the stairstep function using the given threshold (T).
+</p>
+<pre>def stairstep(x, threshold=0):
+</pre>
+<p><tt>sigmoid</tt>: Computes the output of the sigmoid function using the given steepness (S) and midpoint (M). For your convenience, the constant <i>e</i> is defined in <tt>lab6.py</tt>.
+</p>
+<pre>def sigmoid(x, steepness=1, midpoint=0):
+</pre>
+<p><tt>ReLU</tt>: Computes the output of the ReLU (rectified linear unit) function.
+</p>
+<pre>def ReLU(x):
+</pre>
+<a name="Measuring_performance_with_the_accuracy_function"></a><h3> <span class="mw-headline"> Measuring performance with the accuracy function </span></h3>
+<p>The accuracy function is used when training the neural net with back propagation. It measures the performance of the neural net as a function of its desired output and its actual output (given some set of inputs). Note that the accuracy function is symmetric -- that is, it doesn't care which argument is the desired output and which is the actual output.
+</p><p>We define our accuracy function, along with its derivative:
+</p>
+<div class="center"><div class="floatnone"><span><a href="/wiki/index.php?title=Image:Nn_accuracy_fns.png" class="image" title="Nn accuracy fns.png"><img alt="" src="/wiki/images/Nn_accuracy_fns.png" width="617" height="112" border="0" /></a></span></div></div>
+<p>where <i>out</i> is the output of the neural net, and out* is the <i>desired</i> output of the neural net.
+</p><p>Implement <tt>accuracy(desired_output, actual_output)</tt>, which computes accuracy using <tt>desired_output</tt> and <tt>actual_output</tt>. Fun fact: If the neurons in the network are using the <tt>stairstep</tt> threshold function, the accuracy can only be <tt>-0.5</tt> or <tt>0</tt>.
+</p>
+<pre>def accuracy(desired_output, actual_output):
+</pre>
+<a name="Part_3:_Forward_propagation"></a><h2> <span class="mw-headline"> Part 3: Forward propagation </span></h2>
+<dl><dt>Important Notice
+</dt><dd>Before starting this section, please read the entirety of the <a href="#API" title="">API section</a> so that you know what functions and features are available to you!
+</dd></dl>
+<p>Next, you'll code forward propagation, which takes in a dictionary of inputs and computes the output of every neuron in a neural net.
+</p><p>As part of coding forward propagation, you should understand how a single neuron computes its output as a function of its input: each input into the neuron is multiplied by the weight on the wire, the weighted inputs are summed together, and the sum is passed through a specified threshold function to produce the output.
+</p><p>You should iterate over each neuron in the network in order, starting from the input neurons and working toward the output neuron. (Hint: The function <a href="#NeuralNet" title=""> <tt>topological_sort()</tt></a> may be useful.) The algorithm is called forward propagation because the outputs you calculate for earlier neurons will be propagated forward through the network and used to calculate outputs for later neurons.
+</p><p>To assist you, we've provided a helper function <tt>node_value</tt>, which takes in a node (which can either be an <b>input</b> or a <b>neuron</b>), a dictionary mapping input names (e.g. 'x') to their values, and a dictionary mapping neuron names to their outputs, and returns the output value of the node.
+</p><p>For example:
+</p>
+<pre>
+&gt;&gt;&gt; input_values = {'x': 3, 'y': 7}
+&gt;&gt;&gt; neuron_outputs = {'Neuron1': 0}
+&gt;&gt;&gt; node_value('Neuron1', input_values, neuron_outputs)
+0
+&gt;&gt;&gt; node_value('y', input_values, neuron_outputs)
+7
+&gt;&gt;&gt; node_value(-1, input_values, neuron_outputs)
+-1
+&gt;&gt;&gt;
+</pre>
+<p><b>Note that <tt>node_value</tt> does not <i>compute</i> the outputs of any nodes. It simply looks at the input node and returns the value for that node if it's a constant or if it's an entry in one of the two input dictionaries. Depending on your implementation, you may or may not want to use this function.</b>
+</p>
+<hr />
+<p>Implement the method <tt>forward_prop</tt>:
+</p>
+<pre>def forward_prop(net, input_values, threshold_fn=stairstep):
+</pre>
+<p>Here, <tt>net</tt> is a neural network, <tt>input_values</tt> is a dictionary mapping input variables to their values, and <tt>threshold_fn</tt> is a function* that each neuron will use to decide what value to output. This function should return a tuple containing two elements:
+</p>
+<ol><li> The overall output value of the network, i.e. the output value associated with the output neuron of the network.
+</li><li> A dictionary mapping neurons to their immediate outputs.
+</li></ol>
+<p>The dictionary of outputs is permitted to contain extra keys (for example, the input values). The function should <em>not</em> modify the neural net in any way.
+</p><p>* The <tt>threshold_fn</tt> argument will be one of the threshold functions you implemented at the beginning of the lab. The astute reader will recognize that each of the three threshold functions take a different number of (and different types of) arguments, so any algorithm leveraging this <tt>threshold_fn</tt> input can't technically be implementation-agnostic with respect to the threshold function type. However, for this lab, we have decided to simplify your lives by only requiring that you call <tt>threshold_fn</tt> with the first argument, <tt>x</tt>.
+</p>
+<a name="Part_4:_Backward_propagation"></a><h2> <span class="mw-headline"> Part 4: Backward propagation </span></h2>
+<p>Backward propagation is the process of training a neural network using a particular training point to modify the weights of the network, with the goal of improving the network's performance.  In the big picture, the goal is to perform gradient ascent on an n-dimensional surface defined by the n weights in the neural net.  We compute the update for some weight w<sub>i</sub> using the partial derivative of the accuracy with respect to w<sub>i</sub>.
+</p><p>In lecture, we derived several useful equations for computing weight updates during back-propagation. As a mathematical shortcut, we introduced the variable δ that lets us reuse computation during back-propagation, instead of having to repeatedly take derivatives.
+</p><p>Below, 
+</p>
+<ul><li> δ<sub>B</sub> indicates the delta calculation for neuron B. 
+</li><li> W<sub>A→B</sub> represents the weight of the wire between neurons A and B. 
+</li><li> r is the learning rate or step size: it's an indication of how quickly you allow your weights to change.
+</li></ul>
+<div class="center"><div class="floatnone"><span><a href="/wiki/index.php?title=Image:Nn_backprop_fns.png" class="image" title="Nn backprop fns.png"><img alt="" src="/wiki/images/Nn_backprop_fns.png" width="931" height="158" border="0" /></a></span></div></div>
+<p>When implementing code in this section, don't forget about the functions you've written above! They may be helpful.
+</p>
+<a name="Gradient_ascent"></a><h3> <span class="mw-headline"> Gradient ascent </span></h3>
+<p>Conceptually, the idea of <i>the network's performance</i> is abstracted away inside a huge and complex accuracy function, and gradient ascent (or descent, depending on your point of view) is simply a form of hill-climbing used to find the best output possible from the function.
+</p><p>When training a neural net, gradient ascent is usually performed after forward propagation. Forward propagation produces some output from the network. Gradient ascent then looks at this output and decides how the parameters of the neural net should change in order to get an output from the net that is closer to the desired output. After gradient ascent is performed and the parameters of the neural net are updated accordingly, forward propagation can be run again to get the new output from the neural net, which should be closer to the desired output. You can run this process repeatedly until the output of the net matches (or is close to) the desired output.
+</p><p>To get a feel for this concept, we will first ask you to implement a very simplified gradient ascent algorithm, to perform a single step of (pseudo-)gradient ascent. <tt>gradient_ascent_step</tt> takes in three arguments:
+</p>
+<ol><li> <tt>func</tt>: a function <i>of three arguments</i>
+</li><li> <tt>inputs</tt>: a list of three values representing the three current numerical inputs into <tt>func</tt>
+</li><li> <tt>step_size</tt>: how much to perturb each variable
+</li></ol>
+<p>This function should perturb each of the inputs by either <tt>+step_size</tt>, <tt>-step_size</tt>, or <tt>0</tt>, in every combination possible (a total of 3<sup>3</sup> = 27 combinations), and evaluate the function with each possible set of inputs.  Find the assignments that <i>maximize</i> the output of <tt>func</tt>, then return a tuple containing
+</p>
+<ol><li> the function output at the highest point found, and
+</li><li> the list of variable assignments (input values) that yielded the highest function output.
+</li></ol>
+<pre>def gradient_ascent_step(func, inputs, step_size):
+</pre>
+<p>For example, if the highest point is <tt>func(3, 9, 4) = 92</tt>, you would return <tt>(92, [3, 9, 4])</tt>.
+</p><p>Note: We have defined the constant <tt>INF</tt> in <tt>lab6.py</tt> if you need to represent infinity.
+</p>
+<a name="Back_prop_dependencies"></a><h3> <span class="mw-headline"> Back prop dependencies </span></h3>
+<p>Recall from class (or from the equations above) that in back propagation, calculating a particular weight's update coefficient has dependencies on certain neuron outputs, inputs, and other weights. In particular, updating the weight between nodes A and B requires the output from node A, the current weight on the wire from A to B, the output of node B, and all neurons and weights downstream to the final layer.
+</p><p>Implement a function that takes in a neural net and a <tt>Wire</tt> object, then returns a <tt>set</tt> containing all <tt>Wire</tt>s, inputs, and neurons that are necessary to compute the update coefficient for <tt>wire</tt>'s weight. You may assume that the output of each neuron has already been calculated via forward propagation.
+</p>
+<pre>def get_back_prop_dependencies(net, wire)
+</pre>
+<p>Hint: One way to do this is to maintain a <tt>set</tt> of already-recorded dependencies and build it up as you move through the network. Start by adding the dependencies of the current <tt>wire</tt> and move forward, recursively (or iteratively) adding dependencies of each wire down the network.
+</p><p>If you're still not sure how to approach this function, you can skip ahead to the next section, and/or look at an example in <a href="http://courses.csail.mit.edu/6.034f/Examinations/2015q3.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/Examinations/2015q3.pdf" rel="nofollow">2015 Quiz 3, Problem 1, Part B</a>.
+</p>
+<a name="Basic_back_propagation"></a><h3> <span class="mw-headline"> Basic back propagation </span></h3>
+<p>Now let's go over the basic back-propagation algorithm. To perform back propagation on a given training point, or set of inputs:
+</p>
+<ol><li> Use forward propagation with the <i>sigmoid</i> threshold function to compute the output of each neuron in the network.
+</li><li> Compute the update coefficient <tt>delta_B</tt> for each neuron in the network, starting from the output neuron and working backward toward the input neurons. (Note that you may not need to use <tt>get_back_prop_dependencies</tt>, depending on your implementation.)
+</li><li> Use the update coefficients <tt>delta_B</tt> to compute new weights for the network.
+</li><li> Update all of the weights in the network.
+</li></ol>
+<a name="Computing_.CE.B4B"></a><h4> <span class="mw-headline"> Computing δ<sub>B</sub> </span></h4>
+<p>You have already implemented the <tt>forward_propagation</tt> routine. To complete the definition of back propagation, you'll define a helper function <tt>calculate_deltas</tt> for computing the update coefficients <tt>delta_B</tt> of each neuron in the network, and a function <tt>update_weights</tt> that retrieves the list of update coefficients using <tt>calculate_deltas</tt>, then modifies the weights of the network accordingly.  
+</p><p>Implement <tt>calculate_deltas</tt> to return a dictionary mapping neurons to update coefficients (<tt>delta_B</tt> values):
+</p>
+<pre>def calculate_deltas(net, desired_output, neuron_outputs):
+</pre>
+<p>Note that this function takes in <tt>neuron_outputs</tt>, a dictionary mapping neurons to the outputs yielded in one iteration of forward propagation; this is the same dictionary that is returned from <tt>forward_prop</tt>.
+</p>
+<a name="Updating_weights"></a><h4> <span class="mw-headline"> Updating weights </span></h4>
+<p>Next, use <tt>calculate_deltas</tt> to implement <tt>update_weights</tt>, which performs a single step of back propagation.  The function should compute <tt>delta_B</tt> values and weight updates for the entire neural net, then update all weights.  The function <tt>update_weights</tt> should return the modified neural net with appropriately updated weights.
+</p>
+<pre>def update_weights(net, input_values, desired_output, neuron_outputs, r=1):
+</pre>
+<a name="Putting_it_all_together"></a><h4> <span class="mw-headline"> Putting it all together </span></h4>
+<p>Now you're ready to complete the <tt>back_prop</tt> function, which repeatedly updates weights in the neural net until the accuracy surpasses the accuracy threshold. (Recall that accuracy is always non-positive, and that an accuracy closer to 0 is better.)
+</p><p><tt>back_prop</tt> should return a tuple containing:
+</p>
+<ol><li> The modified neural net, with trained weights; and
+</li><li> The number of iterations (that is, the number of times you batch-updated the weights)
+</li></ol>
+<pre>def back_prop(net, input_values, desired_output, r=1, minimum_accuracy=-0.001):
+</pre>
+<p>Once you finish, you're all done writing code in this lab!
+</p>
+<a name="Part_5:_Training_a_Neural_Net"></a><h2> <span class="mw-headline"> Part 5: Training a Neural Net </span></h2>
+<p>In practice, we would want to use multiple training points to train a neural net, not just one.  There are many possible implementations -- for instance, you could put all the training points into a queue and perform back propagation with each point in turn.  Alternatively, you could use a multidimensional accuracy function and try to train with multiple training points simultaneously.  
+</p><p>In this part of the lab, we'll attempt to train various neural nets using the code you've written so far. We have supplied you with a file called <tt>training.py</tt>, which should take care of all of the overhead for you.
+</p>
+<a name="Example_datasets"></a><h3> <span class="mw-headline"> Example datasets </span></h3>
+<p>Here are six example datasets that you could use to train a 2-input neural net, all of which are defined in <tt>training.py</tt>. Each training dataset has up to 25 data points, each of which is associated with one of two possible classifications ("+" or "-").
+</p><p>In the 2D graphs below, each axis represents an input value, and a <tt>+</tt> or <tt>-</tt> represents that training point's classification. If a space is instead blank, that indicates that there is no training point associated with that particular combination of input values. 
+</p><p>1. A horizontally divided space ("horizontal")
+</p>
+<pre>
+4 - - - - -
+3 - - - - -
+2 - - - - -
+1 + + + + +
+0 + + + + +
+  0 1 2 3 4
+</pre>
+<p>2. A diagonally divided space ("diagonal")
+</p>
+<pre>
+4 + + + + -
+3 + + + - -
+2 + + - - -
+1 + - - - -
+0 - - - - -
+  0 1 2 3 4
+</pre>
+<p>3. A diagonal stripe ("stripe")
+</p>
+<pre>
+4 - - - - +
+3 - - - + -
+2 - - + - -
+1 - + - - -
+0 + - - - -
+  0 1 2 3 4
+</pre>
+<p>4. This patchy checkerboard shape ("checkerboard")
+</p>
+<pre>
+4 - -   + +
+3 - -   + +
+2        
+1 + +   - -
+0 + +   - -
+  0 1 2 3 4
+</pre>
+<p>5. The letter L ("letterL")
+</p>
+<pre>
+4 + -
+3 + - 
+2 + -
+1 + - - - -
+0 - + + + +
+  0 1 2 3 4
+</pre>
+<p>6. This moat-like shape ("moat")
+</p>
+<pre>
+4 - - - - -
+3 -       - 
+2 -   +   -
+1 -       -
+0 - - - - -
+  0 1 2 3 4
+</pre>
+<p>With the correct wiring, it's possible to train a neural net with 6 or fewer neurons to classify any one of the shapes.
+</p>
+<a name="What_training.py_does"></a><h3> <span class="mw-headline"> What <tt>training.py</tt> does </span></h3>
+<p>In <tt>training.py</tt>, we've provided code to train a neural net, written by past 6.034 students Joel Gustafson and Kenny Friedman. This code imports functions that you wrote in <tt>lab6.py</tt> and generalizes the functions to consider multiple training points, instead of just one. <tt>training.py</tt> has several features:
+</p>
+<ul><li> Provides the six encoded training data sets illustrated above
+</li><li> Provides three fully connected neural nets architectures:
+</li></ul>
+<dl><dd><ul><li><tt>get_small_nn()</tt> returns a small [2, 1] neural net (ideal for drawing two lines and combining them with a simple logic function such as AND or OR)
+</li><li><tt>get_medium_nn()</tt> returns a medium [3, 2, 1] neural net (ideal for drawing three lines and combining them with a more complex logic function such as XOR)
+</li><li><tt>get_large_nn()</tt> returns a large [10, 10, 5, 1] neural net
+</li></ul>
+</dd></dl>
+<ul><li> Generalizes forward and backward propagation to train on arbitrary datasets of multiple training points by considering multiple data points in parallel.
+</li><li> Uses NumPy and Matplotlib (Python libraries) to display the neural net's output in real time as a heatmap, with a spectrum of colors representing sigmoid output values from 0 (blue) to 1 (yellow).
+</li></ul>
+<p>Note that for each training attempt, <tt>training.py</tt> randomly initializes network weights.
+</p>
+<a name="How_to_run_training.py"></a><h3> <span class="mw-headline"> How to run <tt>training.py</tt> </span></h3>
+<p>To run the code, you'll need the Python packages Matplotlib and NumPy.  If you don't have them, see <a href="#What_if_I_don.27t_have_Matplotlib_and_NumPy.3F" title="">below</a>.  Once you have the packages, you can use either a terminal command line or an interactive Python prompt.
+</p>
+<a name="On_the_command_line"></a><h4> <span class="mw-headline">On the command line</span></h4>
+<p>Run <tt>python3 training.py</tt> with up to three optional arguments:
+</p>
+<ul><li><b><tt>-net [small|medium|large]</tt></b>: Selects which neural net configuration to train, as described above. <i>Default</i>: <tt>medium</tt>.
+</li><li><b><tt>-resolution <i>POSITIVE_INT</i></tt></b>: Sets the resolution of the dynamic heatmap -- a resolution of <tt>1</tt> will display a 5x5 grid, and a resolution of <tt>10</tt> will display a 50x50 grid on a 1:10 scale. Be aware that increasing the resolution exponentially increases the time each simulation iteration takes, so resolutions of over <tt>10</tt> are not recommended. <i>Default</i>: <tt>1</tt>.
+</li><li><b><tt>-data [diagonal|horizontal|stripe|checkerboard|letterL|moat]</tt></b>: Selects the training dataset from the six shown above. <i>Default</i>: <tt>diagonal</tt>.
+</li></ul>
+<p>For example, to train the large [3, 2, 1] neural net on the checkerboard dataset, and display the progress with a resolution of 10 pixels per integer coordinate, run:
+</p>
+<pre>python3 training.py -data checkerboard -net large -resolution 10
+</pre>
+<p>from the command line. Any of the parameters that are omitted will be replaced with their default values. For example, 
+</p>
+<pre>python3 training.py
+</pre>
+<p>will train the default medium net on the diagonal dataset with resolution 1.
+</p>
+<a name="At_a_Python_prompt_.28e.g._IDLE.29"></a><h4> <span class="mw-headline">At a Python prompt (e.g. IDLE)</span></h4>
+<p>Run the file <tt>training.py</tt>, then call the function start_training() with up to three optional arguments:
+</p>
+<ul><li><b><tt>net = ['small'|'medium'|'large']</tt></b>: Selects which neural net configuration to train, as described above. <i>Default</i>: <tt>'medium'</tt>.
+</li><li><b><tt>resolution = <i>POSITIVE_INT</i></tt></b>: Sets the resolution of the dynamic heatmap -- a resolution of <tt>1</tt> will display a 5x5 grid, and a resolution of <tt>10</tt> will display a 50x50 grid on a 1:10 scale. Be aware that increasing the resolution exponentially increases the time each simulation iteration takes, so resolutions of over <tt>10</tt> are not recommended. <i>Default</i>: <tt>1</tt>.
+</li><li><b><tt>data = ['diagonal'|'horizontal'|'stripe'|'checkerboard'|'letterL'|'moat']</tt></b>: Selects the training dataset from the six shown above. <i>Default</i>: <tt>'diagonal'</tt>.
+</li></ul>
+<p>For example, to train the large [3, 2, 1] neural net on the checkerboard dataset, and display the progress with a resolution of 10 pixels per integer coordinate, call:
+</p>
+<pre>start_training(data='checkerboard', net='large', resolution=10)
+</pre>
+<p>from the Python prompt. Any of the parameters that are omitted will be replaced with their default values. For example, 
+</p>
+<pre>start_training()
+</pre>
+<p>will train the default large net on the diagonal dataset with resolution 1.
+</p>
+<a name="What_if_I_don.27t_have_Matplotlib_and_NumPy.3F"></a><h4> <span class="mw-headline">What if I don't have Matplotlib and NumPy?</span></h4>
+<p>If you don't have Matplotlib and NumPy installed, you have a few options. You can do one of the following:
+</p>
+<ul><li> install them (just Google them), e.g. with <tt>pip</tt> or by downloading them manually.
+</li><li> create a new virtual environment (using the <tt>virtualenv</tt> utility) with Python 3, Matplotlib, NumPy
+<ol><li> Go to the directory in which you want to place your virtual environment and call <tt>virtualenv -p python3 myVirtualEnvName</tt>
+</li><li> Activate that Python environment by calling <tt>source myVirtualEnvName/bin/activate</tt>. Now whenever you call <tt>python3</tt>, it refers to the Python 3 binary installed inside the <tt>myVirtualEnvName</tt> directory. (Try calling <tt>which python3</tt> to see.) Note that only the current window/tab of your terminal is using this virtual environment.
+</li><li> Install NumPy into your virtual environment by calling <tt>pip3 install numpy</tt>
+</li><li> Install Matplotlib into your virtual environment by calling <tt>pip3 install matplotlib</tt> 
+</li><li> Navigate to your lab directory. You can now run <tt>training.py</tt>!
+</li><li> To deactivate the virtual environment, call <tt>deactivate</tt>.
+</li></ol>
+</li><li> install a stand-alone Python distribution that comes with the packages and won't interfere with your current Python installation (e.g. Anaconda or Python(x,y))
+</li><li> work with a friend, running the code on their computer
+</li></ul>
+<p>If none of these options work for you, you can try to execute your code on Athena using <i>Python 2</i> (not Python 3). This <i>should</i> work, assuming your lab 6 code has no Python-3-exclusive syntax in it, but we can't guarantee it:
+</p>
+<ul><li> use an Athena cluster computer (the Athena version of Python 2 already includes Matplotlib and NumPy)
+</li><li> use Athena locally via <tt>ssh -X</tt> (which enables Athena to display GUI windows, including colored plots, on your screen). Note that this option is <i>very</i> slow, and should only be a last resort: <tt>ssh -X username@athena.dialup.mit.edu</tt>
+</li></ul>
+<p>If you are still having issues and none of the above solutions are working, please come to office hours so we can try to help in person!
+</p>
+<a name="Your_task:_Multiple-choice_questions_based_on_training.py"></a><h3> <span class="mw-headline"> Your task: Multiple-choice questions based on <tt>training.py</tt> </span></h3>
+<a name="Questions_1-5:_How_many_iterations.3F"></a><h4> <span class="mw-headline"> Questions 1-5: How many iterations? </span></h4>
+<p>For each of the combinations of neural nets and datasets below, try training the neural net on the dataset <b>a few times</b>.  Then, fill in the appropriate <tt>ANSWER_n</tt> with an int to answer the question: <b>When the neural net didn't get stuck, how many iterations did it generally take to train?</b>  
+</p><p>(The tester will check that your answer is in the right range of numbers, based on the repeated trials that we ran.  Note that all the answers are expected to be under 200; if the neural net seems to be stuck or is taking more than 200 steps to train, feel free to abort by typing Ctrl+C or the equivalent Keyboard Interrupt.  Depending on your system, you may need to type Ctrl+C multiple times and/or manually close the heatmap window.)
+</p><p>You may do this with any resolution; the resolution shouldn't affect the number of steps required for back prop to converge.  Higher resolution makes it easier to see how the neural net is dividing up the space, but it also greatly increases the real time required for training because it has to perform forward propagation to compute the color output for each cell.
+</p><p><b>Question 1</b>: <tt>small</tt> neural net, <tt>diagonal</tt> dataset
+</p><p><b>Question 2</b>: <tt>medium</tt> neural net, <tt>diagonal</tt> dataset
+</p><p><b>Question 3</b>: <tt>large</tt> neural net, <tt>diagonal</tt> dataset
+</p><p><br />
+<b>Question 4</b>: <tt>medium</tt> neural net, <tt>checkerboard</tt> dataset
+</p><p><b>Question 5</b>: <tt>large</tt> neural net, <tt>checkerboard</tt> dataset
+</p>
+<a name="Questions_6-9:_Identifying_parameters"></a><h4> <span class="mw-headline"> Questions 6-9: Identifying parameters </span></h4>
+<p>Suppose that after training for 200 iterations, the neural net heatmap looks like this:
+</p><p><a href="/wiki/index.php?title=Image:Lab6-checkerboard-stuck.png" class="image" title="Image:Lab6-checkerboard-stuck.png"><img alt="Image:Lab6-checkerboard-stuck.png" src="/wiki/images/Lab6-checkerboard-stuck.png" width="640" height="480" border="0" /></a>
+</p><p><b>Question 6</b>: What is the training resolution?  (Fill in ANSWER_6 with an int.)
+</p><p><b>Question 7</b>: Of the six datasets, which one is the neural net probably being trained on?  (Fill in ANSWER_7 with a string.)
+</p><p><b>Question 8</b>: Which neural net could be producing the heatmap?  (Fill in ANSWER_8 with a list of one or more strings, choosing from 'small', 'medium', and 'large.  For example: ['small', 'large'])
+</p><p><b>Question 9</b>: What is likely the state of the simulation?  (Fill in ANSWER_9 with a one-letter string representing the one best answer, e.g. 'A'.)
+</p>
+<dl><dd>A. Training is complete, and the data is fully classified.
+</dd><dd>B. Training is stuck at a local maximum.
+</dd><dd>C. The neural net is overfitting to the data.
+</dd><dd>D. The neural net is classifying three classes of points.
+</dd></dl>
+<a name="Questions_10-12:_Conceptual_Questions"></a><h4> <span class="mw-headline"> Questions 10-12: Conceptual Questions </span></h4>
+<p><b>Question 10</b>: Why does the <tt>diagonal</tt> dataset generally take less iterations to train than the <tt>checkerboard</tt> dataset?  (Fill in ANSWER_10 with a letter representing the one best answer.)
+</p>
+<dl><dd>A. Diagonal lines are easier for neural nets to draw than horizontal or vertical lines.
+</dd><dd>B. The neural nets tended to overfit to the checkerboard data more than to the diagonal data.
+</dd><dd>C. The neural nets tended to underfit to the checkerboard data more than to the diagonal data.
+</dd><dd>D. It requires fewer lines to separate the diagonal data than the checkerboard data.
+</dd><dd>E. The diagonal data is more constrained than the checkerboard data.
+</dd></dl>
+<p><b>Question 11</b>: The large neural net generally requires less iterations to train than the small or medium neural nets.  What are some reasons why it might <i>not</i> be the best choice for these datasets?  (Fill in ANSWER_11 with a list of one-letter strings, representing all answers that apply, e.g. ['A', 'B', 'C'].)
+</p>
+<dl><dd>A. It might overfit the data because there are too many parameters.
+</dd><dd>B. It might underfit the data because it spends too few iterations training.
+</dd><dd>C. It takes more time to compute each iteration.
+</dd><dd>D. Because there are more parameters, it's more likely to get stuck on a local maximum.
+</dd></dl>
+<p><b>Question 12</b>: You may have noticed that the neural net often either converged on a solution quickly, or got stuck with a partial solution early on and had trouble escaping from the local maximum.  For example, consider this common result when attempting to train on the <tt>stripe</tt> dataset:
+</p><p><a href="/wiki/index.php?title=Image:Lab6-stripe-stuck.png" class="image" title="Image:Lab6-stripe-stuck.png"><img alt="Image:Lab6-stripe-stuck.png" src="/wiki/images/Lab6-stripe-stuck.png" width="640" height="480" border="0" /></a>
+</p><p>Suppose you're training an <i>any</i> neural net on an <i>any</i> dataset, and it just got stuck at a local maximum.  Which of the following changes could reasonably help it to not get stuck the next time?  (Fill in ANSWER_12 with a list of one-letter strings, representing all answers that apply, e.g. ['A', 'B', 'C'].)
+</p>
+<dl><dd>A. Restart training with different randomly initialized weights.
+</dd><dd>B. Re-train multiple times using the same initial weights.
+</dd><dd>C. Use the current weights as the initial weights, but restart training.
+</dd><dd>D. Use less neurons.
+</dd><dd>E. Use more neurons.
+</dd></dl>
+<a name="If_you_want_to_do_more..."></a><h3> <span class="mw-headline"> If you want to do more... </span></h3>
+<p>You can continue experimenting with different combinations of neural nets, datasets, and resolutions.  As inspiration, here's a really nice heatmap produced by training the <tt>medium</tt> neural net on the <tt>letterL</tt> dataset:
+</p><p><a href="/wiki/index.php?title=Image:Lab6-letterL.png" class="image" title="Image:Lab6-letterL.png"><img alt="Image:Lab6-letterL.png" src="/wiki/images/Lab6-letterL.png" width="908" height="601" border="0" /></a>
+</p><p>As a side note, the writers of training.py found that the medium neural net trained on <tt>moat</tt> often got stuck in local maxima, but occasionally slowly converged and terminated successfully after over 300 iterations and more than an hour.  The medium neural net tended to convert relatively reliably and quickly with any of the other datasets.
+</p><p>You're also welcome to add your own datasets or neural net architectures, following the examples found in training.py. If you do something cool, we'd love to see it! Feel free to send your code and/or results to 6.034-2018-staff@mit.edu (ideally with some sort of documentation). Your code could even end up in a future version of this lab! (With your permission, of course.)
+</p>
+<a name="Exploring_the_playground"></a><h3> <span class="mw-headline"> Exploring the playground </span></h3>
+<p>If you'd like to play around with a neural net in your browser, you can do so at <a href="http://playground.tensorflow.org/" class="external text" title="http://playground.tensorflow.org/" rel="nofollow">the TensorFlow playground</a>. This web-based neural net visualization offers more customization than we've provided in lab 6, including access to another threshold function (tanh), the ability to batch training points together, and the option to introduce noise into your data.
+</p>
+<a name="API"></a><h2> <span class="mw-headline"> API </span></h2>
+<p>Remember, a very simple artificial neural network (with just one neuron) might look like this: 
+</p><p><a href="/wiki/index.php?title=Image:Lab6_SimpleNeuron.png" class="image" title="Image:Lab6_SimpleNeuron.png"><img alt="Image:Lab6_SimpleNeuron.png" src="/wiki/images/Lab6_SimpleNeuron.png" width="608" height="340" border="0" /></a>
+</p><p>Each input (In<sub>i</sub>) is multiplied by a constant <i>weight</i> (w<sub>i</sub>); these products are then summed together (In<sub>1</sub>*w<sub>1</sub> + ... + In<sub>n</sub>*w<sub>n</sub>)and put through a <i>threshold function</i> (T) which evaluates the result (which typically ranges from 0 to 1) based on the value of the input.
+</p><p>The file <tt>neural_net_api.py</tt> defines the <tt>NeuralNet</tt> and <tt>Wire</tt> classes, described below.
+</p>
+<a name="NeuralNet"></a><h3> <span class="mw-headline"> NeuralNet </span></h3>
+<p>A neural net is represented as a directed graph defined by a set of edges. In particular, the topology of the neural net is enforced by the edges, each of which defines the placement of the nodes and neurons.
+</p><p>In our case, each <i>edge</i> of a neural net is a <a href="#Wire" title=""><tt>Wire</tt> object</a>. Each <i>node</i> of a neural net is either an <i>input</i> or a <i>neuron</i>.
+</p>
+<ul><li> An <b>input</b> node represents a value that is fed into the input layer of the neural net (note the distinction between an <i>input</i> and an <i>input layer neuron</i>). An input is either represented by
+<ul><li> a string denoting its variable name (e.g. <tt>"x"</tt> represents the variable <i>x</i>), if the input is a variable input, <i>or</i>
+</li><li> a raw number denoting its constant value (e.g. <tt>2.5</tt> represents the constant input 2.5), if the input is a constant input.
+</li></ul>
+</li><li> A <b>neuron</b> node, conceptually, takes in values via wires and amalgamates them into an output. A neuron is represented as a string denoting its name, e.g. <tt>"N1"</tt> or <tt>"AND-neuron"</tt>. Note that these strings have no semantic meaning or association to the neuron's function or position in the neural net; the strings are only used as unique identifiers so that <tt>Wire</tt> objects (edges) know which neurons they are connected to.
+</li></ul>
+<p>As a consequence of how <tt>Wire</tt> objects store start and end nodes, <i>no variable <b>input</b> node may have the same name as a <b>neuron</b> node</i>.
+</p><p>A <tt>NeuralNet</tt> instance has two attributes:
+</p>
+<dl><dt><tt>inputs</tt>
+</dt><dd>A list of named <b>input</b> nodes (including both constant inputs and variable inputs) to the network.
+</dd></dl>
+<dl><dt><tt>neurons</tt>
+</dt><dd>A list of named <b>neuron</b> nodes in the network.
+</dd></dl>
+<p>In this lab, input values for <tt>non-constant</tt> inputs are supplied to neural nets in the form of a dictionary <tt>input_values</tt> that associates each named variable input with an input value.
+</p><p><br />
+You can retrieve particular nodes (neurons or inputs) in a network:
+</p>
+<dl><dt><tt>get_incoming_neighbors(node)
+</dt><dd>Returns a list of the nodes which are connected as inputs to &lt;tt&gt;node</tt>.
+</dd></dl>
+<dl><dt><tt>get_outgoing_neighbors(node)</tt>
+</dt><dd>Returns a list of the nodes to which <tt>node</tt> sends its output.
+</dd></dl>
+<dl><dt><tt>get_output_neuron()</tt>
+</dt><dd>Returns the one output neuron of the network, which is the final neuron that computes a response. <b>In this lab, each neural net has exactly one output neuron.</b>
+</dd></dl>
+<dl><dt><tt>topological_sort()</tt>
+</dt><dd>Returns a sorted list of all the neurons in the network. The list is "topologically" sorted, which means that each neuron appears in the list after all the neurons that provide its inputs. Thus, the input layer neurons are first, the output neuron is last, etc.
+</dd></dl>
+<p><br />
+You can also retrieve the various wires (edges) of a neural net:
+</p>
+<dl><dt><tt>get_wires(startNode=None, endNode=None)</tt>
+</dt><dd>Returns a list of all the wires in the network. If <tt>startNode</tt> or <tt>endNode</tt> are provided, returns only wires that start/end at the particular nodes.
+</dd></dl>
+<p><br />
+Finally, you can query specific parts of the network:
+</p>
+<dl><dt><tt>is_output_neuron(neuron)</tt>
+</dt><dd>Returns <tt>True</tt> if the neuron is the final output neuron in the network, otherwise <tt>False</tt>.
+</dd></dl>
+<dl><dt><tt>is_connected(startNode, endNode)</tt>
+</dt><dd>Returns <tt>True</tt> if there is a wire from <tt>startNode</tt> to <tt>endNode</tt> in the network, otherwise <tt>False</tt>
+</dd></dl>
+<p><br />
+</p>
+<a name="Wire"></a><h3> <span class="mw-headline"> Wire </span></h3>
+<p>A <tt>Wire</tt> is represented as a weighted, directed edge in a graph.  A wire can connect an input to a neuron or a neuron to another neuron. A <tt>Wire</tt>'s attributes are:
+</p>
+<dl><dt><tt>startNode</tt>
+</dt><dd>The input or neuron at which the wire starts. Recall that an input can be a string (e.g. <tt>"x"</tt>) or a number (e.g. <tt>2.5</tt>).
+</dd></dl>
+<dl><dt><tt>endNode</tt>
+</dt><dd>The the neuron at which the wire ends.
+</dd></dl>
+<p><br />
+In addition, one can access and modify a <tt>Wire</tt>'s weight:
+</p>
+<dl><dt><tt>get_weight()</tt>
+</dt><dd>Returns the weight of the wire.
+</dd></dl>
+<dl><dt><tt>set_weight(new_weight)</tt>
+</dt><dd>Sets the weight of the wire and returns the new weight.
+</dd></dl>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 281/1000000
+Post-expand include size: 1692/2097152 bytes
+Template argument size: 28/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1447-0!1!0!!en!2!edit=0 and timestamp 20200506162945 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_6">https://ai6034.mit.edu/wiki/index.php?title=Lab_6</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_6" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_6&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_6&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_6&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_6" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_6" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_6" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_6&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_6&amp;oldid=7876" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 20 October 2019, at 15:29.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.152 secs. --></body></html>

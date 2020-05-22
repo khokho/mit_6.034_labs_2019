@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 8,Lab 5: Identification Trees" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 8 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_8";
+var wgTitle = "Lab 8";
+var wgAction = "view";
+var wgArticleId = "1459";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7978";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_8">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 8</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#The_world_is_an_uncertain_place"><span class="tocnumber">1</span> <span class="toctext">The world is an uncertain place</span></a></li>
+<li class="toclevel-1"><a href="#Bayesian_Networks_encode_independence_assumptions"><span class="tocnumber">2</span> <span class="toctext">Bayesian Networks encode independence assumptions</span></a></li>
+<li class="toclevel-1"><a href="#Part_1:_Ancestors.2C_descendants.2C_and_non-descendants"><span class="tocnumber">3</span> <span class="toctext">Part 1: Ancestors, descendants, and non-descendants</span></a></li>
+<li class="toclevel-1"><a href="#Part_2:_Probability"><span class="tocnumber">4</span> <span class="toctext">Part 2: Probability</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Simplifying_probability_expressions"><span class="tocnumber">4.1</span> <span class="toctext">Simplifying probability expressions</span></a></li>
+<li class="toclevel-2"><a href="#Looking_up_probabilities_in_a_Bayes_net"><span class="tocnumber">4.2</span> <span class="toctext">Looking up probabilities in a Bayes net</span></a></li>
+<li class="toclevel-2"><a href="#Computing_probabilities"><span class="tocnumber">4.3</span> <span class="toctext">Computing probabilities</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Joint_probability"><span class="tocnumber">4.3.1</span> <span class="toctext">Joint probability</span></a></li>
+<li class="toclevel-3"><a href="#Marginal_probability"><span class="tocnumber">4.3.2</span> <span class="toctext">Marginal probability</span></a></li>
+<li class="toclevel-3"><a href="#Conditional_probability"><span class="tocnumber">4.3.3</span> <span class="toctext">Conditional probability</span></a></li>
+<li class="toclevel-3"><a href="#Tying_it_all_together"><span class="tocnumber">4.3.4</span> <span class="toctext">Tying it all together</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_3:_Counting_Parameters"><span class="tocnumber">5</span> <span class="toctext">Part 3: Counting Parameters</span></a></li>
+<li class="toclevel-1"><a href="#Part_4:_Independence"><span class="tocnumber">6</span> <span class="toctext">Part 4: Independence</span></a></li>
+<li class="toclevel-1"><a href="#Lab_8_API"><span class="tocnumber">7</span> <span class="toctext">Lab 8 API</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Getting_information_from_a_BayesNet"><span class="tocnumber">7.1</span> <span class="toctext">Getting information from a BayesNet</span></a></li>
+<li class="toclevel-2"><a href="#Iterating_over_a_BayesNet"><span class="tocnumber">7.2</span> <span class="toctext">Iterating over a BayesNet</span></a></li>
+<li class="toclevel-2"><a href="#Creating_or_modifying_a_BayesNet"><span class="tocnumber">7.3</span> <span class="toctext">Creating or modifying a BayesNet</span></a></li>
+<li class="toclevel-2"><a href="#Helper_functions"><span class="tocnumber">7.4</span> <span class="toctext">Helper functions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">8</span> <span class="toctext">Survey</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Wednesday, November 27 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab8</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab8</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab8/lab8.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab8/lab8.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab8/lab8.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab8/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab8/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab8/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab8.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab8 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="The_world_is_an_uncertain_place"></a><h2> <span class="mw-headline"> The world is an uncertain place </span></h2>
+<p>So far in 6.034, we have discussed various machine learning methods that are used to classify data in different ways. Such methods have included k-nearest neighbors, support vector machines, and neural networks. These machine learning algorithms train on and predict classifications for data points that have definitive features, such as "height", "likes-garlic", or more mathematically abstract features like numbers <i>x</i> and <i>y</i>.
+</p><p>Unfortunately, the world is not so cut-and-dried. Often, we deal with features that may exist, values that fall somewhere within a distribution, or events that happen with some likelihood. As such, in this lab, we will be exploring the world of probability as well as Bayesian networks which encode certain assumptions in probability.
+</p>
+<a name="Bayesian_Networks_encode_independence_assumptions"></a><h2> <span class="mw-headline"> Bayesian Networks encode independence assumptions </span></h2>
+<p>As described in lecture and recitation, events might be <i>marginally</i> or <i>conditionally</i> independent.
+</p>
+<ul><li> <i>A</i> and <i>B</i> are said to be <i>marginally independent</i> when 
+</li></ul>
+<div class="center"><div class="floatnone"><span><a href="/wiki/index.php?title=Image:Lab8-marginal-independence.gif" class="image" title="Lab8-marginal-independence.gif"><img alt="" src="/wiki/images/Lab8-marginal-independence.gif" width="229" height="35" border="0" /></a></span></div></div>
+<ul><li> <i>A</i> is said to be <i>conditionally independent of B given C</i> when
+</li></ul>
+<div class="center"><div class="floatnone"><span><a href="/wiki/index.php?title=Image:Lab8-conditional-independence.gif" class="image" title="Lab8-conditional-independence.gif"><img alt="" src="/wiki/images/Lab8-conditional-independence.gif" width="293" height="35" border="0" /></a></span></div></div>
+<p>A Bayesian Network (also known as a Bayes Net) is a graphical model that encodes assumptions of conditional independence between certain events (variables). This assumption of conditional independence is often referred to as <b>Bayes net assumption.</b>
+</p>
+<dl><dt>The Bayes net assumption
+</dt><dd>Every variable in a Bayes net is conditionally independent of its non-descendants, given its parents.
+</dd></dl>
+<p>For example, consider the Bayes net shown below:
+</p>
+<div class="center"><div class="floatnone"><span><a href="/wiki/index.php?title=Image:Bayes-drawing.png" class="image" title="Bayes-drawing.png"><img alt="" src="/wiki/images/Bayes-drawing.png" width="253" height="373" border="0" /></a></span></div></div>
+<p>In this net, variable <i>D</i> has 
+</p>
+<ul><li> one parent (<i>C</i>), 
+</li><li> three ancestors (<i>A</i>, <i>B</i>, and <i>C</i>), 
+</li><li> two descendants (<i>F</i> and <i>G</i>), and
+</li><li> 4 non-descendants (<i>A</i>, <i>B</i>, <i>C</i>, and <i>E</i>).
+</li></ul>
+<p>Then, we could say (for example) that
+</p>
+<ul><li> <i>D</i> is conditionally independent of <i>A</i> given <i>C</i>: i.e. P(D|AC) = P(D|C)
+</li><li> <i>D</i> is conditionally independent of <i>E</i> given <i>C</i>: i.e. P(D|EC) = P(D|C)
+</li></ul>
+<p>Conceptually, we see that the arrow relation simply indicates dependency: each variable is only dependent on the value(s) of its parent(s).
+</p><p>As a more concrete example, the following Bayes net encodes assumptions about the features of a subject versus its classification as a vampire or not:
+</p>
+<div class="center"><div class="floatnone"><span><a href="/wiki/index.php?title=Image:Bayes-vampire.png" class="image" title="Bayes-vampire.png"><img alt="" src="/wiki/images/Bayes-vampire.png" width="618" height="212" border="0" /></a></span></div></div>
+<p>In particular, the links in this graph inform us of the following:
+</p>
+<dl><dd>Every feature (accent, eats-garlic, and complexion) is conditionally independent of every other feature, <b>given the classification</b> as a vampire or not.
+</dd></dl>
+<p>In a world with vampires, it would be crazy to claim that the individual features are independent: after all, if someone is a vampire, they are more likely to have particular traits. However, <b>given that we know</b> whether or not someone is a vampire, the features no longer depend on each other.
+</p>
+<a name="Part_1:_Ancestors.2C_descendants.2C_and_non-descendants"></a><h2> <span class="mw-headline"> Part 1: Ancestors, descendants, and non-descendants </span></h2>
+<p>As warm up for this lab, you will now implement some basic functions that will help us throughout the remainder of the lab. As usual, we have supplied an API for lab 8 below, which gives you access to a lot of administrative functions for manipulating and interacting with Bayes nets, as well as a few other helper functions. 
+</p><p>First, implement a function that takes in <tt>net</tt> (a <tt>BayesNet</tt> object) and <tt>var</tt> (a variable, as a string), and returns a set containing the <b>ancestors</b> of <tt>var</tt> in the network. This set should include the variable's parents, its parents' parents, etc.
+</p>
+<pre>def get_ancestors(<tt>net</tt>, <tt>var</tt>):
+</pre>
+<p>Next, implement a function that returns a set containing the <b>descendants</b> of the variable in the network. This set should include the variable's children, its children's children, etc.
+</p>
+<pre>def get_descendants(<tt>net</tt>, <tt>var</tt>):
+</pre>
+<p>Finally, implement a function that returns a set containing the <b>non-descendants</b> of the variable.  Note that a variable is neither a descendant nor a non-descendant of itself.
+</p>
+<pre>def get_nondescendants(net, var):
+</pre>
+<a name="Part_2:_Probability"></a><h2> <span class="mw-headline"> Part 2: Probability </span></h2>
+<p>As a brief reminder, recall that there are <a href="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" class="external text" title="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" rel="nofollow">three basic types of probabilities</a>. Suppose our universe consists of five variables, <i>A</i>, <i>B</i>, <i>C</i>, <i>D</i>, and <i>E</i>. Then, the three types of probability associated with this universe are:
+</p>
+<ul><li> <b>Joint</b> probability: Likelihood of a completely specified state of events, e.g. P(ABCDE)
+</li><li> <b>Marginal</b> probability: Likelihood of an incompletely specified state of events, e.g. P(ACD) or P(E)
+</li><li> <b>Conditional</b> probability: Likelihood of an event given some known information, e.g. P(A|C) or P(DE|AB)
+</li></ul>
+<p>When discussing probability, the <i>hypothesis</i> is the event or set of events whose likelihood we are interested in evaluating, and the <i>givens</i> are the event or events upon which we're conditioning the hypothesis. In other words, 
+</p>
+<ul><li> for a joint or marginal probability, we are interested in P(<i>hypothesis</i>)
+</li><li> for a conditional probability, we are interested in P(<i>hypothesis</i> | <i>givens</i>)
+</li></ul>
+<p>In this lab, hypotheses and givens are expressed as dicts assigning variables to
+values. For example, <i>P(A=False | B=True, C=False)</i> is represented as
+the two dicts:
+</p>
+<pre>hypothesis = {'A': False}
+givens = {'B': True, 'C': False}
+</pre>
+<p>The <a href="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" class="external text" title="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" rel="nofollow">probability flowchart</a> may be useful as a reference for manipulating probabilities.
+</p>
+<a name="Simplifying_probability_expressions"></a><h3> <span class="mw-headline"> Simplifying probability expressions </span></h3>
+<p>Before we start calculating probabilities, write a helper function that simplifies a probability expression using the <a href="#Bayesian_Networks_encode_independence_assumptions" title=""> independence assumption encoded in the Bayes net</a>. This function will take in
+</p>
+<ul><li> <tt>net</tt>, a <tt>BayesNet</tt> object
+</li><li> <tt>var</tt>, a single Bayes net variable as a string
+</li><li> <tt>givens</tt>, a dictionary mapping variables to assigned values in the net
+</li></ul>
+<p>and it will return another dictionary which is the simplified version of <tt>givens</tt> as allowed by the Bayes net assumption.
+</p>
+<pre>def simplify_givens(net, var, givens):
+</pre>
+<p>In other words,
+</p>
+<ul><li> If all parents of <tt>var</tt> are given, <i>and</i> no descendants of <tt>var</tt> are given, <tt>simplify_givens</tt> should return a new dictionary of givens with <tt>var</tt>'s non-descendants (except parents) removed. 
+</li><li> Otherwise, if not all the parents of <tt>var</tt> are given, or if the givens include one or more descendants of <tt>var</tt>, the function should simply return the original givens.
+</li></ul>
+<p>In either case, the function should <i>not</i> modify the original givens.  
+</p><p>Hint: The <tt>set</tt> method <tt>.issubset</tt> may be useful here.
+</p>
+<a name="Looking_up_probabilities_in_a_Bayes_net"></a><h3> <span class="mw-headline"> Looking up probabilities in a Bayes net </span></h3>
+<p>Now, we will implement a function that looks up probabilities in the net's conditional probability tables. This function takes in three arguments:
+</p>
+<ul><li> <tt>net</tt>, a <tt>BayesNet</tt> object 
+</li><li> <tt>hypothesis</tt>, a dictionary mapping variables to values.
+</li><li> <tt>givens</tt>, a dictionary mapping variables to assigned values. If this argument is <tt>None</tt>, the probability to look up is not conditioned on anything.
+</li></ul>
+<pre>def probability_lookup(<tt>net</tt>, <tt>hypothesis</tt>, <tt>givens=None</tt>):
+</pre>
+<p>If the probability of the hypothesis variable can be looked up directly in the network's probability tables, or if its given variables can be simplified (with <tt>simplify_givens</tt>) to a form that can be looked up directly, return it. Otherwise, raise the exception <tt>LookupError</tt>.
+</p><p>Note that the function <tt>net.get_probability</tt> will raise a <tt>ValueError</tt> if the provided hypothesis contains multiple variables, or if the provided givens do not contain exactly the parents of the hypothesis' variable. You may want to use a try/except block to catch this error. We will handle multiple variable hypotheses in later functions.
+</p><p>(For a refresher on how to handle exceptions, see the <a href="/wiki/index.php?title=Lab_5:_Identification_Trees#Appendix:_How_to_handle_exceptions" title="Lab 5: Identification Trees">appendix in Lab 5</a>.)
+</p>
+<a name="Computing_probabilities"></a><h3> <span class="mw-headline"> Computing probabilities </span></h3>
+<p>Now we will implement functions that actually <i>compute</i> different types of probabilities. We will start by defining functions that can compute joint, marginal, and conditional probabilities; then we will generalize by implementing a single <tt>probability</tt> function.
+</p>
+<a name="Joint_probability"></a><h4> <span class="mw-headline"> Joint probability </span></h4>
+<p>Given <tt>net</tt> (a <tt>BayesNet</tt> object) and <tt>hypothesis</tt> (a dictionary mapping variables in the network to values), compute its joint probability:
+</p>
+<pre>def probability_joint(<tt>net</tt>, <tt>hypothesis</tt>):
+</pre>
+<p>For example to compute the joint probability P(A=True, B=False, C=False), one could call <tt>probability_joint(net, {"A": True, "B": False, "C": False})</tt>.
+</p><p>To compute the joint probability for a Bayes net, you can use the <a href="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" class="external text" title="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" rel="nofollow">chain rule</a> to split up the probability into a product of conditional probability values produced by <tt>probability_lookup</tt>. Hint: We can use the Bayes net Assumption to our advantage. When we expand using the chain rule, how can we order the variables to ensure that we can use <tt>probability_lookup</tt> for each term?
+</p><p>You may assume that the hypothesis represents a valid joint probability (that is, contains every variable in the Bayes net).
+</p>
+<a name="Marginal_probability"></a><h4> <span class="mw-headline"> Marginal probability </span></h4>
+<p>Recall that a marginal probability can be represented as a <a href="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" class="external text" title="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" rel="nofollow">sum of joint probabilities</a>. You should implement <tt>probability_marginal</tt> (which takes in the same arguments as <tt>probability_joint</tt>) to compute the marginal probability as a sum of joint probabilities produced by <tt>probability_joint</tt>:
+</p>
+<pre>def probability_marginal(<tt>net</tt>, <tt>hypothesis</tt>):
+</pre>
+<p>For example, if there are two variables in the system, P(A=True) = P(A=True, B=True) + P(A=True, B=False).
+</p><p>Hint 1: The <tt>BayesNet</tt> method <tt>net.combinations</tt> may be useful.
+</p><p>Hint 2: If you are not passing every test for this function, consider the order in which you are expanding using the chain rule.
+</p>
+<a name="Conditional_probability"></a><h4> <span class="mw-headline"> Conditional probability </span></h4>
+<p><i>Some</i> conditional probabilities can be looked up directly in the Bayes net using <tt>probability_lookup</tt>. The rest, however, can be computed as <a href="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" class="external text" title="http://web.mit.edu/jmn/www/6.034/probability-flowchart.pdf" rel="nofollow">ratios of marginal probabilities</a>. 
+</p><p>Implement <tt>probability_conditional</tt>, which takes in the same arguments as <tt>probability_marginal</tt> plus the addition of an optional <tt>givens</tt> dictionary mapping variables to values.
+</p>
+<pre>def probability_conditional(<tt>net</tt>, <tt>hypothesis</tt>, <tt>givens=None</tt>):
+</pre>
+<p>Note that if <tt>givens</tt> is <tt>None</tt>, the "conditional" probability is really just a marginal or joint probability.
+</p><p>Hint 1: To combine two dictionaries <tt>d1</tt> and <tt>d2</tt> to form a third dict <tt>d3</tt>, you can use <tt>d3 = dict(d1, **d2)</tt>. (But note that if a key exists in both <tt>d1</tt> and <tt>d2</tt>, the resulting dict <tt>d3</tt> will only include the key's value from <tt>d2</tt>.)
+</p><p>Hint 2: There are a few nuanced edge cases to consider for a conditional probability. For example, in general, what is P(A=True|A=False)?
+</p>
+<a name="Tying_it_all_together"></a><h4> <span class="mw-headline"> Tying it all together </span></h4>
+<p>Use all of the above types of probability to produce a function that can compute any probability expression in terms of the Bayes net parameters. This function takes in the same arguments as <tt>probability_conditional</tt>:
+</p>
+<pre>def probability(net, hypothesis, givens=None):
+</pre>
+<a name="Part_3:_Counting_Parameters"></a><h2> <span class="mw-headline"> Part 3: Counting Parameters </span></h2>
+<p>Encoded in every Bayes net is a set of independence assumptions for the variables contained within. In general, knowing information about variables allows us to make more informed choices when computing probabilities. In particular, with these independence assumptions, we are able to drastically decrease the amount of information we need to store while still retaining the ability to compute any joint probability within the net.
+</p><p>Implement a function that takes in a single argument <tt>net</tt> (a <tt>BayesNet</tt> object), and returns the number of parameters in the
+network: that is, the <i>minimum</i> number of entries that <i>must</i> be stored in the network's probability tables in order to fully define all joint probabilities. <b>Do not assume that the variables are boolean; any variable can take on an arbitrary number of values.</b>
+</p>
+<pre>def number_of_parameters(net):
+</pre>
+<p><b>Python hint</b>: The helper function <tt>product</tt>, defined in the API section, may be helpful here.
+</p><p><b>Conceptual hint</b>: Consider variable <i>C</i> from the <a href="#Bayesian_Networks_encode_independence_assumptions" title="">Bayes net above</a>. Its two parents are <i>A</i> and <i>B</i>. Suppose each variable has three values in its domain. Then, the conditional probability table for C would look like this:
+</p>
+<table cellpadding="5" border="1" cellspacing="0">
+
+<tr align="left" bgcolor="#eeeeee">
+<th> A </th><th> B </th><th> P(C=c1 | A,B) </th><th> P(C=c2 | A,B)
+</th></tr>
+<tr>
+<td> a1 </td><td> b1 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a1 </td><td> b2 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a1 </td><td> b3 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a2 </td><td> b1 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a2 </td><td> b2 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a2 </td><td> b3 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a3 </td><td> b1 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a3 </td><td> b2 </td><td> # </td><td> #
+</td></tr>
+<tr>
+<td> a3 </td><td> b3 </td><td> # </td><td> #
+</td></tr></table>
+<p><br />
+Questions to consider:
+</p>
+<ul><li> How many parameters (represented by "#") are in the table?  Why?
+</li><li> Why don't we need a column for P(C=c3 | A,B)?
+</li><li> How would this table change if...
+<ul><li> ...<i>A</i> were boolean?
+</li><li> ...<i>A</i> had 5 values instead of 3?
+</li><li> ...<i>C</i> had 5 values instead of 3?
+</li><li> ...<i>C</i> had only one parent?
+</li><li> ...<i>C</i> had a third parent, <i>D</i>?
+</li></ul>
+</li></ul>
+<p>If you're still having trouble with this section, we strongly recommend coming to office hours to discuss it with a TA, or other students!
+</p>
+<a name="Part_4:_Independence"></a><h2> <span class="mw-headline"> Part 4: Independence </span></h2>
+<p>Lastly, we will write two functions that check for variable independence. 
+</p><p>The first such function that you should implement is <tt>is_independent</tt>, which checks if two variables are <i>numerically</i> independent. This function takes in four arguments,
+</p>
+<ul><li> <tt>net</tt>, a <tt>BayesNet</tt> object
+</li><li> <tt>var1</tt>, a variable in the Bayes net
+</li><li> <tt>var2</tt>, a variable in the Bayes net
+</li><li> <tt>givens</tt>, a dictionary mapping variables to values; possibly <tt>None</tt>
+</li></ul>
+<p>returning <tt>True</tt> if <tt>var1</tt> and <tt>var2</tt> are independent.
+</p>
+<pre>def is_independent(<tt>net</tt>, <tt>var1</tt>, <tt>var2</tt>, <tt>givens=None</tt>):
+</pre>
+<p>If <tt>givens</tt> is <tt>None</tt>, this function checks if <tt>var1</tt> and <tt>var2</tt> are marginally independent. Otherwise, this function checks if <tt>var1</tt> and <tt>var2</tt> are conditionally independent given <tt>givens</tt>.
+</p><p>Hint: The helper function <tt>approx_equal</tt> may be useful for comparing probabilities.
+</p><p>Recall that variables can be independent either because of the topology of the network (structural independence), or because of their conditional probability table entries (numerical independence). In general, to determine variable independence, it is sufficient to check only numerical independence, because variables that are structurally independent are guaranteed to also be numerically independent. In other words, you can implement this function by computing and comparing probabilities, without considering d-separation.
+</p>
+<hr />
+<p>Now, implement a function that checks for <i>structural</i> independence. This function takes in the same arguments as <tt>is_independent</tt>, and has the same return type.
+</p>
+<pre>def is_structurally_independent(net, var1, var2, givens=None):
+</pre>
+<p>You should use <a href="http://web.mit.edu/jmn/www/6.034/d-separation.pdf" class="external text" title="http://web.mit.edu/jmn/www/6.034/d-separation.pdf" rel="nofollow">d-separation</a> to determine whether <tt>var1</tt> and <tt>var2</tt> are independent, based solely on the structure of the Bayes net. This function should <i>not</i> consider numerical independence.
+</p>
+<a name="Lab_8_API"></a><h2> <span class="mw-headline"> Lab 8 API </span></h2>
+<p>As usual, we have supplied an API for lab 8, which gives you access to a lot of administrative functions for manipulating and interacting with Bayes nets, as well as a few other helper functions.
+</p>
+<a name="Getting_information_from_a_BayesNet"></a><h3> <span class="mw-headline"> Getting information from a <tt>BayesNet</tt> </span></h3>
+<p>The class <tt>BayesNet</tt> defines fields and methods for interacting with a Bayes network. To get some information from a <tt>BayesNet</tt> object, we supply the following methods:
+</p>
+<dl><dt><tt>get_variables()</tt>
+</dt><dd>Returns a list of all variables in the Bayes net.
+</dd><dt><tt>get_parents(var)</tt>
+</dt><dd>Returns the set of variables that are the parents of <tt>var</tt>.
+</dd><dt><tt>get_children(var)</tt>
+</dt><dd>Returns the set of variables that are the children of <tt>var</tt>.
+</dd><dt><tt>get_domain(var)</tt>
+</dt><dd>Returns the domain of the variable. For example, if the variable is boolean, the function will return <tt>(False, True)</tt>.
+</dd><dt><tt>is_neighbor(var1, var2)</tt>
+</dt><dd>Returns <tt>True</tt> if <tt>var1</tt> and <tt>var2</tt> are directly connected by an edge in the Bayes net, otherwise returns <tt>False</tt>. In other words, returns <tt>True</tt> exactly when <tt>var1</tt> is a parent of <tt>var2</tt> or <tt>var2</tt> is a parent of <tt>var1</tt>.
+</dd><dt><tt>find_path(start_var, goal_var)</tt>
+</dt><dd>Performs breadth-first search (BFS) to find a path from <tt>start_var</tt> to <tt>goal_var</tt>.  Returns path as a list of nodes (variables), or <tt>None</tt> if no path was found.
+</dd><dt><tt>get_probability(hypothesis, parents_vals=None, infer_missing=True)</tt>
+</dt><dd>Given <tt>hypothesis</tt> (a singleton dictionary mapping a variable to its value) and <tt>parents_vals</tt> (a dictionary mapping all of the hypothesis variable's parents to values), looks up and returns a probability in the network's conditional probability tables. If <tt>infer_missing</tt> is <tt>True</tt>, the function will try to infer missing entries in the table using the fact that certain probabilities must sum to one.
+</dd><dd>Requires that <tt>hypothesis</tt> has exactly one variable and that <tt>parents_vals</tt>'s keys are exactly the parents of the hypothesis variable; if either condition isn't met, raises a <tt>ValueError</tt>.
+</dd><dd>If the hypothesis variable does not exist in the network, or the value cannot be appropriately located in the conditional probability tables of the net, raises a <tt>LookupError</tt>.
+</dd><dd>Example: Suppose <tt>net</tt> is a <tt>BayesNet</tt> instance with three boolean variables <i>A</i>, <i>B</i>, and <i>C</i>, with <i>C</i> the child of <i>A and </i>B<i>. To look up P(C = True | A=False, B=False), you can call <tt>net.get_probability({"C"&nbsp;: True}, {"A": False, "B"&nbsp;: False})</tt>.  </i>
+</dd></dl>
+<p>To view the structure of a <tt>BayesNet</tt>, you can print its variables and connections directly using the <tt>print</tt> statement.
+</p><p>To print a conditional probability table:
+</p>
+<dl><dt><tt>CPT_print(var=None)</tt>
+</dt><dd>Pretty-prints the Bayes net's conditional probability table for <tt>var</tt> (a variable in the net). If <tt>var</tt> is not specified, prints every conditional probability table in the net.
+</dd></dl>
+<a name="Iterating_over_a_BayesNet"></a><h3> <span class="mw-headline"> Iterating over a <tt>BayesNet</tt> </span></h3>
+<dl><dt><tt>topological_sort()</tt>
+</dt><dd>Returns an ordered list of all variables such that each variable comes after all its parents. 
+</dd></dl>
+<dl><dt><tt>combinations(variables, constant_bindings=None)</tt>
+</dt><dd>Given <tt>variables</tt> (a list of variables), and <tt>constant_bindings</tt> (a dictionary mapping variables to constant values), returns a list of dictionaries, each of which is a possible binding of <tt>variables</tt>, mapping variables to values. Each binding dictionary also includes the entries in <tt>constant_bindings</tt>, if specified.
+</dd><dd>Example: If your Bayes net <tt>net</tt> has three boolean variables <i>A</i>, <i>B</i>, and <i>C</i>, calling <tt>net.combinations(['A','B','C'])</tt> will return a list of eight dictionaries indicating possible bindings for <i>A</i>, <i>B</i>, and <i>C</i>:
+<ul><li> <tt>{'A': False, 'B': False, 'C': False}</tt>
+</li><li> <tt>{'A': False, 'B': False, 'C': True}</tt>
+</li><li> <tt>{'A': False, 'B': True, 'C': False}</tt>
+</li><li> <tt>{'A': False, 'B': True, 'C': True}</tt>
+</li><li> <tt>{'A': True, 'B': False, 'C': False}</tt>
+</li><li> ...
+</li><li> <tt>{'A': True, 'B': True, 'C': True}</tt>
+</li></ul>
+</dd><dd>Example: Passing <tt>constant_bindings = {'D': False, 'E': True}</tt> as an argument in the above example would include the entries <tt>{'D': False, 'E': True}</tt> in every one of the above eight bindings. On the other hand, passing <tt>constant_bindings = {'C': True}</tt> as an argument would result in only four bindings, each including the entry <tt>{'C': True}</tt>.
+</dd></dl>
+<a name="Creating_or_modifying_a_BayesNet"></a><h3> <span class="mw-headline"> Creating or modifying a <tt>BayesNet</tt> </span></h3>
+<p>The following methods will allow you to create or modify a <tt>BayesNet</tt> instance.
+</p>
+<dl><dt><tt>subnet(subnet_variables)</tt>
+</dt><dd>Given <tt>subnet_variables</tt> (a list of variables in the net), returns a new <tt>BayesNet</tt> that is a subnet of this one. The new net includes the specified variables and any edges that exist between them in the original Bayes net. Ignores any specified variables that aren't in the original Bayes net.
+</dd><dt><tt>link(var_parent, var_child)</tt>
+</dt><dd>Adds a directed edge from <tt>var_parent</tt> to <tt>var_child</tt>, then returns the modified Bayes net. If the edge already exists, this function does nothing, and returns the Bayes net.
+</dd><dt><tt>make_bidirectional()</tt>
+</dt><dd>Adds edges so that all original edges effectively become bi-directional. Returns the modified Bayes net.
+</dd><dt><tt>remove_variable(var)</tt>
+</dt><dd>Removes <tt>var</tt> from the Bayes net and deletes all edges to and from <tt>var</tt>. If <tt>var</tt> is not a variable in the Bayes net, does nothing. Returns the Bayes net.
+</dd></dl>
+<a name="Helper_functions"></a><h3> <span class="mw-headline"> Helper functions </span></h3>
+<p>We also provide a couple of helper functions that you may use directly in your <tt>lab8.py</tt> file:
+</p>
+<dl><dt><tt>approx_equal(a, b, epsilon=0.0000000001)</tt>
+</dt><dd>Returns <tt>True</tt> if two numbers <tt>a</tt> and <tt>b</tt> are approximately equal (within some margin <tt>epsilon</tt>), otherwise <tt>False</tt>.
+</dd><dd>Example: <tt>approx_equal(0.4999999999999999, 0.5)</tt> --&gt; <tt>True</tt>
+</dd></dl>
+<dl><dt><tt>product(factors)</tt>
+</dt><dd>Computes the product of a list of numbers, similar to the Python built-in function <tt>sum</tt>.
+</dd><dd>Example: <tt>product([1,2,3,4])</tt> --&gt; <tt>24</tt>
+</dd></dl>
+<p>At this point, we strongly recommend reading the API again: there are several methods there that will likely be of use.
+</p><p>The following <tt>set</tt> methods may be useful:
+</p>
+<ul><li> <tt>set1.<b>update</b>(set2)</tt>: Update <tt>set1</tt> with the union of itself and <tt>set2</tt>. (This is basically the <tt>set</tt> equivalent of <tt>list.extend</tt>.)
+</li><li> <tt>set1.<b>intersection</b>(set2)</tt>: Return the intersection of <tt>set1</tt> and <tt>set2</tt> as a new set.
+</li></ul>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 247/1000000
+Post-expand include size: 1693/2097152 bytes
+Template argument size: 29/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1459-0!1!0!!en!2!edit=0 and timestamp 20200506162947 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_8">https://ai6034.mit.edu/wiki/index.php?title=Lab_8</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_8" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_8&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_8&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_8&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_8" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_8" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_8" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_8&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_8&amp;oldid=7978" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 10 November 2019, at 15:58.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.139 secs. --></body></html>

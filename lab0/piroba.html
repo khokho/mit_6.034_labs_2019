@@ -1,0 +1,557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 0" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 0 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_0";
+var wgTitle = "Lab 0";
+var wgAction = "view";
+var wgArticleId = "1510";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "6181";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_0">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 0</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<p><br />
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#6.034_requires_6.0001.2C_or_equivalent_experience.2C_as_a_prerequisite."><span class="tocnumber">1</span> <span class="toctext">6.034 requires 6.0001, or equivalent experience, as a prerequisite.</span></a></li>
+<li class="toclevel-1"><a href="#Installing_Python_3"><span class="tocnumber">2</span> <span class="toctext">Installing Python 3</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Not_all_versions_are_created_equal"><span class="tocnumber">2.1</span> <span class="toctext">Not all versions are created equal</span></a></li>
+<li class="toclevel-2"><a href="#Windows_users_beware"><span class="tocnumber">2.2</span> <span class="toctext">Windows users beware</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Getting_the_code"><span class="tocnumber">3</span> <span class="toctext">Getting the code</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Method_1:_Git_.28recommended.29"><span class="tocnumber">3.1</span> <span class="toctext">Method 1: Git (recommended)</span></a>
+<ul>
+<li class="toclevel-3"><a href="#If_you_are_working_on_Athena..."><span class="tocnumber">3.1.1</span> <span class="toctext">If you are working on Athena...</span></a></li>
+<li class="toclevel-3"><a href="#Why_use_Git.3F"><span class="tocnumber">3.1.2</span> <span class="toctext">Why use Git?</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Method_2:_Download_the_files_from_a_browser"><span class="tocnumber">3.2</span> <span class="toctext">Method 2: Download the files from a browser</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Writing_and_Running_Your_Code"><span class="tocnumber">4</span> <span class="toctext">Writing and Running Your Code</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Running_the_tester"><span class="tocnumber">4.1</span> <span class="toctext">Running the tester</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Using_IDLE"><span class="tocnumber">4.1.1</span> <span class="toctext">Using IDLE</span></a></li>
+<li class="toclevel-3"><a href="#Using_the_command_line"><span class="tocnumber">4.1.2</span> <span class="toctext">Using the command line</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Python_programming"><span class="tocnumber">5</span> <span class="toctext">Python programming</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Warm-up"><span class="tocnumber">5.1</span> <span class="toctext">Warm-up</span></a></li>
+<li class="toclevel-2"><a href="#Iteration"><span class="tocnumber">5.2</span> <span class="toctext">Iteration</span></a></li>
+<li class="toclevel-2"><a href="#Recursion"><span class="tocnumber">5.3</span> <span class="toctext">Recursion</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Expressions_as_nested_lists"><span class="tocnumber">5.3.1</span> <span class="toctext">Expressions as nested lists</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Built-in_data_types"><span class="tocnumber">5.4</span> <span class="toctext">Built-in data types</span></a></li>
+<li class="toclevel-2"><a href="#Functions_that_return_functions"><span class="tocnumber">5.5</span> <span class="toctext">Functions that return functions</span></a></li>
+<li class="toclevel-2"><a href="#Objects_and_APIs"><span class="tocnumber">5.6</span> <span class="toctext">Objects and APIs</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Warm-up_2"><span class="tocnumber">5.6.1</span> <span class="toctext">Warm-up</span></a></li>
+<li class="toclevel-3"><a href="#Copying_and_modifying_objects"><span class="tocnumber">5.6.2</span> <span class="toctext">Copying and modifying objects</span></a></li>
+<li class="toclevel-3"><a href="#Using_the_.22key.22_argument"><span class="tocnumber">5.6.3</span> <span class="toctext">Using the "key" argument</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#For_an_extra_challenge..."><span class="tocnumber">6</span> <span class="toctext">For an extra challenge...</span></a></li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">7</span> <span class="toctext">Survey</span></a></li>
+<li class="toclevel-1"><a href="#When_you.27re_done"><span class="tocnumber">8</span> <span class="toctext">When you're done</span></a></li>
+<li class="toclevel-1"><a href="#FAQ"><span class="tocnumber">9</span> <span class="toctext">FAQ</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Sunday, September 8 at 10:00pm</b>.
+</p>
+<a name="6.034_requires_6.0001.2C_or_equivalent_experience.2C_as_a_prerequisite."></a><h1> <span class="mw-headline"> 6.034 requires <a href="http://catalog.mit.edu/search/?P=6.0001" class="external text" title="http://catalog.mit.edu/search/?P=6.0001" rel="nofollow">6.0001</a>, or equivalent experience, as a prerequisite. </span></h1>
+<p>6.034 uses Python 3 for all of its labs, and over the course of the semester you will be writing significant pieces of Python code. You will be asked to understand the functioning of existing large systems, to add to or change such systems, and to interact with them through APIs.
+</p><p>While coding is not, in itself, a focus of this class, artificial intelligence is a subject full of subtleties. It is imperative that you are able to focus on the problems you are solving, rather than the mechanical code necessary to implement the solutions.
+</p>
+<hr />
+<p>If Python doesn't come back to you by the end of this diagnostic, or if you are still having trouble understanding some of the concepts, we strongly suggest that you avail yourself of the multitude of available Python resources. Such resources include:
+</p>
+<ul><li> Any of the many good Python 3 handbooks out there, such as:
+<ul><li> <a href="http://www.diveintopython3.net/" class="external text" title="http://www.diveintopython3.net/" rel="nofollow">Dive Into Python 3</a>, for experienced programmers
+</li><li> O'Reilly's <a href="http://proquest.safaribooksonline.com/book/programming/python/9781449355722" class="external text" title="http://proquest.safaribooksonline.com/book/programming/python/9781449355722" rel="nofollow">Learning Python</a> 
+</li><li> <a href="http://greenteapress.com/wp/think-python-2e/" class="external text" title="http://greenteapress.com/wp/think-python-2e/" rel="nofollow">Think Python</a>, for beginning programmers
+</li></ul>
+</li><li> The <a href="http://docs.python.org/" class="external text" title="http://docs.python.org/" rel="nofollow">standard Python documentation</a> (the Library Reference and the Language Reference are particularly useful, if you know what you're looking for)
+</li><li> The <a href="https://hkn.mit.edu/tutoring" class="external text" title="https://hkn.mit.edu/tutoring" rel="nofollow">Course 6/HKN tutoring program</a>
+</li></ul>
+<a name="Installing_Python_3"></a><h1> <span class="mw-headline"> Installing Python 3 </span></h1>
+<p>There are a number of versions of Python available. 6.034 uses <a href="https://stackoverflow.com/questions/17130975/python-vs-cpython#17130986" class="external text" title="https://stackoverflow.com/questions/17130975/python-vs-cpython#17130986" rel="nofollow">standard Python ("CPython")</a> from <a href="http://www.python.org/" class="external free" title="http://www.python.org/" rel="nofollow">http://www.python.org/</a>. If you are running Python on your own computer, you should download and install Python from <a href="http://www.python.org/download/" class="external free" title="http://www.python.org/download/" rel="nofollow">http://www.python.org/download/</a> if you do not already have it. All lab code uses Python 3.x, and we recommend using at least version 3.4, if possible. 
+</p><p><b>Please note that our code will NOT work with Python 2.</b>
+</p><p>On a Unix machine, you can see which version of Python 3 you have by typing the command <code>python3 --version</code>. Note that on Unix machines (including Athena machines), to use Python 3 you should use the command <code>python3</code>, as the <code>python</code> command defaults to Python 2.
+</p><p>If you are on a Windows machine and downloaded Python 3, you will probably have access to IDLE. To run a python file using IDLE, just open the file in IDLE and click <tt>Run &gt; Run Module</tt> or hit F5 on your keyboard.
+</p><p>If you are using an Athena machine, you might not have access to IDLE for Python 3 (command <tt>idle3</tt>). However, you can still edit Python files in a plain-text editor, and run them like this:
+</p>
+<pre>python3 filename.py
+</pre>
+<p>Note, you can use the <tt>idle3</tt> command with an Athena dialup connection (e.g. using SSH with the -X flag). <tt>idle3</tt> does not yet exist on Athena workstations.
+</p>
+<a name="Not_all_versions_are_created_equal"></a><h2> <span class="mw-headline"> Not all versions are created equal </span></h2>
+<p>If you have Python version 3.5.0 or 3.5.1, you should upgrade to 3.5.2+ (or any other version of Python 3, really). There is a <a href="https://bugs.python.org/issue26402" class="external text" title="https://bugs.python.org/issue26402" rel="nofollow">bug in the XMLRPC library</a> for versions 3.5.0 and 3.5.1 which will prevent you from communicating with your server.
+</p><p>If you are running Mac OS X and have Python 3.5 or 3.6, you may get the following error when attempting to submit your code to the server:
+</p>
+<pre>ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:749)
+</pre>
+<p>This may be because <a href="https://stackoverflow.com/questions/41691327/ssl-sslerror-ssl-certificate-verify-failed-certificate-verify-failed-ssl-c" class="external text" title="https://stackoverflow.com/questions/41691327/ssl-sslerror-ssl-certificate-verify-failed-certificate-verify-failed-ssl-c" rel="nofollow">your version of Python on Mac OS X is not using the system's certificate store</a>. Assuming you have Python 3.6, executing the following may remedy this issue:
+</p>
+<pre>sudo /Applications/Python\ 3.6/Install\ Certificates.command
+</pre>
+<a name="Windows_users_beware"></a><h2> <span class="mw-headline"> Windows users beware </span></h2>
+<p>If your computer is running Windows, and you are having trouble running Python from the command line or Git Bash, make sure that Python 3 is added to your <tt>PATH</tt> variable. We strongly suggest reading <a href="https://docs.python.org/3.3/using/windows.html" class="external text" title="https://docs.python.org/3.3/using/windows.html" rel="nofollow">this page</a>, especially sections 3.2 through 3.4.
+</p>
+<a name="Getting_the_code"></a><h1> <span class="mw-headline"> Getting the code </span></h1>
+<p>Before working on any lab, you will need to get the code:
+</p>
+<ul><li> You can use Git to clone the files from the Athena locker at <tt>/mit/6.034/www/labs/lab0/</tt> 
+</li><li> Or, download the code as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab0/lab0.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab0/lab0.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab0/lab0.zip</a>
+</li><li> Or, view the individual files: <a href="http://web.mit.edu/6.034/www/labs/lab0/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab0/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab0/</a>
+</li></ul>
+<p>See detailed instructions below.
+</p><p><br />
+</p>
+<a name="Method_1:_Git_.28recommended.29"></a><h2> <span class="mw-headline"> Method 1: Git (recommended) </span></h2>
+<p>On a command line, navigate to the folder in which you want to put all your 6.034 labs. Then, type this command to clone the lab0 code, replacing <tt>username</tt> with your Athena username:
+</p>
+<pre>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab0
+</pre>
+<p>It will ask for your Athena password.  After the files download, you will have a new directory called "lab0" containing the files for Lab 0.
+</p>
+<a name="If_you_are_working_on_Athena..."></a><h3> <span class="mw-headline"> If you are working on Athena... </span></h3>
+<p>...then you can instead use this command to clone directly from the Athena locker:
+</p>
+<pre>git clone /mit/6.034/www/labs/lab0
+</pre>
+<p>You can also SSH into <tt>athena.dialup.mit.edu</tt> to directly work on Athena from a different computer.
+</p>
+<a name="Why_use_Git.3F"></a><h3> <span class="mw-headline"> Why use Git? </span></h3>
+<p>Using Git has a couple advantages: 
+</p>
+<ul><li> Local version control: You can use Git to keep a local record of the changes you've made as you work on your lab, which makes it easy to revert to a previous implementation.  You can learn more about using Git <a href="https://dev.to/jmourtada/a-quick-introduction-to-git" class="external text" title="https://dev.to/jmourtada/a-quick-introduction-to-git" rel="nofollow">here</a> (good for getting started) or from the <a href="https://git-scm.com/doc" class="external text" title="https://git-scm.com/doc" rel="nofollow">official Git documentation</a>.  Using Git is not a requirement for 6.034, but you may find it helpful for tracking your files.
+</li><li> Easy updates: If we need to release an update to the lab code, you can run a simple "<tt>git pull</tt>" command to get the update instead of having to manually download the updated files.
+</li></ul>
+<a name="Method_2:_Download_the_files_from_a_browser"></a><h2> <span class="mw-headline"> Method 2: Download the files from a browser </span></h2>
+<p>Create a folder for the lab, then download this file and extract it: <a href="http://web.mit.edu/6.034/www/labs/lab0/lab0.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab0/lab0.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab0/lab0.zip</a>
+</p><p>You can also view or download individual files: <a href="http://web.mit.edu/6.034/www/labs/lab0/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab0/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab0/</a>
+</p><p><br />
+</p>
+<a name="Writing_and_Running_Your_Code"></a><h1> <span class="mw-headline"> Writing and Running Your Code </span></h1>
+<p>The main file of this lab is called <code>lab0.py</code>. This is where you will write all of your code. Open that file in IDLE or your preferred text editor.
+</p><p>The first items to fill in are multiple choice questions. The answers should be extremely easy. Many labs will begin with some simple multiple choice questions to make sure you're on the right track.
+</p><p>The remainder of the file contains several incomplete functions for you to fill in with your solutions. For each function, replace the line that says "<tt>raise NotImplementedError</tt>" with your own implementation for that function.
+</p><p>When you are ready to test some or all of your solutions, you can run the tester, explained below.
+</p>
+<a name="Running_the_tester"></a><h2> <span class="mw-headline"> Running the tester </span></h2>
+<p>Every lab comes with a file called <code>tester.py</code>. This file checks your answers to the lab. For problems that ask you to implement a function, the tester will test your function with several different inputs and ensure the outputs are correct. For multiple choice questions, the tester will tell you if your answers were right: yes, that means that you never need to submit wrong answers to multiple choice questions. 
+</p><p>The tester has two modes: "offline" or "local" mode (the default), and "online" or "submit" mode. The offline tester runs some basic, self-contained internal tests on your code. The online tester runs more tests, some of which may be randomly generated, and uploads your code to the 6.034 server for grading. 
+</p><p>To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your unique key.py file</a> and put it in either your lab0 directory or its parent directory. Note that the file must be named 'key.py'.
+</p><p>You can, of course, run the tester as many times as you'd like until your code passes all of the tests.
+</p>
+<a name="Using_IDLE"></a><h3> <span class="mw-headline"> Using IDLE </span></h3>
+<p>If you are using IDLE, or if you do not have easy access to a command line (as on Windows), IDLE can run the tester.
+</p><p>Open the <tt>tester.py</tt> file and run it using <tt>Run &gt; Run Module</tt> or hitting the F5 button on your keyboard.  This will run the local tests for you.
+</p>
+<a name="Using_the_command_line"></a><h3> <span class="mw-headline"> Using the command line </span></h3>
+<p>If you realize just how much emacs and/or the command line rock, then you can open your operating system's Terminal or Command Prompt, and <code>cd</code> to the directory containing the files for the diagnostic. Then, execute
+</p>
+<pre>python3 tester.py</pre>
+<p>to run the tester.
+</p>
+<a name="Python_programming"></a><h1> <span class="mw-headline"> Python programming </span></h1>
+<p>Now it's time to write some Python!
+</p>
+<a name="Warm-up"></a><h2> <span class="mw-headline"> Warm-up </span></h2>
+<p>Using Python's modulus operator, write a function <tt>is_even(x)</tt> that takes in a real number <tt>x</tt> and returns <tt>True</tt> if it's an even integer, and <tt>False</tt> otherwise. Be careful with negative and fractional inputs! For example, <tt>is_even(4) -&gt; True</tt> and <tt>is_even(-1) -&gt; False</tt>.
+</p>
+<pre>def is_even(x):
+</pre>
+<p>Write a function <tt>decrement(x)</tt> which takes in a real number <tt>x</tt> and decrements it by 1, unless the result would be less than 0, in which case it returns 0. For example, <tt>decrement(2) -&gt; 1</tt> and <tt>decrement(-1) -&gt; 0</tt>.
+</p>
+<pre>def decrement(x):
+</pre>
+<p>Write a function <tt>cube(x)</tt> that takes in a real number <tt>x</tt> and returns its cube. For example, <tt>cube(3) -&gt; 27</tt>. You should use the built-in exponentiation operator <tt>**</tt>, or use the Math module's <tt>math.pow()</tt> function. If you want to use <tt>math.pow()</tt>, you will first have to import the Math module by putting <tt>import math</tt> at the top of your Python file.
+</p>
+<pre>def cube(x):
+</pre>
+<a name="Iteration"></a><h2> <span class="mw-headline"> Iteration </span></h2>
+<p>A real number <tt>x</tt> is prime if it is an integer larger than 1, and if no positive integer besides 1 and <tt>x</tt> evenly divides it. The first few primes are 2, 3, 5, 7, ...
+</p><p>Using a <tt>for</tt> loop, write a function that returns <tt>True</tt> if its input is a prime number, and otherwise returns <tt>False</tt>.
+</p>
+<pre>def is_prime(x):
+</pre>
+<p>Write a function that takes a real number <tt>x</tt> and returns an ordered list (possibly empty) of all primes up to and including <tt>x</tt> (hint: you may want to utilize your <tt>is_prime</tt> function). Take care: the list of returned primes must be in order from least to greatest.
+</p>
+<pre>def primes_up_to(x):
+</pre>
+<a name="Recursion"></a><h2> <span class="mw-headline"> Recursion </span></h2>
+<p>The nth Fibonacci number, F<sub>n</sub>, is defined recursively as 
+</p>
+<dl><dd>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>
+</dd></dl>
+<p>starting from F<sub>1</sub> = F<sub>2</sub> = 1, so that the sequence starts: 1, 1, 2, 3, 5, 8, ...  
+</p><p>Using recursion, write a function that takes in a positive integer <tt>n</tt> and returns the <tt>n</tt>th Fibonacci number: 
+</p>
+<pre>def fibonacci(n):
+</pre>
+<p>We recommend writing your functions so that they raise nice clean errors instead of failing silently or messily when the input is invalid. For example, it would be nice if <tt>fibonacci</tt> rejected negative inputs right away; otherwise, you might loop forever. You can signal an error like this:
+</p>
+<pre>raise Exception("fibonacci: input must not be negative")
+</pre>
+<p>Or, better yet, you can signal a specific error type:
+</p>
+<pre>raise ValueError("fibonacci: input must not be negative")
+</pre>
+<p>Properly dealing with errors like this will help save you some angst in the future when you're trying to track down bugs.
+</p>
+<a name="Expressions_as_nested_lists"></a><h3> <span class="mw-headline"> Expressions as nested lists </span></h3>
+<p>Let's look at a more interesting application of recursion. 
+</p><p>One way to measure the complexity of a mathematical expression is to compute the "depth" of the expression when it is represented in prefix notation. Prefix notation (as opposed to infix notation) just means that the operator comes first, followed by all of its operands (arguments).  Although we won't be using prefix notation much in 6.034, you may encounter it in more advanced AI classes that use languages such as Lisp (Scheme, Clojure, etc) and PDDL.  Expressions represented in prefix notation can also be much easier to parse, which is why we will use it in this problem.
+</p><p>For example,
+</p>
+<dl><dd>x<sup>2</sup> + y<sup>2</sup> (infix notation)
+</dd></dl>
+<p>is equivalent to
+</p>
+<dl><dd><tt>['+', ['expt', 'x', 2], ['expt', 'y', 2]]</tt> (prefix notation, with <tt>'expt'</tt> representing exponentiation)
+</dd></dl>
+<p>Each operator can have one or more arguments. For example, the operator <tt>'+'</tt> can be used to sum many numbers, as in <tt>['+', 10, 20, 30, 40]</tt>.
+</p><p>For this problem, we will represent expressions in prefix form using Python lists. We define the <i>expression depth</i> of an expression recursively based on the number of nested operations:
+</p>
+<ul><li> The expression depth of a variable or number (such as <tt>'x'</tt> or <tt>3</tt>) is 0.
+</li><li> The expression depth of an operation depends on the expression depths of all of its children (arguments). In particular, it is one more than the <b>maximum</b> of the expression depths of its children.  If you think of the expression as a tree, the expression depth is the height of the tree.
+</li></ul>
+<p>Using recursion, write a function that finds the depth of an expression:
+</p>
+<pre>def expression_depth(expr):
+</pre>
+<p>For example:
+</p>
+<ul><li> <tt>expression_depth('x') -&gt; 0</tt>
+</li><li> <tt>expression_depth(['expt', 'x', 2]) -&gt; 1</tt>
+</li><li> <tt>expression_depth(['+', ['expt', 'x', 2], ['expt', 'y', 2]]) -&gt; 2</tt>
+</li><li> <tt>expression_depth(['/', ['expt', 'x', 5], ['expt', ['-', ['expt', 'x', 2], 1], ['+', 5, 2, 3, 'w', 4]]]) -&gt; 4</tt>
+</li></ul>
+<p>Note that you can use the built-in Python function <tt>isinstance</tt> to help determine whether a variable points to a list. <tt>isinstance</tt> takes two arguments: the variable to test, and the type (or tuple of types) to compare it to.  For example:
+</p>
+<code><pre>
+&gt;&gt;&gt; x = [1, 2, 3]
+&gt;&gt;&gt; y = &quot;hi!&quot;
+&gt;&gt;&gt; isinstance(x, list)
+True
+&gt;&gt;&gt; isinstance(y, list)
+False
+</pre></code>
+<a name="Built-in_data_types"></a><h2> <span class="mw-headline"> Built-in data types </span></h2>
+<p>Here, we're going to practice working with strings, sets, lists, and tuples, and using the Python keywords <tt>len</tt> and <tt>sorted</tt>.  If you're unfamiliar with any of these, you can learn more about them using the <tt>help</tt> command (e.g. <tt>help(len)</tt>) or by searching the documentation at <a href="https://wiki.python.org/moin/" class="external free" title="https://wiki.python.org/moin/" rel="nofollow">https://wiki.python.org/moin/</a>.
+</p><p>Write a function <tt>remove_from_string</tt> that takes in 1) a string to copy, and 2) a string of letters to be removed. The function should return a copy of the string with all instances of the given letters removed. For example, <tt>remove_from_string("6.034", "46") -&gt; ".03"</tt>.
+</p>
+<pre>def remove_from_string(string, letters):
+</pre>
+<p>Without using the keywords <tt>for</tt> or <tt>while</tt>, write a function <tt>compute_string_properties</tt> that takes in a string of lowercase letters and returns a tuple containing the following three elements:
+</p>
+<dl><dd>0. The length of the string (using <tt>len</tt>),
+</dd><dd>1. A list of all the characters in the string (including duplicates, if any), sorted in REVERSE alphabetical order (using <a href="https://wiki.python.org/moin/HowTo/Sorting#Ascending_and_Descending" class="external text" title="https://wiki.python.org/moin/HowTo/Sorting#Ascending_and_Descending" rel="nofollow"><tt>sorted</tt> with the <tt>reverse</tt> argument</a>),
+</dd><dd>2. And the number of distinct characters in the string (using a set)
+</dd></dl>
+<pre>def compute_string_properties(string):
+</pre>
+<p>For example:
+</p>
+<ul><li> <tt>compute_string_properties("hello") -&gt; (5, ['o', 'l', 'l', 'h', 'e'], 4)</tt>
+</li><li> <tt>compute_string_properties("zebrafishes") -&gt; (11, ['z', 's', 's', 'r', 'i', 'h', 'f', 'e', 'e', 'b', 'a'], 9)</tt>
+</li></ul>
+<p><br />
+Next, we're going to practice using a dictionary.
+</p><p>Write a function <tt>tally_letters</tt> that takes in a string of lowercase letters and returns a dictionary mapping each letter to the number of times it occurs in the string:
+</p>
+<pre>def tally_letters(string):
+</pre>
+<p>For example:
+</p>
+<ul><li> <tt>tally_letters("hello") -&gt; {'h': 1, 'e': 1, 'l': 2, 'o': 1}</tt>
+</li></ul>
+<p>If you want a challenge, you can try to write a one-line implementation of <tt>tally_letters</tt> using a <a href="https://docs.python.org/3.4/tutorial/datastructures.html#dictionaries" class="external text" title="https://docs.python.org/3.4/tutorial/datastructures.html#dictionaries" rel="nofollow">dictionary comprehension</a>.
+</p>
+<a name="Functions_that_return_functions"></a><h2> <span class="mw-headline"> Functions that return functions </span></h2>
+<p>In Python, a function can return any type of object: an int, a list, a user-defined object, ... or even another function!
+</p><p>By defining your function to be returned inside the main function <tt>create_multiplier_function</tt>, implement <tt>create_multiplier_function</tt> to take in a multiplier <tt>m</tt> (a number) and return a function that, when executed, multiples its input by <tt>m</tt>.
+</p>
+<pre>def create_multiplier_function(m):
+</pre>
+<p>For example, after you implement this, you should be able to do the following:
+</p>
+<pre>&gt;&gt;&gt; my_multiplier_fn = create_multiplier_function(5)  # define a function my_multiplier_fn that multiplies its input by 5
+&gt;&gt;&gt; my_multiplier_fn(3)
+15
+&gt;&gt;&gt; my_multiplier_fn(-10)
+-50
+</pre>
+<p>Next, define a function <tt>create_length_comparer_function</tt> which takes in a boolean <tt>check_equals</tt> (either <tt>True</tt> or <tt>False</tt>), and returns a function whose behavior depends on the value of <tt>check_equals</tt>:
+</p>
+<ul><li> If <tt>check_equals</tt> is <tt>True</tt>, the function returned should take in two lists and return <tt>True</tt> only if they are of <i>equal</i> length.
+</li><li> If <tt>check_equals</tt> is <tt>False</tt>, the function returned should take in two lists and return <tt>True</tt> only if they are of <i>different</i> lengths.
+</li></ul>
+<p>For example, <tt>create_length_comparer_function(True)([], [2]) -&gt; False</tt> whereas <tt>create_length_comparer_function(False)([], [2]) -&gt; True</tt>. Note how you can chain these function calls because (for example) <tt>create_length_comparer_function(True)</tt> itself <i>is a function that takes in two arguments</i>!
+</p>
+<pre>def create_length_comparer_function(check_true):
+</pre>
+<a name="Objects_and_APIs"></a><h2> <span class="mw-headline"> Objects and APIs </span></h2>
+<p>Many 6.034 labs include an API for a staff-defined object class.  The API is generally a section on the wiki that briefly describes the attributes and functions in the object class.  We provide the API as an abstraction so that you don't need to learn the implementation details.
+</p><p>Here's an example:
+</p><p><b>Point API</b>
+</p><p>A <tt>Point</tt> object represents a point in the 2D Cartesian plane. It has an X coordinate and a Y coordinate, each of which you can access and modify:
+</p>
+<ul><li> <tt><b>point</b>.getX()</tt>: returns current X value
+</li><li> <tt><b>point</b>.getY()</tt>: returns current Y value
+</li><li> <tt><b>point</b>.setX(x)</tt>: sets the X value to <tt>x</tt>, then returns the point
+</li><li> <tt><b>point</b>.setY(y)</tt>: sets the Y value to <tt>y</tt>, then returns the point
+</li></ul>
+<p>(where <tt><b>point</b></tt> is a <tt>Point</tt> instance)
+</p><p>You can also use the following (these are defined for most 6.034 object classes):
+</p>
+<ul><li> <tt><b>point</b>.copy()</tt>, to return a deep copy of the point (that is, a copy that has all the same attributes as the original point)
+</li><li> <tt>==</tt> , to check whether two points have the same coordinates
+</li><li> <tt>print</tt>, to print out a human-readable version of a <tt>Point</tt>
+</li></ul>
+<a name="Warm-up_2"></a><h3> <span class="mw-headline"> Warm-up </span></h3>
+<p>Write a function <tt>sum_of_coordinates</tt> that takes in a <tt>Point</tt> and returns the sum of the X and Y coordinates. For example, <tt>sum_of_coordinates(Point(2, 3)) -&gt; 5</tt>.
+</p>
+<pre>def sum_of_coordinates(point):
+</pre>
+<a name="Copying_and_modifying_objects"></a><h3> <span class="mw-headline"> Copying and modifying objects </span></h3>
+<p>In some 6.034 labs, you'll need to make copies of an object (such as a <tt>Point</tt>) and modify each copy separately.  Here, you'll implement a function <tt>get_neighbors</tt> that takes in a 2D point (represented as a <tt>Point</tt> object). <b>In the function, use the <tt>.copy()</tt> method on the input point</b> to create and return a list of the input point's four neighbors: the four points that neighbor the input point in the four coordinate directions. <b>Do not construct the <tt>Point</tt> objects manually.</b> By using the <tt>.copy()</tt> method, you can avoid modifying the original point or having to manually construct new points.
+</p>
+<pre>def get_neighbors(point):
+</pre>
+<p>For example:
+</p>
+<ul><li> <tt>get_neighbors(Point(7,20)) -&gt; [Point(6, 20), Point(8, 20), Point(7, 19), Point(7, 21)]</tt>
+</li></ul>
+<p>Note: In general, the order of elements in a Python list matters, but for this problem you may return the four neighbors in any order.
+</p><p><i>Debugging hint</i>: If your answer looks the same as the expected answer but the tests aren't passing, make sure that
+</p>
+<ul><li> you are using <tt>.copy()</tt> instead of constructing <tt>Point</tt>s manually
+</li><li> you aren't modifying the original point
+</li></ul>
+<p>The tester checks for these!
+</p>
+<a name="Using_the_.22key.22_argument"></a><h3> <span class="mw-headline"> Using the "<tt>key</tt>" argument </span></h3>
+<p>You've used <tt>sorted</tt>, and you're probably already familiar with using <tt>min</tt> and <tt>max</tt> to find the smallest or largest element of a list.  The <tt>key</tt> argument is a powerful tool for sorting objects based on a specific attribute (such as a point's Y coordinate) and finding the "smallest" or "largest" object based on a specific attribute.
+</p><p>The <tt>key</tt> argument takes a sorting function.  For example, you could use <tt>sorted</tt> with <tt>key</tt> to sort a list of tuples in ascending order by their second elements:
+</p>
+<pre>&gt;&gt;&gt; my_list = [(3, 100, 10000), (1, 999), (2, 50)]
+&gt;&gt;&gt; my_sorting_function = lambda tup: tup[1]  # [1] is the second element
+&gt;&gt;&gt; sorted(my_list, key=my_sorting_function)
+[(2, 50), (3, 100, 10000), (1, 999)]
+&gt;&gt;&gt; my_list
+[(3, 100, 10000), (1, 999), (2, 50)]  # unchanged
+</pre>
+<p>First, use <tt>sorted</tt> with the <tt>key</tt> argument to write a function that takes in a list of 2D points (represented as <tt>Point</tt> objects), then creates and returns a list of the points sorted in <i>decreasing</i> order based on their Y coordinates, without modifying the original list. You may assume that no two points have the same Y coordinate. (Try doing this without using the <tt>reversed</tt> argument.) 
+</p>
+<pre>def sort_points_by_Y(list_of_points):
+</pre>
+<p>Second, use <tt>max</tt> with the <tt>key</tt> argument to write a function that takes in a list of 2D points (represented as <tt>Point</tt> objects) and returns the point that is furthest to the right (that is, the point with the largest X coordinate), again without modifying the original list.  You may assume that no two points have the same X coordinate.  This can be done without sorting the list.
+</p>
+<pre>def furthest_right_point(list_of_points):
+</pre>
+<a name="For_an_extra_challenge..."></a><h1> <span class="mw-headline"> For an extra challenge... </span></h1>
+<p>If you want an extra challenge, try implementing each of the above functions using just one line of Python code!
+</p>
+<a name="Survey"></a><h1> <span class="mw-headline"> Survey </span></h1>
+<p>We are always working to improve the class, so most labs will have at least one survey question at the end to help us with this.
+</p><p>Please answer these questions at the bottom of your <tt>lab0.py</tt> file:
+</p>
+<ul><li> <tt>PROGRAMMING_EXPERIENCE</tt>: How much programming experience do you have, in any language?
+</li></ul>
+<dl><dd><dl><dd>A. No experience (never programmed before this lab)
+</dd><dd>B. Beginner (just started learning to program, e.g. took one programming class)
+</dd><dd>C. Intermediate (have written programs for a couple classes/projects)
+</dd><dd>D. Proficient (have been programming for multiple years, or wrote programs for many classes/projects)
+</dd><dd>E. Expert (could teach a class on programming, either in a specific language or in general)
+</dd></dl>
+</dd></dl>
+<ul><li> <tt>PYTHON_EXPERIENCE</tt>: How much experience do you have with Python?
+</li></ul>
+<dl><dd><dl><dd>A. No experience (never used Python before this lab)
+</dd><dd>B. Beginner (just started learning, e.g. took 6.0001)
+</dd><dd>C. Intermediate (have used Python in a couple classes/projects)
+</dd><dd>D. Proficient (have used Python for multiple years or in many classes/projects)
+</dd><dd>E. Expert (could teach a class on Python)
+</dd></dl>
+</dd></dl>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, with whom did you work on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<a name="When_you.27re_done"></a><h1> <span class="mw-headline"> When you're done </span></h1>
+<p>Remember to run both the local and online testers! For example, to run the online tester you might run something like this: 'python3 tester.py submit.' The online tester will automatically upload your code to the 6.034 server for grading and collection.  
+</p><p>Because the coding section of Lab 0 is purely for your benefit, the online tester will only run a few simple tests against your survey responses. In future labs, the online tests will also test the functions you write.
+</p>
+<a name="FAQ"></a><h1> <span class="mw-headline"> FAQ </span></h1>
+<p>It's quite possible that this lab -- or, in particular, the grader system -- will have issues that need to be fixed or things that need to be clarified.
+</p><p>If you have a question or a bug report, send an e-mail to <a href="mailto:6.034-2019-staff@mit.edu" class="external text" title="mailto:6.034-2019-staff@mit.edu" rel="nofollow">6.034-2019-staff@mit.edu</a>.
+</p><p>After term starts, if you have a question or bug report for this lab or future labs, post to 6.034 piazza.
+</p><p><br />
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 204/1000000
+Post-expand include size: 50884/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1510-0!1!0!!en!2!edit=0 and timestamp 20200506053534 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_0">https://ai6034.mit.edu/wiki/index.php?title=Lab_0</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_0" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_0&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_0&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_0&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_0" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_0" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_0" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_0&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_0&amp;oldid=6181" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 6 September 2017, at 16:52.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.136 secs. --></body></html>

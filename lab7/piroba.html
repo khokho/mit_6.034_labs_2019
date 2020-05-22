@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 7,Reference material and playlist" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 7 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_7";
+var wgTitle = "Lab 7";
+var wgAction = "view";
+var wgArticleId = "1494";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7920";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_7">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 7</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#The_More.2C_the_Merrier"><span class="tocnumber">1</span> <span class="toctext">The More, the Merrier</span></a></li>
+<li class="toclevel-1"><a href="#The_Support_Vector_Machine"><span class="tocnumber">2</span> <span class="toctext">The Support Vector Machine</span></a></li>
+<li class="toclevel-1"><a href="#Equation_Reference"><span class="tocnumber">3</span> <span class="toctext">Equation Reference</span></a></li>
+<li class="toclevel-1"><a href="#Part_1:_Vector_Math"><span class="tocnumber">4</span> <span class="toctext">Part 1: Vector Math</span></a></li>
+<li class="toclevel-1"><a href="#Part_2:_Using_the_SVM_Boundary_Equations"><span class="tocnumber">5</span> <span class="toctext">Part 2: Using the SVM Boundary Equations</span></a></li>
+<li class="toclevel-1"><a href="#Part_3:_Supportiveness"><span class="tocnumber">6</span> <span class="toctext">Part 3: Supportiveness</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Supportiveness_is_never_negative.2C_and_is_0_for_non-support-vectors"><span class="tocnumber">6.1</span> <span class="toctext">Supportiveness is never negative, and is 0 for non-support-vectors</span></a></li>
+<li class="toclevel-2"><a href="#Supportiveness_values_must_be_internally_consistent"><span class="tocnumber">6.2</span> <span class="toctext">Supportiveness values must be internally consistent</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_4:_Evaluating_Accuracy"><span class="tocnumber">7</span> <span class="toctext">Part 4: Evaluating Accuracy</span></a></li>
+<li class="toclevel-1"><a href="#Part_5:_Training_a_support_vector_machine"><span class="tocnumber">8</span> <span class="toctext">Part 5: Training a support vector machine</span></a>
+<ul>
+<li class="toclevel-2"><a href="#What_train_svm_does"><span class="tocnumber">8.1</span> <span class="toctext">What train_svm does</span></a></li>
+<li class="toclevel-2"><a href="#Your_task:_Update_SVM_from_alpha_values"><span class="tocnumber">8.2</span> <span class="toctext">Your task: Update SVM from alpha values</span></a></li>
+<li class="toclevel-2"><a href="#Arguments_for_train_svm"><span class="tocnumber">8.3</span> <span class="toctext">Arguments for train_svm</span></a></li>
+<li class="toclevel-2"><a href="#How_to_run_train_svm"><span class="tocnumber">8.4</span> <span class="toctext">How to run train_svm</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_6:_Multiple_Choice_Questions_about_SVM_Training"><span class="tocnumber">9</span> <span class="toctext">Part 6: Multiple Choice Questions about SVM Training</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Questions_1-4:_Running_train_svm"><span class="tocnumber">9.1</span> <span class="toctext">Questions 1-4: Running train_svm</span></a></li>
+<li class="toclevel-2"><a href="#Questions_5-10:_Identifying_points"><span class="tocnumber">9.2</span> <span class="toctext">Questions 5-10: Identifying points</span></a></li>
+<li class="toclevel-2"><a href="#Questions_11-16:_True.2FFalse"><span class="tocnumber">9.3</span> <span class="toctext">Questions 11-16: True/False</span></a></li>
+<li class="toclevel-2"><a href="#Questions_17-19:_General_Multiple_Choice"><span class="tocnumber">9.4</span> <span class="toctext">Questions 17-19: General Multiple Choice</span></a></li>
+<li class="toclevel-2"><a href="#Question_20:_And_if_the_data_is_NOT_linearly_separable..."><span class="tocnumber">9.5</span> <span class="toctext">Question 20: And if the data is NOT linearly separable...</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#If_you_want_to_do_more..."><span class="tocnumber">10</span> <span class="toctext">If you want to do more...</span></a></li>
+<li class="toclevel-1"><a href="#API"><span class="tocnumber">11</span> <span class="toctext">API</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Point"><span class="tocnumber">11.1</span> <span class="toctext">Point</span></a></li>
+<li class="toclevel-2"><a href="#SupportVectorMachine"><span class="tocnumber">11.2</span> <span class="toctext">SupportVectorMachine</span></a></li>
+<li class="toclevel-2"><a href="#Helper_functions_for_vector_math"><span class="tocnumber">11.3</span> <span class="toctext">Helper functions for vector math</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">12</span> <span class="toctext">Survey</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Wednesday, November 6 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab7</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab7</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab7/lab7.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab7/lab7.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab7/lab7.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab7/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab7/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab7/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab7.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab7 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="The_More.2C_the_Merrier"></a><h2> <span class="mw-headline"> The More, the Merrier </span></h2>
+<p>So far in 6.034, we've discussed a few different supervised machine learning algorithms:
+</p>
+<ul><li> <b>k-nearest neighbors (kNN)</b>, which classify points based on which training points are nearby
+</li><li> <b>identification trees (ID trees)</b>, which classify points using a tree-based exploration
+</li><li> <b>neural networks (NN)</b>, which classify points by iteratively applying small, primitive mathematical operations on features
+</li></ul>
+<p>The Support Vector Machine (SVM) is yet another supervised machine learning algorithm. An SVM classifies a point by, conceptually, comparing it against the most "important" training points, which are called the <i>support vectors</i>. The support vectors of classification <i>C</i> which are most similar to <b>x</b> win the vote, and <b>x</b> is consequently classified as <i>C</i>. In this way, an SVM can be likened to doing nearest neighbors comparison.
+</p><p>Importantly, SVMs can be very robust, as the principle paradigm of the SVM algorithm is that <i>the classifier always maximizes the margin between the differently-classified data points</i>. Visually, if you imagine drawing a decision boundary in a plane to separate two different classifications of data, an SVM will always position the decision boundary in such a way as to maximize the distance to the closest training points.
+</p><p>You might find the following diagram (inspired by Robert McIntyre's notes) helpful as a visual reference throughout this lab:
+<a href="/wiki/index.php?title=Image:SvmDiagram.jpg" class="image" title="Image:SvmDiagram.jpg"><img alt="Image:SvmDiagram.jpg" src="/wiki/images/SvmDiagram.jpg" width="500" height="511" border="0" /></a>
+</p>
+<a name="The_Support_Vector_Machine"></a><h2> <span class="mw-headline"> The Support Vector Machine </span></h2>
+<p>An SVM is a numeric classifier. That means that all of the features of the data must be <i>numeric</i>, not symbolic. Furthermore, in this class, we'll assume that the SVM is a <i>binary</i> classifier: that is, it classifies points as one of two classifications. We'll typically call the classifications "+" and "-". 
+</p><p>A trained SVM is defined by two values:
+</p>
+<ul><li> A normal vector <b>w</b> (also called the weight vector), which solely determines the shape and direction of the decision boundary.
+</li><li> A scalar offset <b>b</b>, which solely determines the position of the decision boundary with respect to the origin.
+</li></ul>
+<p>A trained SVM can then classify a point <b>x</b> by computing <i>w · x + b</i>. If this value is positive, <b>x</b> is classified as +; otherwise, <b>x</b> is classified as -.
+</p><p>The decision boundary is coerced by support vectors, so called because these vectors (data points) <i>support</i> the boundary: if any of these points are moved or eliminated, the decision boundary changes! All support vectors lie on a <i>gutter</i>, which can be thought of as a line running parallel to the decision boundary. There are two gutters: one gutter hosts positive support vectors, and the other, negative support vectors. 
+</p><p>Note that, though a support vector is always on a gutter, it's <b>not</b> necessarily true that every data point on a gutter is a support vector.
+</p>
+<a name="Equation_Reference"></a><h2> <span class="mw-headline"> Equation Reference </span></h2>
+<p>Below are the five principle SVM equations, as taught in lecture and recitation. Equations 1-3 define the decision boundary and the margin width, while Equations 4 and 5 can be used to calculate the alpha (supportiveness) values for the training points.
+</p><p><a href="/wiki/index.php?title=Image:Lab6_Eqns.png" class="image" title="Image:Lab6 Eqns.png"><img alt="Image:Lab6 Eqns.png" src="/wiki/images/Lab6_Eqns.png" width="591" height="546" border="0" /></a>
+</p><p>For more information about how to apply these equations, see:
+</p>
+<ul><li> <a href="http://web.mit.edu/dxh/www/svm.html" class="external text" title="http://web.mit.edu/dxh/www/svm.html" rel="nofollow">Dylan's guide to solving SVM quiz problems</a>
+</li><li> <a href="http://web.mit.edu/dxh/www/rlm-svm-notes.pdf" class="external text" title="http://web.mit.edu/dxh/www/rlm-svm-notes.pdf" rel="nofollow">Robert McIntyre's SVM notes</a>
+</li><li> <a href="https://ai6034.mit.edu/wiki/images/SVM_and_Boosting.pdf" class="external text" title="https://ai6034.mit.edu/wiki/images/SVM_and_Boosting.pdf" rel="nofollow">SVM notes</a>, from the <a href="/wiki/index.php?title=Reference_material_and_playlist" class="mw-redirect" title="Reference material and playlist">Reference material and playlist</a>
+</li></ul>
+<a name="Part_1:_Vector_Math"></a><h2> <span class="mw-headline"> Part 1: Vector Math </span></h2>
+<p>We'll start with some basic functions for manipulating vectors. For now, we will represent an <i>n</i>-dimensional vector as a list or tuple of <i>n</i> coordinates. <tt>dot_product</tt> should compute the dot product of two vectors, while <tt>norm</tt> computes the length of a vector. Implement both functions.
+</p><p>(If these look familiar, it's probably because you saw them on Lab 5. Feel free to copy your implementations from your <tt>lab5.py</tt>.)
+</p>
+<pre>def dot_product(u, v):
+</pre>
+<pre>def norm(v):
+</pre>
+<p>Later, when you need to actually manipulate vectors, note that we have also provided methods for adding two vectors (<tt>vector_add</tt>) and for multiplying a scalar by a vector (<tt>scalar_mult</tt>). (See the <a href="#Helper_functions_for_vector_math" title="">API</a>, below.)
+</p>
+<a name="Part_2:_Using_the_SVM_Boundary_Equations"></a><h2> <span class="mw-headline"> Part 2: Using the SVM Boundary Equations </span></h2>
+<p>Equations 1 and 3 above describe how certain data points must interact with the SVM decision boundary and gutters.
+</p><p>We will start by leveraging Equation 1 to classify a point with a given SVM (ignoring the point's actual classification, if any). Per Equation 1,
+</p>
+<ul><li> a point's classification is +1 when <tt>w·x + b &gt; 0</tt>
+</li><li> a point's classification is -1 when <tt>w·x + b &lt; 0</tt>
+</li></ul>
+<p>If <tt>w·x + b = 0</tt>, the point lies on the decision boundary, so its classification is ambiguous.  
+</p><p>First, implement <tt>positiveness(svm, point)</tt> which evaluates the expression <tt>w·x + b</tt> to calculate how positive a point is. The first argument, <tt>svm</tt>, is a <a href="#SupportVectorMachine" title=""> <tt>SupportVectorMachine</tt> object</a>, and <tt>point</tt> is a <a href="#Point" title=""> <tt>Point</tt> object</a>.
+</p>
+<pre>def positiveness(svm, point):
+</pre>
+<p><br />
+Next, classify a point as +1 or -1. If the point lies on the boundary, return 0.
+</p>
+<pre>def classify(svm, point):
+</pre>
+<p><br />
+Next, use the SVM's current decision boundary to calculate its margin width (Equation 2):
+</p>
+<pre>def margin_width(svm):
+</pre>
+<p><br />
+Finally, we will check that the gutter constraint is satisfied with the SVM's current support vectors and boundary. The gutter constraint imposes two restrictions simultaneously:
+</p>
+<ol><li> The positiveness of a positive support vector must be +1, and the positiveness of a negative support vector must be -1.
+</li><li> No training point may lie strictly between the gutters. That is, each training point should have a positiveness value indicating that it either lies on a gutter or outside the margin.
+</li></ol>
+<p>Note that the gutter constraint does not check whether points are classified <i>correctly</i>: it just checks that the gutter constraint holds for the current assigned classification of a point.
+</p><p>Implement <tt>check_gutter_constraint</tt>, which should return a set (not a list) of the training points that violate one or both conditions:
+</p>
+<pre>def check_gutter_constraint(svm):
+</pre>
+<a name="Part_3:_Supportiveness"></a><h2> <span class="mw-headline"> Part 3: Supportiveness </span></h2>
+<p>To train a support vector machine, every training point is assigned a supportiveness value (also known as an alpha value, or a Lagrange multiplier), representing how important the point is in determining (or "supporting") the decision boundary. The supportiveness values must satisfy a number of conditions, which we will explore below.
+</p>
+<a name="Supportiveness_is_never_negative.2C_and_is_0_for_non-support-vectors"></a><h3> <span class="mw-headline"> Supportiveness is never negative, and is 0 for non-support-vectors </span></h3>
+<p>First, implement <tt>check_alpha_signs</tt> to ensure that each point's supportiveness value satisfies two conditions:
+</p>
+<ol><li> Each training point should have a non-negative supportiveness.
+</li><li> Each support vector should have positive supportiveness, while each non-support vector should have a supportiveness of 0.
+</li></ol>
+<p>Note: each point's supportiveness value can be accessed a property of the point. See the <a href="#Helper_functions_for_vector_math" title="">API</a> for more information.
+</p><p>This function, like <tt>check_gutter_constraint</tt> above, should return a set of the training points that violate either of the supportiveness conditions.
+</p>
+<pre>def check_alpha_signs(svm):
+</pre>
+<a name="Supportiveness_values_must_be_internally_consistent"></a><h3> <span class="mw-headline"> Supportiveness values must be internally consistent </span></h3>
+<p>Implement <tt>check_alpha_equations</tt> to check that the SVM's supportiveness values are:
+</p>
+<ol><li> consistent with its boundary equation, according to Equation 4, and
+</li><li> consistent with the classifications of its training points, according to Equation 5.
+</li></ol>
+<p>This function should return <tt>True</tt> if both Equations 4 and 5 are satisfied, otherwise <tt>False</tt>. Remember the <tt>vector_add</tt> and <tt>scalar_mult</tt> helper functions are given to you in the <a href="#Helper_functions_for_vector_math" title="">API</a> if you'd like to use them in your implementation.
+</p>
+<pre>def check_alpha_equations(svm):
+</pre>
+<a name="Part_4:_Evaluating_Accuracy"></a><h2> <span class="mw-headline"> Part 4: Evaluating Accuracy </span></h2>
+<p>Once a support vector machine has been trained -- or even while it is being trained -- we want to know how well it has classified the training data. Write a function that checks whether the training points were classified correctly and returns a set containing the training points that were misclassified, if any. Hint: You might find it helpful to use a function that you perviously defined.
+</p>
+<pre>def misclassified_training_points(svm):
+</pre>
+<a name="Part_5:_Training_a_support_vector_machine"></a><h2> <span class="mw-headline"> Part 5: Training a support vector machine </span></h2>
+<p>So far, we have seen how to calculate the final parameters of an SVM (given the decision boundary), and we've used the equations to assess how well an SVM has been trained, but we haven't actually attempted to train an SVM.  
+</p><p>In practice, training an SVM is a hill-climbing problem in alpha-space using the Lagrangian.  There's a bit of math involved, and the equations are typically solved using Sequential Minimal Optimization (SMO), a type of quadratic programming (which is similar to linear programming, but more complicated).
+</p><p>...but if that sounds scary, don't worry -- we've provided code to do most of it for you!
+</p>
+<a name="What_train_svm_does"></a><h3> <span class="mw-headline"> What <tt>train_svm</tt> does </span></h3>
+<p>In train_svm.py, we've provided some SVM-solving code, originally written by past 6.034 student Crystal Pan.  Here is a very high-level pseudocode overview of what the function <tt>train_svm</tt> (in train_svm.py) does:
+</p>
+<pre>
+while (alphas are still changing) and (iteration &lt; max_iter):
+    for i in training_points:
+        for j in training_points:
+            Update i.alpha and j.alpha using SMO to minimize ||w|| (i.e. maximize the margin width)
+
+        Update the SVM's w, b, and support_vectors (using a function you'll write)
+        Update the displayed graph using display_svm.py
+
+Print the final decision boundary and number of misclassified points
+Return the trained SVM
+</pre>
+<p>We've also provided visualization code in <tt>display_svm.py</tt>, originally written by past 6.034 student Kelly Shen. This code is automatically called by <tt>train_svm</tt>, although you can adjust the parameters (or disable graphing) by calling <tt>train_svm</tt> with <a href="#Arguments_for_train_svm" title="">additional arguments</a>.
+</p><p>Note that the visualization requires the Python module Matplotlib. If you don't currently have Matplotlib, <a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_6#What_if_I_don.27t_have_Matplotlib_and_NumPy.3F" class="external text" title="https://ai6034.mit.edu/wiki/index.php?title=Lab_6#What_if_I_don.27t_have_Matplotlib_and_NumPy.3F" rel="nofollow">refer to lab 6 for instructions on how to get it installed</a>.
+</p><p>If you still can't get Matplotlib to work, you can also disable visualization by commenting out the line
+</p>
+<pre>from display_svm import create_svm_graph&lt;/tt&gt;
+</pre>
+<p>in <tt>train_svm.py</tt> and running <tt>train_svm</tt> with the argument <tt>show_graph=False</tt>. (If you do this, however, you may need to add print statements in order to answer some of the multiple-choice questions below: specifically, Questions 2 and 5-8. Also, you won't get to watch the SVM being trained!)
+</p>
+<a name="Your_task:_Update_SVM_from_alpha_values"></a><h3> <span class="mw-headline"> Your task: Update SVM from alpha values </span></h3>
+<p>Your task is to take the alpha values determined by SMO and use them to determine the support vectors, the normal vector <b>w</b>, and the offset <b>b</b>:
+</p>
+<ul><li> Any training point with alpha &gt; 0 is a support vector.
+</li><li> <tt>w</tt> can be calculated using Equation 5.
+</li><li> If training is complete, <tt>b</tt> can be calculated using the gutter constraint (Equation 3). However, during training, the gutter constraint will produce different values of <tt>b</tt> depending on which support vector is used! To resolve this ambiguity, we will instead take the average of two values: the <i>minimum</i> value of <tt>b</tt> produced by a <i>negative</i> support vector, and the <i>maximum</i> value of <tt>b</tt> produced by a <i>positive</i> support vector. (Can you figure out why?)
+</li></ul>
+<p>Implement the function <tt>update_svm_from_alphas</tt>, which takes in a <tt>SupportVectorMachine</tt>, then uses the SVM's training points and alpha values to update <tt>w</tt>, <tt>b</tt>, and <tt>support_vectors</tt>. This function should return the updated SVM. (If the input SVM already has <tt>w</tt>, <tt>b</tt>, and/or <tt>support_vectors</tt> defined, ignore them and overwrite them.  For this function, you may assume that the SVM is 2-dimensional and that it has at least one training point with alpha &gt; 0.)
+</p><p><b>Important</b>: Do NOT use <tt>svm.copy()</tt> in this function or instantiate a new SVM using the <tt>SupportVectorMachine</tt> constructor, as training (and the test cases) will likely fail.  
+</p>
+<pre>def update_svm_from_alphas(svm):
+</pre>
+<p><br />
+<tt>train_svm</tt> will call <tt>update_svm_from_alphas</tt>, so once you've implemented it, you should be able to train an SVM on a dataset and visualize the results!
+</p>
+<a name="Arguments_for_train_svm"></a><h3> <span class="mw-headline"> Arguments for <tt>train_svm</tt> </span></h3>
+<p>The function <tt>train_svm</tt> has only one <b>required</b> argument:
+</p>
+<ul><li> <tt><b>training_points</b></tt>: A list of training points as <tt>Point</tt> objects.
+</li></ul>
+<p><tt>train_svm</tt> also has many optional arguments (with defaults given):
+</p>
+<ul><li> <tt><b>kernel_fn</b>=dot_product</tt>: The kernel function (a <tt>function</tt> object) to be used in the SVM.  Currently, the visualization only supports linear kernels (i.e. it can only draw straight lines).
+</li><li> <tt><b>max_iter</b>=500</tt>: The maximum number of iterations to perform (an <tt>int</tt>).  Each iteration consists of considering every pair of training points.  (So if there are <i>n</i> training points, one iteration considers up to <i>n</i><sup>2</sup> pairs of training points.  Note that the visualization can update up to <i>n</i> times <i>per</i> iteration, not just once per iteration.)
+</li><li> <tt><b>show_graph</b>=True</tt>: Boolean value indicating whether to display a graph of the SVM.
+</li><li> <tt><b>animate</b>=True</tt>: Boolean value indicating whether to display updates on the SVM graph during training (only applies if <tt>show_graph</tt> is <tt>True</tt>).
+</li><li> <tt><b>animation_delay</b>=0.5</tt>: Number of seconds to delay between graph updates (only applies if both <tt>show_graph</tt> and <tt>animate</tt> are <tt>True</tt>).
+</li><li> <tt><b>manual_animation</b>=False</tt>: Boolean value indicating whether to pause execution after each animation update (only applies if <tt>show_graph</tt> is <tt>True</tt>).  If <tt>True</tt>, you will need to manually close the graph window after each update. This option may be used as a work-around if normal animation isn't working on your machine.
+</li></ul>
+<p>We have also provided five sample datasets in <tt>svm_data.py</tt>: 
+</p>
+<ul><li> <tt>sample_data_1</tt> and <tt>sample_data_2</tt>, drawn with ASCII art near the top of <tt>train_svm.py</tt>
+</li><li> <tt>recit_data</tt>, the dataset from recitation and from <a href="http://web.mit.edu/dxh/www/rlm-svm-notes.pdf" class="external text" title="http://web.mit.edu/dxh/www/rlm-svm-notes.pdf" rel="nofollow">Robert McIntyre's notes</a> (although Robert labels the points A, B, C, D, whereas here they are called A, B, D, E)
+</li><li> <tt>harvard_mit_data</tt>, the Harvard/MIT data from <a href="http://courses.csail.mit.edu/6.034f/Examinations/2014q3.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/Examinations/2014q3.pdf" rel="nofollow">2014 Quiz 3, Problem 2, Part B</a>
+</li><li> <tt>unseparable_data</tt>, the Harvard/MIT data with an additional MIT point at (4,4) that makes the data not linearly separable
+</li></ul>
+<a name="How_to_run_train_svm"></a><h3> <span class="mw-headline"> How to run <tt>train_svm</tt> </span></h3>
+<p>Note that there is currently no command-line interface for <tt>train_svm</tt>, so if you use a command line, you can either change the parameters in <tt>train_svm.py</tt> and re-run it multiple times, or you can load it into an interactive Python shell by running the command <tt>python3</tt> in a command line and then (in the Python shell) <tt>from train_svm import *</tt>.
+</p><p>If you just run <tt>train_svm.py</tt>, it will automatically run whatever functions are called at the bottom of the file (by default, training on <tt>sample_data_1</tt>). You can comment/uncomment the functions, change the arguments, and add additional functions.  
+</p><p>In an interactive Python shell, you can call the function <tt>train_svm(my_data, ...)</tt> on the various datasets, using the <a href="#Arguments_for_train_svm" title="">arguments described above</a>.
+</p>
+<a name="Part_6:_Multiple_Choice_Questions_about_SVM_Training"></a><h2> <span class="mw-headline"> Part 6: Multiple Choice Questions about SVM Training </span></h2>
+<a name="Questions_1-4:_Running_train_svm"></a><h3> <span class="mw-headline"> Questions 1-4: Running <tt>train_svm</tt> </span></h3>
+<p>For Questions 1-4, fill in the appropriate <tt>ANSWER_n</tt> with an integer.
+</p>
+<dl><dd>Note: Adjusting the animation delay or other arguments above may be useful for answering some of these questions.
+</dd></dl>
+<dl><dt>Question 1
+</dt><dd>Try training an SVM on the Harvard/MIT data from <a href="http://courses.csail.mit.edu/6.034f/Examinations/2014q3.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/Examinations/2014q3.pdf" rel="nofollow">2014 Quiz 3</a> (<tt>harvard_mit_data</tt>). How many iterations does it take?
+</dd></dl>
+<dl><dt>Question 2
+</dt><dd>During training for the Harvard/MIT data, what is the maximum number of support vectors shown on the graph at once? (Assume that all training points with alpha &gt; 0, displayed as circled points, are support vectors.) 
+</dd></dl>
+<dl><dd>Note: If you are using <tt>show_graph=False</tt>, one way to keep track of the number of support vectors is to record <tt>svm.support_vectors</tt> at every (graphical) iteration of training. See line 144 of <tt>train_svm.py</tt> for an example of where you can record the current set of support vectors in each iteration. 
+</dd></dl>
+<dl><dt>Question 3
+</dt><dd><i>After</i> training for the Harvard/MIT data, how many support vectors are there?
+</dd></dl>
+<dl><dt>Question 4
+</dt><dd>Try training an SVM on the recitation dataset (<tt>recit_data</tt>). How many iterations does it take?
+</dd></dl>
+<a name="Questions_5-10:_Identifying_points"></a><h3> <span class="mw-headline"> Questions 5-10: Identifying points </span></h3>
+<p>For Questions 5-10, consider what happens as the SVM trains on the recitation data, which consists of four points: A(1,3), B(1,1), D(2,2), and E(3,2). (Note that this is different from the labeling in Robert McIntyre's notes -- he uses the same four points, but labeled A, B, C, D.) 
+</p><p>If you are using <tt>show_graph=False</tt>, you may want to put a print statement near the SVM graph update line in <tt>train_svm</tt>. See line 144 of <tt>train_svm.py</tt> for an example of where you can put such a print statement.
+</p><p>For each question, fill in the appropriate <tt>ANSWER_n</tt> with a list of point names, selected from A, B, D, E (e.g. <tt>['A', 'B', 'E']</tt>).
+</p>
+<dl><dt>Question 5
+</dt><dd>When a boundary <b>first appears</b> on the graph, which points <b>are support vectors</b>?
+</dd></dl>
+<dl><dt>Question 6
+</dt><dd>When a boundary <b>first appears</b> on the graph, which training points <b>appear to lie on the gutters</b>?
+</dd></dl>
+<dl><dt>Question 7
+</dt><dd>When a boundary <b>changes</b> on the graph (i.e. the second boundary that appears), which points <b>are support vectors</b>?
+</dd></dl>
+<dl><dt>Question 8
+</dt><dd>When a boundary <b>changes</b> on the graph (i.e. the second boundary that appears), which points <b>appear to lie on the gutters</b>?
+</dd></dl>
+<dl><dt>Question 9
+</dt><dd>When <b>training is complete</b>, which points <b>are support vectors</b>?
+</dd></dl>
+<dl><dt>Question 10
+</dt><dd>When <b>training is complete</b>, which points <b>appear to lie on the gutters</b>?
+</dd></dl>
+<a name="Questions_11-16:_True.2FFalse"></a><h3> <span class="mw-headline"> Questions 11-16: True/False </span></h3>
+<p>Answer the following questions about SVMs <i>in general</i>, assuming that the data is linearly separable. (You may want to consider the provided datasets as examples.) 
+</p><p>For each question, fill in the appropriate <tt>ANSWER_n</tt> with <tt>True</tt> or <tt>False</tt>.
+</p>
+<dl><dt>Question 11
+</dt><dd>During training, all support vectors lie on the gutters.
+</dd></dl>
+<dl><dt>Question 12
+</dt><dd><i>After</i> training, all support vectors lie on the gutters.
+</dd></dl>
+<dl><dt>Question 13
+</dt><dd>During training, all points on the gutters are support vectors.
+</dd></dl>
+<dl><dt>Question 14
+</dt><dd><i>After</i> training, all points on the gutters are support vectors.
+</dd></dl>
+<dl><dt>Question 15
+</dt><dd>During training, no points can lie between the gutters (i.e. in the margin).
+</dd></dl>
+<dl><dt>Question 16
+</dt><dd><i>After</i> training, no points can lie between the gutters (i.e. in the margin).
+</dd></dl>
+<a name="Questions_17-19:_General_Multiple_Choice"></a><h3> <span class="mw-headline"> Questions 17-19: General Multiple Choice </span></h3>
+<p>Answer the following questions about SVMs <i>in general</i>, assuming that the data is linearly separable. (You may want to copy and modify one of the provided datasets to experimentally determine the answers.) 
+</p><p>For each question, fill in the appropriate <tt>ANSWER_n</tt> with a list of all answers that apply (e.g. <tt>[1, 3]</tt>), from the following choices:
+</p>
+<ol><li> The decision boundary may change.
+</li><li> The decision boundary may stay the same.
+</li><li> The margin width may decrease.
+</li><li> The margin width may increase.
+</li><li> The margin width may stay the same.
+</li><li> The number of support vectors may decrease. 
+</li><li> The number of support vectors may increase. 
+</li><li> The number of support vectors may stay the same.
+</li></ol>
+<dl><dt>Question 17
+</dt><dd>If you start with a trained SVM and move one of the support vectors <i>directly toward</i> the decision boundary (i.e. in a direction perpendicular to the decision boundary and moving closer to the boundary), then retrain, what could happen?
+</dd></dl>
+<dl><dt>Question 18
+</dt><dd>If you start with a trained SVM and move one of the support vectors <i>directly away from</i> the decision boundary (i.e. in a direction perpendicular to the decision boundary and moving away from the boundary), then retrain, what could happen?
+</dd></dl>
+<dl><dt>Question 19
+</dt><dd>If you start with a trained SVM and move one of the support vectors <i>along its gutter</i> (parallel to the decision boundary), then retrain, what could happen?
+</dd></dl>
+<a name="Question_20:_And_if_the_data_is_NOT_linearly_separable..."></a><h3> <span class="mw-headline"> Question 20: And if the data is NOT linearly separable... </span></h3>
+<dl><dt>Question 20
+</dt><dd>What does our SVM trainer do if the data is <i>not</i> linearly separable? (If you're not sure, try training on <tt>unseparable_data</tt>.) 
+</dd></dl>
+<dl><dd>Fill in <tt>ANSWER_20</tt> with the <b>one</b> best answer as an <tt>int</tt> (e.g. <tt>3</tt>):
+<ol><li> It identifies outlier points and systematically eliminates them from the data to avoid overfitting.
+</li><li> It gradually relaxes constraints until a solution is found.
+</li><li> It determines that the data is not separable and raises an exception or returns None.
+</li><li> It determines that the data is not separable, so it instead returns the best available solution.
+</li><li> It continues attempting to find a solution until training terminates because the alpha values are no longer changing, due to convergence.
+</li><li> It continues attempting to find a solution until it times out by reaching the maximum number of iterations.
+</li></ol>
+</dd></dl>
+<a name="If_you_want_to_do_more..."></a><h2> <span class="mw-headline"> If you want to do more... </span></h2>
+<p>If you want to learn more about training SVMs, the following resources (mostly beyond the scope of 6.034) may be helpful:
+</p>
+<ul><li> <a href="http://cs.nyu.edu/~dsontag/courses/ml12/slides/lecture5.pdf" class="external text" title="http://cs.nyu.edu/~dsontag/courses/ml12/slides/lecture5.pdf" rel="nofollow">SVM lecture notes</a> from a machine-learning class at NYU
+</li><li> <a href="http://www-ai.cs.uni-dortmund.de/LEHRE/SEMINARE/SS09/AKTARBEITENDESDM/LITERATUR/PlattSMO.pdf" class="external text" title="http://www-ai.cs.uni-dortmund.de/LEHRE/SEMINARE/SS09/AKTARBEITENDESDM/LITERATUR/PlattSMO.pdf" rel="nofollow">Paper on Sequential Minimal Optimization</a>
+</li><li> <a href="https://ai6034.mit.edu/wiki/images/SVM_and_Boosting.pdf" class="external text" title="https://ai6034.mit.edu/wiki/images/SVM_and_Boosting.pdf" rel="nofollow">SVM notes</a>, from the <a href="/wiki/index.php?title=Reference_material_and_playlist" class="mw-redirect" title="Reference material and playlist">Reference material and playlist</a>
+</li><li> <a href="http://courses.csail.mit.edu/6.034f/ai3/SVM.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/SVM.pdf" rel="nofollow">SVM slides</a>, from the <a href="/wiki/index.php?title=Reference_material_and_playlist" class="mw-redirect" title="Reference material and playlist">Reference material and playlist</a>
+</li><li> Wikipedia articles on <a href="https://en.wikipedia.org/wiki/Support_vector_machine#Linear_SVM" class="external text" title="https://en.wikipedia.org/wiki/Support_vector_machine#Linear_SVM" rel="nofollow">SVM math</a> and <a href="https://en.wikipedia.org/wiki/Sequential_minimal_optimization" class="external text" title="https://en.wikipedia.org/wiki/Sequential_minimal_optimization" rel="nofollow">Sequential Minimal Optimization</a>
+</li></ul>
+<p><br />
+Possible extensions of this lab include:
+</p>
+<ul><li> Training on other datasets, such as ones from past quiz problems or from the internet
+</li><li> Defining some non-linear kernel functions and extend train_svm to handle them (primarily by adding a <tt>kernel_fn</tt> argument to your <tt>update_svm_from_alphas</tt>), then training with the alternate kernels
+</li><li> Extending the visualization code to display non-linear kernels
+</li><li> Extending <tt>train_svm</tt> to handle 1-D, 3-D, or higher-dimensional SVMs
+</li></ul>
+<p><br />
+If you do something cool, we'd love to see it!  Feel free to send your code and/or results to 6.034-2018-staff@mit.edu (ideally with some sort of documentation). Your code could even end up in a future version of this lab! (With your permission, of course.)
+</p>
+<a name="API"></a><h2> <span class="mw-headline"> API </span></h2>
+<p>The file <tt>svm_api.py</tt> defines the <tt>Point</tt> and <tt>SupportVectorMachine</tt> classes, as well as some helper functions for vector math, all described below.
+</p>
+<a name="Point"></a><h3> <span class="mw-headline"> <tt>Point</tt> </span></h3>
+<p>A <tt>Point</tt> object has the following attributes:
+</p>
+<dl><dt><tt>name</tt>
+</dt><dd>The name of the point (a string).
+</dd></dl>
+<dl><dt><tt>coords</tt>
+</dt><dd>The coordinates of the point, represented as a vector (a tuple or list of numbers).
+</dd></dl>
+<dl><dt><tt>classification</tt>
+</dt><dd>The true classification of the point, if known, as a number, typically +1 or -1. Initialized by default to None.
+</dd></dl>
+<dl><dt><tt>alpha</tt>
+</dt><dd>The supportiveness (alpha) value of the point, if assigned.
+</dd></dl>
+<p>The <tt>Point</tt> class supports iteration, to iterate through the coordinates.
+</p>
+<a name="SupportVectorMachine"></a><h3> <span class="mw-headline"> <tt>SupportVectorMachine</tt> </span></h3>
+<p>A <tt>SupportVectorMachine</tt> is a classifier that uses a decision boundary to classify points.  The decision boundary is defined by a normal vector <tt>w</tt> (a vector, represented as a list or tuple of coordinates), and an offset <tt>b</tt> (a number). The SVM also has a list of training points and optionally a list of support vectors.  You can access its parameters using these attributes:
+</p>
+<dl><dt><tt>w</tt>
+</dt><dd>The normal vector <b>w</b>.
+</dd></dl>
+<dl><dt><tt>b</tt>
+</dt><dd>The offset <b>b</b>.
+</dd></dl>
+<dl><dt><tt>training_points</tt>
+</dt><dd>A list of <tt>Point</tt> objects with known classifications.
+</dd></dl>
+<dl><dt><tt>support_vectors</tt>
+</dt><dd>A list of <tt>Point</tt> objects that serve as support vectors for the SVM. Every support vector is also a training point.
+</dd></dl>
+<p>To set an SVM's decision boundary, you can modify the parameters <tt>w</tt> and <tt>b</tt> directly, or use...
+</p>
+<dl><dt><tt>set_boundary(new_w, new_b)</tt>
+</dt><dd>Updates <tt>w</tt> and <tt>b</tt>, returning the modified SVM.
+</dd></dl>
+<p>To instantiate a new SVM, use the constructor:
+</p>
+<dl><dd><tt>my_svm = SupportVectorMachine(w, b, training_points, support_vectors)</tt>
+</dd></dl>
+<p>The <tt>SupportVectorMachine</tt> class also has a <tt>.copy()</tt> method for making a deep copy of an SVM.
+</p>
+<a name="Helper_functions_for_vector_math"></a><h3> <span class="mw-headline"> Helper functions for vector math </span></h3>
+<dl><dt><tt>vector_add(vec1, vec2)</tt>
+</dt><dd>Given two vectors represented as iterable vectors (lists or tuples of coordinates) or <tt>Points</tt>, returns their vector sum as a list of coordinates.
+</dd></dl>
+<dl><dt><tt>scalar_mult(c, vec)</tt>
+</dt><dd>Given a constant scalar and an iterable vector (as a tuple or list of coordinates) or a <tt>Point</tt>, returns a scaled list of coordinates.
+</dd></dl>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 206/1000000
+Post-expand include size: 1692/2097152 bytes
+Template argument size: 28/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1494-0!1!0!!en!2!edit=0 and timestamp 20200505184205 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_7">https://ai6034.mit.edu/wiki/index.php?title=Lab_7</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_7" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_7&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_7&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_7&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_7" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_7" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_7" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_7&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_7&amp;oldid=7920" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 28 October 2019, at 17:40.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.133 secs. --></body></html>

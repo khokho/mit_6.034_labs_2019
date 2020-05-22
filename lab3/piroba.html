@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.13.0" />
+		<meta name="keywords" content="Lab 3" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="6.034 Wiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="6.034 Wiki RSS Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="6.034 Wiki Atom Feed" href="https://ai6034.mit.edu/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Lab 3 - 6.034 Wiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wiki/skins/common/shared.css?164";
+			@import "/wiki/skins/goldstar/main.css?164";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css?164" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE50Fixes.css?164";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/goldstar/IE55Fixes.css?164";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/goldstar/IE60Fixes.css?164";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/goldstar/IE70Fixes.css?164";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?164"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "goldstar";
+var stylepath = "/wiki/skins";
+var wgArticlePath = "/wiki/index.php?title=$1";
+var wgScriptPath = "/wiki";
+var wgScript = "/wiki/index.php";
+var wgVariantArticlePath = false;
+var wgActionPaths = [];
+var wgServer = "https://ai6034.mit.edu";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Lab_3";
+var wgTitle = "Lab 3";
+var wgAction = "view";
+var wgArticleId = "1424";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "7705";
+var wgVersion = "1.13.0";
+var wgEnableAPI = true;
+var wgEnableWriteAPI = false;
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/wiki/skins/common/wikibits.js?164"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/wiki/skins/common/ajax.js?164"></script>
+		<script type="text/javascript" src="/wiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=goldstar"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/wiki/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=MediaWiki:Goldstar.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/wiki/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+	</head>
+<body class="mediawiki ns-0 ltr page-Lab_3">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Lab 3</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From 6.034 Wiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<p><br />
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Games_and_Adversarial_search"><span class="tocnumber">1</span> <span class="toctext">Games and Adversarial search</span></a></li>
+<li class="toclevel-1"><a href="#Part_1:_Utility_functions_for_playing_Connect_Four"><span class="tocnumber">2</span> <span class="toctext">Part 1: Utility functions for playing Connect Four</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Representing_Connect_Four_as_a_game_tree"><span class="tocnumber">2.1</span> <span class="toctext">Representing Connect Four as a game tree</span></a></li>
+<li class="toclevel-2"><a href="#Game_over"><span class="tocnumber">2.2</span> <span class="toctext">Game over</span></a></li>
+<li class="toclevel-2"><a href="#Generating_all_possible_moves"><span class="tocnumber">2.3</span> <span class="toctext">Generating all possible moves</span></a></li>
+<li class="toclevel-2"><a href="#Assigning_points_to_the_winner"><span class="tocnumber">2.4</span> <span class="toctext">Assigning points to the winner</span></a></li>
+<li class="toclevel-2"><a href="#Win_already.21"><span class="tocnumber">2.5</span> <span class="toctext">Win already!</span></a></li>
+<li class="toclevel-2"><a href="#A_heuristic_for_ConnectFour_boards"><span class="tocnumber">2.6</span> <span class="toctext">A heuristic for ConnectFour boards</span></a></li>
+<li class="toclevel-2"><a href="#On_to_Abstract_Game_States"><span class="tocnumber">2.7</span> <span class="toctext">On to Abstract Game States</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_2:_Searching_a_game_tree"><span class="tocnumber">3</span> <span class="toctext">Part 2: Searching a game tree</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Cooperative_depth-first_search"><span class="tocnumber">3.1</span> <span class="toctext">Cooperative depth-first search</span></a></li>
+<li class="toclevel-2"><a href="#Minimax_search_with_endgame_scores_only"><span class="tocnumber">3.2</span> <span class="toctext">Minimax search with endgame scores only</span></a></li>
+<li class="toclevel-2"><a href="#Minimax_with_heuristic_and_endgame_scores"><span class="tocnumber">3.3</span> <span class="toctext">Minimax with heuristic and endgame scores</span></a></li>
+<li class="toclevel-2"><a href="#Minimax_with_alpha-beta_optimization"><span class="tocnumber">3.4</span> <span class="toctext">Minimax with alpha-beta optimization</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Just_for_fun:_Play_against_your_AI.21"><span class="tocnumber">3.4.1</span> <span class="toctext">Just for fun: Play against your AI!</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Use_progressive_deepening_to_return_anytime_values"><span class="tocnumber">3.5</span> <span class="toctext">Use progressive deepening to return anytime values</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Optional:_Incorporate_real_time_into_your_anytime_algorithm.21"><span class="tocnumber">3.5.1</span> <span class="toctext">Optional: Incorporate real time into your anytime algorithm!</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Part_3:_Conceptual_Questions"><span class="tocnumber">4</span> <span class="toctext">Part 3: Conceptual Questions</span></a></li>
+<li class="toclevel-1"><a href="#API"><span class="tocnumber">5</span> <span class="toctext">API</span></a>
+<ul>
+<li class="toclevel-2"><a href="#ConnectFourBoard"><span class="tocnumber">5.1</span> <span class="toctext">ConnectFourBoard</span></a>
+<ul>
+<li class="toclevel-3"><a href="#How_chains_of_pieces_are_represented"><span class="tocnumber">5.1.1</span> <span class="toctext">How chains of pieces are represented</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#AbstractGameState"><span class="tocnumber">5.2</span> <span class="toctext">AbstractGameState</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Survey"><span class="tocnumber">6</span> <span class="toctext">Survey</span></a></li>
+<li class="toclevel-1"><a href="#FAQ"><span class="tocnumber">7</span> <span class="toctext">FAQ</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+This lab is due by <b>Friday, September 27 at 10:00pm</b>.
+</p><p>Before working on the lab, you will need to get the code. You can...
+</p>
+<ul><li> Use Git on your computer: <tt>git clone username@athena.dialup.mit.edu:/mit/6.034/www/labs/lab3</tt>
+</li></ul>
+<ul><li> Use Git on Athena: <tt>git clone /mit/6.034/www/labs/lab3</tt>
+</li></ul>
+<ul><li> Download it as a ZIP file: <a href="http://web.mit.edu/6.034/www/labs/lab3/lab3.zip" class="external free" title="http://web.mit.edu/6.034/www/labs/lab3/lab3.zip" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab3/lab3.zip</a>
+</li></ul>
+<ul><li> View the files individually: <a href="http://web.mit.edu/6.034/www/labs/lab3/" class="external free" title="http://web.mit.edu/6.034/www/labs/lab3/" rel="nofollow">http://web.mit.edu/6.034/www/labs/lab3/</a>
+</li></ul>
+<p><br />
+All of your answers belong in the main file <tt>lab3.py</tt>. To submit your lab to the test server, you will need to <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">download your key.py</a> file and put it in either your lab3 directory or its parent directory. You can also view all of your lab submissions and grades <a href="https://ai6034.mit.edu/labs/" class="external text" title="https://ai6034.mit.edu/labs/" rel="nofollow">here</a>.
+</p><p><br />
+</p>
+<a name="Games_and_Adversarial_search"></a><h2> <span class="mw-headline">  Games and Adversarial search </span></h2>
+<p>This lab has two parts. In the first part of this lab, you'll work with the game Connect Four, writing methods to represent states of a Connect Four game as a game tree.
+</p><p>In the second part of this lab, you'll write subroutines for performing various search functions on a game tree, including
+</p>
+<ul><li> depth-first search,
+</li><li> ordinary minimax search,
+</li><li> minimax search with alpha-beta pruning, and
+</li><li> progressive deepening.
+</li></ul>
+<p><br />
+</p>
+<a name="Part_1:_Utility_functions_for_playing_Connect_Four"></a><h2> <span class="mw-headline"> Part 1: Utility functions for playing Connect Four </span></h2>
+<a name="Representing_Connect_Four_as_a_game_tree"></a><h3> <span class="mw-headline"> Representing Connect Four as a game tree </span></h3>
+<div class="floatright"><span><a href="/wiki/index.php?title=Image:Connect_Four.gif" class="image" title="Connect Four.gif"><img alt="" src="/wiki/images/Connect_Four.gif" width="320" height="190" border="0" /></a></span></div>
+<p><a href="https://en.wikipedia.org/wiki/Connect_Four" class="external text" title="https://en.wikipedia.org/wiki/Connect_Four" rel="nofollow">Connect Four</a> is a two-player game where players take turns dropping a token into a 6 x 7 grid. The first player to build a consecutive sequence of four of their own tokens wins the game. The sequence of four tokens can lie either horizontally, vertically, or diagonally. In this way, Connect Four is similar to other games you might know, such as Tic-tac-toe.
+</p><p>Stated more abstractly, Connect Four is a game where each player has seven possible moves in a turn, corresponding to the seven columns where the player can drop the piece (unless the column is full, in which case the player cannot move there).
+</p><p>We have provided an <a href="#ConnectFourBoard" title="">API</a> for constructing and manipulating Connect Four boards. We suggest you take a look at the API now before getting started. For the first part of this lab, you will define subroutines that
+</p>
+<ul><li> determine whether the game is over,
+</li><li> generate a player's set of possible moves, and
+</li><li> assign scores to boards.
+</li></ul>
+<p>These subroutines will provide the necessary definitions for treating Connect Four boards as states in a game tree, which will be useful in the second half of this lab.
+</p>
+<a name="Game_over"></a><h3> <span class="mw-headline"> Game over </span></h3>
+<p>Return <tt>True</tt> if the game is over, otherwise <tt>False</tt>. The game is over when the board contains a chain of length 4 (or longer), or all columns are full.
+</p>
+<pre>def is_game_over_connectfour(board)&nbsp;:
+</pre>
+<a name="Generating_all_possible_moves"></a><h3> <span class="mw-headline"> Generating all possible moves </span></h3>
+<p>Return a list of boards representing the game state that can result by making a single move in any legal column.
+</p><p>First, you should check in advance if the game is already over and return the empty list if so. If the game is not over, then, at most, you can move in any of the seven columns. But you cannot legally move in a column if it's full, and so you should exclude those. 
+</p><p>Note that these next-states that are generated should be the result of the <i>current</i> player playing a piece, which means that in each of the next-states, the <i>other</i> player is the "current" player because they have yet to make a move.
+</p><p>For each board in the list, <tt>board.prev_move_string()</tt> notes the column in which a piece was played (for debugging purposes).
+</p><p>Note: iterate over columns in increasing numerical order.
+</p>
+<pre>def next_boards_connectfour(board)&nbsp;:
+</pre>
+<a name="Assigning_points_to_the_winner"></a><h3> <span class="mw-headline"> Assigning points to the winner </span></h3>
+<p>Here, we'll define the final score of a Connect Four game that has been won. We'll return a score of 1000 if the maximizer has won, or -1000 if the minimizer has won. In case of a tie, return 0 instead. A tie occurs when the entire board fills up but has no chains of 4 or more same-colored tokens.
+</p><p>Important subtlety regarding endgame scoring: We don't know if a game is over until we take the board and call <tt>is_game_over_connectfour(board)</tt> on it. The board represents the state of the game after the previous player moved, but before the current player has played. Hence, if the game is already over, it's because <i>the previous player played the final move, ending the game.</i> Therefore, if the game is over and someone has won, it's not the <i>current</i> player who has won, because it just became the current player's "turn"; instead, the previous player has won.
+</p><p>In short, although it is slightly counter-intuitive, the endgame scoring function should return -1000 for a winning board if the current player is the maximizer (because that means the minimizer played the winning move), and +1000 if the current player is the minimizer.
+</p>
+<pre>def endgame_score_connectfour(board, is_current_player_maximizer)&nbsp;:
+</pre>
+<a name="Win_already.21"></a><h3> <span class="mw-headline"> Win already! </span></h3>
+<p>The previous <tt>endgame_score_connectfour</tt> function has the drawback that it doesn't reward players for winning sooner, since all winning states have the same value. Therefore, it doesn't encourage the computer to win as fast as possible the way a human would. To remedy this, write a score function that rewards players for winning sooner: that is, it should assign a better score to games that are won in fewer moves.
+</p><p>To retain consistency with your other endgame scoring function, make sure you return a value with <tt>abs(score) &gt;= 1000</tt> to indicate that someone has won. (In this lab, scores of magnitude 1000 or greater will correspond to winning game states, whereas scores of magnitude &lt; 1000 will correspond to games that have not yet been won.)
+</p>
+<pre>def endgame_score_connectfour_faster(board, is_current_player_maximizer)&nbsp;:
+</pre>
+<p>Hint: you can use <tt>board.count_pieces()</tt> to help determine how long the game has gone on.
+</p>
+<a name="A_heuristic_for_ConnectFour_boards"></a><h3> <span class="mw-headline"> A heuristic for ConnectFour boards </span></h3>
+<p>In practice, it is infeasible to search all the way to the leaves of the game tree
+in order to find a score. (Imagine ranking opening chess moves by
+whether they are automatic wins/losses for perfect play.)
+</p><p>Instead, here we will define a heuristic for estimating the "goodness" of a state --- specifically the goodness of a Connect Four board --- and use that in place of an endgame scoring function when we want to stop evaluation before reaching the end of the game. 
+</p><p>In practice, designing accurate heuristics greatly assists the decision making of strong game-playing AIs. Developing a good heuristic is a matter of design: there are many possible strategies and ways of measuring/defining
+the goodness of a state; for the purposes of this lab, you only need to define a scoring function that
+gives better scores for obviously stronger Connect Four positions.
+</p>
+<pre>def heuristic_connectfour(board, is_current_player_maximizer)&nbsp;:
+</pre>
+<p>As a hint, much of the information about the goodness of a state concerns the <b>number and length of both players' chains</b>. And, just to remain consistent with endgame scores, the absolute value of the heuristic scores should be scaled to be less than 1000.  As before, the returned score will be negated depending on whether the current player is the maximizer.
+</p><p>For example, you might return:
+</p>
+<ul><li>500 for a board in which the maximizer is doing much better
+</li><li>10 for a board in which the maximizer is doing only slightly better
+</li><li>0 for a board in which neither player seems to have an advantage
+</li><li>-10 for a board in which the minimizer is doing slightly better
+</li><li>...and so on.
+</li></ul>
+<a name="On_to_Abstract_Game_States"></a><h3> <span class="mw-headline"> On to Abstract Game States </span></h3>
+<p>Transforming the game into an abstract game state will allow us to explore the evolution of ConnectFour and other game states through the lens of minimax search algorithms.
+</p><p>To define the rules and starting state of the game Connect Four, we can pass some of the functions you wrote above to the <tt>AbstractGameState</tt> constructor.
+In <tt>lab3.py</tt>, you can find two examples of an <tt>AbstractGameState</tt> object representing a Connect Four game:
+</p>
+<pre>
+# This AbstractGameState represents a new ConnectFourBoard, before the game has started:
+state_starting_connectfour = AbstractGameState(snapshot = ConnectFourBoard(),
+                                 is_game_over_fn = is_game_over_connectfour,
+                                 generate_next_states_fn = next_boards_connectfour,
+                                 endgame_score_fn = endgame_score_connectfour_faster)
+
+# This AbstractGameState represents the ConnectFourBoard &quot;NEARLY_OVER&quot; from boards.py:
+state_NEARLY_OVER = AbstractGameState(snapshot = NEARLY_OVER,
+                                 is_game_over_fn = is_game_over_connectfour,
+                                 generate_next_states_fn = next_boards_connectfour,
+                                 endgame_score_fn = endgame_score_connectfour_faster)
+</pre>
+<a name="Part_2:_Searching_a_game_tree"></a><h2> <span class="mw-headline"> Part 2: Searching a game tree </span></h2>
+<p>This part of the lab involves writing search functions on game trees made out of <tt>AbstractGameStates</tt>. The utility functions from Part 1 allow you to construct an <tt>AbstractGameState</tt> out of Connect Four boards, but the methods you write will work on other games as well.
+</p><p>Abstract game states have methods for:
+</p>
+<ul><li> Checking whether the game is over (<tt><b>state</b>.is_game_over()</tt>).
+</li><li> Generating a list of the resulting game state for each legal move (<tt><b>state</b>.generate_next_states()</tt>)
+</li><li> Returning an object representing a current snapshot of the game.
+</li><li> Computing the endgame score of a state, if the game is over.
+</li></ul>
+<p>There are other methods and attributes as well; for a more complete list, <a href="#AbstractGameState" title="">see the API</a>.
+</p><p><b>About sample game states</b>: To help you test out your search algorithms in this section, we provide several sample game states for Connect Four in your <tt>lab3.py</tt> file. There are also print statements that you can uncomment to see examples of what each algorithm returns. You can also print the current snapshot of an AbstractGameState object to get intuition for the current state of the game.
+</p>
+<a name="Cooperative_depth-first_search"></a><h3> <span class="mw-headline"> Cooperative depth-first search </span></h3>
+<p>To start, we will see what <i>non-adversarial</i> search looks like. In particular, all of the search algorithms we've studied so far have been non-adversarial because they assume that you have the same goal at each level of the tree (rather than players taking turns to move toward opposing goals). Imagine that both players are trying to collaboratively find the path that leads to the highest score. We will search the tree in depth-first search order to find the path leading to the highest score.
+</p><p>Your task will be to implement this non-adversarial DFS maximizing search. It should be very similar to the DFS search from the previous lab, with two key differences:
+</p>
+<ul><li> This search should not terminate once it has found a path to a "goal." Instead, the search should explore all possible paths to all leaves (end-game states), just in a depth-first order. After finding all such paths, the best one (the one with the largest end-game state score) is chosen and returned.
+</li><li> This algorithm should not only return the best path, but also the score of that path (the score of the end-game state at the end of that path) and the number of static evaluations that were computed. This will be explained in detail below.
+</li></ul>
+<p>We will use this search as a jumping-off point for the remainder of this lab. After implementing this DFS maximizing search, we will start building other algorithms on top of it.
+</p><p>Implement the function <tt>dfs_maximizing</tt>, which takes as input a state of type AbstractGameState and should return a tuple containing, in order,
+</p>
+<ul><li> the best path: a list of <tt>AbstractGameStates</tt> illustrating the sequence of moves necessary to achieve the highest score, starting with the initial state;
+</li><li> the score value of the leaf node: a number; and
+</li><li> the number of static evaluations you performed during search: a number. (Remember that a static evaluation can happen by calculating an endgame score or a heuristic score, but not by recursing on a node's children.)
+</li></ul>
+<pre>def dfs_maximizing(state)&nbsp;:
+</pre>
+<p>In case two moves have the same score, break ties by preferring earlier branches to later branches (i.e. if two moves have the same score, prefer the earlier one).
+</p><p>Debugging hints:
+</p>
+<ul><li> You can use the method <tt>pretty_print_dfs_type(result)</tt> to print the result from <tt>dfs_maximizing</tt> (or any of the later minimax search functions) in a human-readable way.
+</li><li> You can also use the built-in <tt>print</tt> to print <tt>ConnectFourBoard</tt> and <tt>AbstractGameState</tt> objects.
+</li></ul>
+<a name="Minimax_search_with_endgame_scores_only"></a><h3> <span class="mw-headline"> Minimax search with endgame scores only </span></h3>
+<p>Find the minimax path. The boolean argument <tt>maximize</tt>  determines whether the current player is the maximizer or not. This function should have the same return type as dfs; that is, it should return a tuple containing the minimax path, the minimax score, and the number of static evaluations performed during search.
+</p>
+<pre>def minimax_endgame_search(state, maximize=True)&nbsp;:
+</pre>
+<p>In case two moves have the same minimax score, break ties by preferring earlier branches to later branches (i.e. if two moves have the same minimax score, prefer the earlier one.) 
+</p><p>Important clarification: Either the maximizer or the minimizer may make the first move, so to determine which player is maximizing, don't look at the game state itself --- look at the maximize argument to the search function. Additionally, you might find some methods from the API helpful, such as state.get_endgame_score(is_current_player_maximizer=True).
+</p><p>As you move through the minimax variations, a helpful hint might be to consider how each of these functions are similar to one another!
+</p><p>If you want to review how minimax works, here are a couple resources:
+</p>
+<ul><li><a href="http://courses.csail.mit.edu/6.034f/ai3/ch6.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch6.pdf" rel="nofollow">Chapter 6 of the textbook</a>
+</li><li><a href="http://web.mit.edu/6.034/wwwbob/handout3-fall11.pdf" class="external text" title="http://web.mit.edu/6.034/wwwbob/handout3-fall11.pdf" rel="nofollow">Prof. Bob Berwick's notes on minimax and alpha-beta</a>
+</li></ul>
+<a name="Minimax_with_heuristic_and_endgame_scores"></a><h3> <span class="mw-headline"> Minimax with heuristic and endgame scores </span></h3>
+<p>The previous version of minimax that you wrote could only handle
+endgame states. Now we'll define minimax search that can search to
+any shallower depth, using a heuristic score instead of an endgame
+score for states that are not endgame states.
+</p>
+<dl><dt>What is depth?
+</dt><dd>We define depth to be how many ancestors a node has: at the root of a tree, the depth is 0; one level down, the depth is 1, and so on. Hence, when we refer to a depth limit of (say) 3, that means the algorithm should look ahead by up to 3 levels, including the level at depth = 3.
+</dd></dl>
+<p>Define minimax search that can search up to any specified depth in the tree. Given a state, your algorithm should:
+</p>
+<ol><li> Evaluate the state using the endgame scoring function (<tt>state.get_endgame_score</tt>) if the state is an endgame state.  
+</li><li> Evaluate the board using the <tt>heuristic_fn</tt> if the state is at the limit of search.
+</li><li> Or otherwise, generate all subsequent moves, recurse on them, and amalgamate the results.
+</li><li> Break ties by preferring earlier branches to later branches (i.e. if two moves have the same minimax score, prefer the earlier one.)
+</li></ol>
+<p>This function should have the same return type as the other search methods above. When counting evaluations, you should include both the number of endgame score evaluations and the number of heuristic score evaluations.
+</p>
+<pre>def minimax_search(state, heuristic_fn=always_zero, depth_limit=INF, maximize=True)&nbsp;:
+</pre>
+<p><br />
+By default, <tt>minimax_search</tt> uses the heuristic function <tt>always_zero(state, maximize=True)</tt>, which returns a score of zero for any board.
+</p><p><b>Important Note:</b> The scoring functions <tt>state.get_endgame_score(is_current_player_maximizer=True)</tt> and <tt>heuristic_fn(board, maximize=True)</tt> differ in three key ways:
+</p>
+<ol><li> Endgame scores are used only for leaf nodes of the game tree; heuristic functions are used only for non-leaf nodes.
+</li><li> Because endgame score is an objective measure of endgame value, it is a method of the AbstractGameState; in contrast, <tt>heuristic_fn</tt> is an argument of the search function, and varies depending on the priorities of the player.
+</li><li> The method <tt>.get_endgame_score</tt> applies to Abstract Game State objects; in contrast, <em>heuristic functions apply to the underlying snapshot objects</em>. For example, the <tt>heuristic_connectfour</tt> function (defined above) takes a ConnectFourBoard object as its main argument.
+</li></ol>
+<p>Both <tt>state.get_endgame_score</tt> and <tt>heuristic_fn</tt> take in a boolean argument <tt>is_current_player_maximizer</tt>.  For <tt>state.get_endgame_score</tt>, the default value for this argument is <tt>True</tt>.
+</p><p>To better visualize why looking deeper into a game is so important, uncomment and try minimax_search on "BOARD_UHOH".
+</p><p><br />
+</p>
+<a name="Minimax_with_alpha-beta_optimization"></a><h3> <span class="mw-headline"> Minimax with alpha-beta optimization </span></h3>
+<p>Perform alpha-beta pruning, with the same return type as minimax_search:
+</p>
+<pre>def minimax_search_alphabeta(state, alpha=-INF, beta=INF, heuristic_fn=always_zero, depth_limit=INF, maximize=True)&nbsp;:
+</pre>
+<p>If you want to review how alpha-beta pruning works, here are a few resources:
+</p>
+<ul><li><a href="http://web.mit.edu/dxh/www/adverse/index.html" class="external text" title="http://web.mit.edu/dxh/www/adverse/index.html" rel="nofollow">Dylan's alpha-beta demo</a>
+</li><li><a href="http://courses.csail.mit.edu/6.034f/ai3/ch6.pdf" class="external text" title="http://courses.csail.mit.edu/6.034f/ai3/ch6.pdf" rel="nofollow">Chapter 6 of the textbook</a>
+</li><li><a href="http://web.mit.edu/6.034/wwwbob/handout3-fall11.pdf" class="external text" title="http://web.mit.edu/6.034/wwwbob/handout3-fall11.pdf" rel="nofollow">Prof. Bob Berwick's notes on minimax and alpha-beta</a>
+</li></ul>
+<a name="Just_for_fun:_Play_against_your_AI.21"></a><h4> <span class="mw-headline"> Just for fun: Play against your AI! </span></h4>
+<p>When you're done implementing <tt>minimax_search_alphabeta</tt>, you can run <tt>play_game.py</tt> to play Connect Four against your AI!
+</p>
+<a name="Use_progressive_deepening_to_return_anytime_values"></a><h3> <span class="mw-headline"> Use progressive deepening to return anytime values </span></h3>
+<p>In this final section, you'll write a progressive deepening algorithm which uses <em>minimax with alpha-beta pruning</em> to search progressively deeper into the tree until time runs out. The arguments to <tt>progressive_deepening</tt> are identical to minimax_search, but the return type is an <tt>AnytimeValue</tt> object. You can declare a new AnytimeValue object like any other object. For example, anytime_value = AnytimeValue().
+</p><p><tt>AnytimeValue</tt> objects are simple, with the following methods:
+</p>
+<ul><li> <tt>.set_value(val)</tt>: sets the value to the val and stores val in the <tt>AnytimeValue</tt>'s history
+</li><li> <tt>.get_value()</tt>: returns the current value
+</li><li> <tt>.pretty_print()</tt>: prints the <tt>AnytimeValue</tt>'s history in human-readable format
+</li></ul>
+<p><br />
+You can code progressive deepening using a similar technique to the other search algorithms. Here, you'll make iterative calls to minimax_search_alphabeta, increasing the depth each time. But at each level when minimax_search_alphabeta returns a new value, store that most recent result using anytime_value.set_value(new_best_option).
+</p>
+<pre>def progressive_deepening(state, heuristic_fn=always_zero, depth_limit=INF, maximize=True)&nbsp;:
+</pre>
+<p><br />
+<b>Debugging hints:</b>
+</p>
+<ul><li> Be sure to search all the way to the depth limit (as opposed to stopping at <tt>depth_limit - 1</tt>)
+</li><li> Consider this question: What is the shallowest (smallest) depth you can search to while still obtaining useful information about which move to make?
+</li></ul>
+<a name="Optional:_Incorporate_real_time_into_your_anytime_algorithm.21"></a><h4> <span class="mw-headline"> Optional: Incorporate real time into your anytime algorithm! </span></h4>
+<p>The progressive deepening function you just implemented will continue to run until it reaches its depth limit, because it doesn't have the concept of a time limit.  There are no tests for this section -- it's difficult to test timed algorithms because the performance will vary greatly from one machine to another -- but here are some instructions in case you'd like add a time limit to your progressive deepening algorithm.
+</p>
+<pre>def progressive_deepening(state, heuristic_fn=always_zero, depth_limit=INF, maximize=True<b>, time_limit=INF</b>)
+</pre>
+<ol><li> Add a <tt>time_limit</tt> parameter to the signature of your function, as shown above.
+</li><li> Then, import and use a function such as <tt>time.time()</tt> to keep track of how much time has elapsed since your algorithm started running.
+<ul><li>At regular intervals (e.g. before progressing to the next level of progressive deepening), check whether time has run out by comparing the elapsed time to the permitted time_limit. If you want, you could even incorporate the time-limit checking into alpha-beta by passing the time_limit argument into your alpha-beta function.
+</li></ul>
+</li><li> Try running your modified progressive_deepening function with a time limit (e.g. <tt>time_limit=15</tt>) and no depth limit (<tt>depth_limit=INF</tt>) and see what happens! You should observe that as you increase the time limit, progressive_deepening will have time to look further ahead in the game tree.
+</li></ol>
+<a name="Part_3:_Conceptual_Questions"></a><h2> <span class="mw-headline"> Part 3: Conceptual Questions </span></h2>
+<p>Here are a few multiple-choice questions to test your conceptual understanding of the material in this lab. For explanations of the answers, look near the bottom of <tt>tests.py</tt>
+</p><p>Fill in the answer to each question in <tt>ANSWER_i</tt> at the bottom of <tt>lab3.py</tt>. Each answer should be a string: '1', '2', '3', '4', or '5'.
+</p><p><br />
+<b>Questions 1-3</b> refer to a game tree shaped like the one below (i.e. a binary tree of depth three, with eight leaves). When answering the questions, consider all possible game trees of this shape:
+</p><p><a href="/wiki/index.php?title=Image:Game_tree_8leaves.png" class="image" title="Image:Game_tree_8leaves.png"><img alt="Image:Game_tree_8leaves.png" src="/wiki/images/Game_tree_8leaves.png" width="960" height="720" border="0" /></a>
+</p><p><b>Question 1</b>: Suppose our game tree is of the above shape, and we are running endgame minimax search with no heuristic, and without alpha-beta pruning. Which of the following conditions will guarantee that we will <i>not</i> be required to examine all eight leaves of the tree?
+</p>
+<ol><li> When the sequence of leaves generated by doing a depth-first traversal is monotonically decreasing, and the current player is MAX
+</li><li> When the values of the leaves are randomly generated
+</li><li> We will never have to examine all eight leaves, regardless of whose turn it is or what the values of the leaves are
+</li><li> We will always have to examine all eight leaves, regardless of whose turn it is or what the values of the leaves are
+</li><li> None of the above
+</li></ol>
+<p><b>Question 2</b>: Suppose our game tree is of the above shape, and we are running endgame minimax search with alpha-beta pruning. Which of the following conditions will guarantee that we will <i>not</i> be required to examine all eight leaves of the tree?
+</p>
+<ol><li> When the sequence of leaves generated by doing a depth-first traversal is monotonically decreasing, and the current player is MAX
+</li><li> When the values of the leaves are randomly generated
+</li><li> We will never have to examine all eight leaves, regardless of whose turn it is or what the values of the leaves are
+</li><li> We will always have to examine all eight leaves, regardless of whose turn it is or what the values of the leaves are
+</li><li> None of the above
+</li></ol>
+<p><b>Question 3</b>: Suppose you just ran endgame minimax search with alpha-beta pruning (with <tt>depth_limit=INF</tt> and <tt>heuristic_fn=always_zero</tt>) on some game tree <tt>T</tt> of the above shape, but your algorithm didn't prune <i>any</i> leaves from <tt>T</tt>. You're unhappy with this result! You want your algorithm to prune some leaves! Which of the following changes to your alpha-beta search algorithm would likely increase the number of leaves pruned while searching <tt>T</tt>?
+</p>
+<ol><li> Swap the order of the root node's children
+</li><li> For each of the seven non-leaf nodes, randomly pick an order for the two children of that node
+</li><li> Use a different, better <tt>heuristic_fn</tt> instead of <tt>always_zero</tt>
+</li><li> Both 1 and 2
+</li><li> All of 1, 2, and 3
+</li></ol>
+<p><b>Question 4</b>: This question does not refer to the above tree; it could refer to any game tree.  Suppose an adversary, Eve, knows the <i>exact</i> implementation of your alpha-beta search, as well as the static value (heuristic or endgame score) of every node in the game tree you're about to search. Before running your algorithm on a particular game tree, Eve may decide to reorder the children of any number of nodes in the tree.  <b>Being an adversary, Eve's intention is to order nodes so that your alpha-beta algorithm will prune as few leaves as possible.</b> (Note Eve is not allowed to shear the tree -- i.e. change the parent of a node -- and Eve is not allowed to modify the tree once your algorithm has started running.)
+</p><p>With this in mind, which of the following is the <i>best</i> change you can make to your algorithm to maximize the number of nodes that you can expect to prune? In other words, how can you make Eve's efforts worthless? <i>Note that Eve will also see any changes you make to your code and will have an opportunity to reorder the tree after you make your changes!</i>
+</p>
+<ol><li> Have your algorithm pick a random number <tt>n</tt> at the start of execution, then run alpha-beta on the game tree <tt>n</tt> times, averaging the results each time.
+</li><li> Set <tt>heuristic_fn=always_zero</tt>, which means that the heuristic score for any node is zero.
+</li><li> Set <tt>heuristic_fn=random_int</tt>, where <tt>random_int</tt> is a function that returns a random integer, regardless of game state.
+</li><li> Set <tt>depth_limit</tt> to something tiny like <tt>1</tt> or <tt>2</tt>, forcing your search to rely heavily on heuristics and not endgame scores.
+</li><li> Instead of doing standard DFS search, have your algorithm explore the children of each node in a random order.
+</li></ol>
+<a name="API"></a><h2> <span class="mw-headline"> API </span></h2>
+<p>Throughout this lab, you can use the constant <tt>INF</tt> in <tt>lab3.py</tt> to represent infinity.
+</p>
+<a name="ConnectFourBoard"></a><h3> <span class="mw-headline"> ConnectFourBoard </span></h3>
+<p><tt>ConnectFourBoard</tt> is class for probing and manipulating the state of a Connect Four game. A <tt>ConnectFourBoard</tt> has players (represented by their name strings), and pieces. Players' pieces are represented by numbers: 1 denotes the first player's piece, 2 denotes the second player's piece, and 0 denotes an empty space in the board.
+</p><p>The dimensions of the board are stored as class attributes:
+</p>
+<dl><dt><tt>num_rows</tt>
+</dt><dd>The number of rows in the board (= 6).
+</dd></dl>
+<dl><dt><tt>num_cols</tt>
+</dt><dd>The number of columns in the board (= 7).
+</dd></dl>
+<p>We provide methods for acquiring information about the pieces in the board:
+</p>
+<dl><dt><tt>count_pieces(current_player=None)</tt>
+</dt><dd>With no arguments, returns the total number of pieces on the board. Otherwise, returns the number of pieces owned by the current player (<tt>current_player = True</tt>) or by the other player (<tt>current_player = False</tt>).
+</dd></dl>
+<dl><dt><tt>get_all_chains(current_player=None)</tt>
+</dt><dd>With no arguments, returns a list of all maximal contiguous chains of pieces. (A chain is a sequence of pieces belonging to a single player, arranged either horizontally, vertically, or diagonally.) Each chain is a list of 1s (for pieces belonging to the player who moved first) or 2s (for pieces belonging to the player who moved second.) If <tt>current_player=True</tt>, returns only chains belonging to the current player. If <tt>current_player=False</tt>, returns only chains belonging to the other player.
+</dd></dl>
+<dl><dt><tt>get_piece(col, row)</tt>
+</dt><dd>Return the piece in the given column and row. The Connect Four board has seven columns and six rows. Return value is 1 (a piece owned by the first player), 2 (a piece owned by the second player), or 0 (if the space is empty).
+</dd></dl>
+<p>You can also investigate or make moves in particular columns:
+</p>
+<dl><dt><tt>is_column_full(col_number)</tt>
+</dt><dd>Given an integer between 0 (leftmost column) and 6 (rightmost column), returns a boolean value representing whether the column is full of pieces or not.
+</dd></dl>
+<dl><dt><tt>add_piece(col_number)</tt>
+</dt><dd>Adds the current player's piece to the given column. This method does <i>not</i> modify the original board, but instead returns a new <tt>ConnectFourBoard</tt> object with the piece added. In the new board, the current player will have swapped.
+</dd></dl>
+<dl><dt><tt>get_column_height(col_number)</tt>
+</dt><dd>Return the number of pieces in the specified column. The returned value will be a number between 0 (no pieces in the column) and 6 (the column is full).
+</dd></dl>
+<p>There are two players who are represented by their names (as strings). The names are entirely irrelevant, but names may make debugging more intuitive. Note: Player names do not determine which player is the maximizer and which player is the minimizer; those roles are attributes of the search algorithms, not the game itself.
+</p>
+<dl><dt><tt>players</tt>
+</dt><dd>The list of the players' names. The order will change so that the current player is always first in the list.
+</dd></dl>
+<dl><dt><tt>get_player_name(n)</tt>
+</dt><dd>Return the name of the player who moved first (<i>n=1</i>) or second (<i>n=2</i>) in this game.
+</dd></dl>
+<p>Finally, you can make a copy of a board, in case you want to modify a copy without modifying the original:
+</p>
+<dl><dt><tt>copy()</tt>
+</dt><dd>Returns a (deep) copy of the board.
+</dd></dl>
+<a name="How_chains_of_pieces_are_represented"></a><h4> <span class="mw-headline"> How chains of pieces are represented </span></h4>
+<p>Connect Four is built around chains of pieces; a chain is a sequence of a single player's pieces either horizontally, vertically, or diagonally. Here's an example of a board and the chains in it.
+</p><p>This is a completed Connect Four game between two players named Red Fish (who uses red pieces and moves first) and Blue Fish (who uses black pieces and moves second):
+</p><p><a href="/wiki/index.php?title=Image:Redfish_won_less_fast.jpg" class="image" title="Image:Redfish_won_less_fast.jpg"><img alt="Image:Redfish_won_less_fast.jpg" src="/wiki/images/Redfish_won_less_fast.jpg" width="285" height="165" border="0" /></a>
+</p><p>Python's printed representation of the board looks like this: 
+</p>
+<pre>_ _ _ _ _ _ _ 
+_ _ _ _ _ _ _ 
+_ _ _ _ _ _ _ 
+_ _ _ _ _ _ _ 
+_ _ 2 2 2 _ _ 
+1 1 1 1 2 1 _ 
+</pre>
+<p>Optionally, if you want to see how the board is encoded, you can find it in boards.py, defined as <tt>BOARD_REDFISH_WON_LESS_FAST</tt>.
+</p><p><br />
+If you call <tt><b>board</b>.get_all_chains()</tt> with no arguments, it returns the following list:
+</p>
+<pre>[[1], [2, 2, 2], [1, 1, 1, 1], [2, 2], [2, 2]]   
+</pre>
+<p>These are all the chains in the board:
+</p>
+<ul><li> 1 has a piece by itself on the far right.
+</li><li> 2 has a horizontal chain of three pieces.
+</li><li> 1 has a horizontal chain of four pieces (Winning the game!).
+</li><li> 2 has a vertical chain of two pieces.
+</li><li> 2 has a diagonal chain of two pieces (in the "northwest" diagonal direction)
+</li></ul>
+<p><br />
+You can also call <tt>get_all_chains</tt> with a boolean argument, in which case it will return only chains belonging to the current player (True) or other player (False). For example in this case, since it would have been 2's turn if 1 hadn't already won,  <tt><b>board</b>.get_all_chains(True)</tt> returns:
+</p>
+<pre> [[2, 2, 2], [2, 2], [2, 2]]   
+</pre>
+<p>which are the chains belonging to 2 in the complete list returned above.
+</p><p><br />
+</p>
+<a name="AbstractGameState"></a><h3> <span class="mw-headline"> AbstractGameState </span></h3>
+<p>AbstractGameState is a class which encodes the rules of a game and a snapshot of its current position. They are generic enough to encode the rules of any game that can be played with minimax.
+</p><p>AbstractGameState objects can be traversed like trees: 
+</p>
+<dl><dt><tt>generate_next_states()</tt>
+</dt><dd>Get the children of this node in the game tree, returning a list of <tt>AbstractGameState</tt> objects corresponding to the result of each possible legal move. If there are no possible moves, return the empty list.
+</dd></dl>
+<dl><dt><tt>is_game_over()</tt>
+</dt><dd>Returns <tt>True</tt> if this is a leaf node in the game tree, otherwise <tt>False</tt>.
+</dd></dl>
+<dl><dt><tt>get_endgame_score(is_current_player_maximizer=True)</tt>
+</dt><dd>If this node is a leaf node (i.e. an endgame state), returns its final score. The score will be negated depending on whether the current player is a maximizer (default) or not. If this node is not a leaf node, throws an error.
+</dd></dl>
+<p>You can also access an internal snapshot of the current game. This allows you to access game-specific details such as the number of pieces in a Connect Four board. The snapshot will also be helpful because heuristic score functions evaluate not the <tt>AbstractGameState</tt> object, but its snapshot of the current position. (This is an implementation difference between endgame scoring functions and heuristic scoring functions.) 
+</p>
+<dl><dt><tt>get_snapshot()</tt>
+</dt><dd>Returns a snapshot of the current state of the game. Depending on the game, the type of the returned object may be different. For example, if the game is Connect Four, the snapshot will be a <tt>ConnectFourBoard</tt> object.
+</dd></dl>
+<p><br />
+Finally, you may find the following methods useful when debugging:
+</p>
+<dl><dt><tt>describe_previous_move()</tt>
+</dt><dd>Returns a string representing how the current state was generated from its parent. For example, if the game is Connect Four, previous move strings look like "Put Player Two's piece in column 4."
+</dd></dl>
+<dl><dt><tt>restart()</tt>
+</dt><dd>Reset the game to the initial state. Returns the reset <tt>AbstractGameState</tt> object.
+</dd></dl>
+<p><br />
+</p>
+<a name="Survey"></a><h2> <span class="mw-headline"> Survey </span></h2>
+<p>Please answer these questions at the bottom of your lab file:
+</p>
+<ul><li> <tt>NAME</tt>: What is your name? (string)
+</li></ul>
+<ul><li> <tt>COLLABORATORS</tt>: Other than 6.034 staff, whom did you work with on this lab? (string, or empty string if you worked alone)
+</li></ul>
+<ul><li> <tt>HOW_MANY_HOURS_THIS_LAB_TOOK</tt>: Approximately how many hours did you spend on this lab? (number or string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_INTERESTING</tt>: Which parts of this lab, if any, did you find interesting? (string)
+</li></ul>
+<ul><li> <tt>WHAT_I_FOUND_BORING</tt>: Which parts of this lab, if any, did you find boring or tedious? (string)
+</li></ul>
+<ul><li> (optional) <tt>SUGGESTIONS</tt>: What specific changes would you recommend, if any, to improve this lab for future years? (string)
+</li></ul>
+<p><br />
+(We'd ask which parts you find confusing, but if you're confused you should really ask a TA.)
+</p><p>When you're done, run the online tester to submit your code.
+</p>
+<a name="FAQ"></a><h2> <span class="mw-headline"> FAQ </span></h2>
+<p><b>Q</b>: When I run the tester, I'm getting a weird error that looks like 
+</p>
+<pre>AttributeError: 'AbstractGameState' object has no attribute 'get_all_chains'
+</pre>
+<p>or 
+</p>
+<pre>AttributeError: 'AbstractGameState' object has no attribute 'board_array'
+</pre>
+<p><b>A</b>: This happens when you try to call <tt>heuristic_fn</tt> on an <tt>AbstractGameState</tt> instead of on the underlying snapshot. A heuristic function only makes sense when it's tied to a particular game, not to any abstract game.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 176/1000000
+Post-expand include size: 1691/2097152 bytes
+Template argument size: 27/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 6034+wiki:pcache:idhash:1424-0!1!0!!en!2!edit=0 and timestamp 20200506140333 -->
+<div class="printfooter">
+Retrieved from "<a href="https://ai6034.mit.edu/wiki/index.php?title=Lab_3">https://ai6034.mit.edu/wiki/index.php?title=Lab_3</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/index.php?title=Lab_3" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/wiki/index.php?title=Talk:Lab_3&amp;action=edit" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/wiki/index.php?title=Lab_3&amp;action=edit" title="This page is protected.&#10;You can view its source. [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/wiki/index.php?title=Lab_3&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/wiki/index.php?title=Special:UserLogin&amp;returnto=Lab_3" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wiki/skins/common/images/wiki.png);" href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/index.php?title=Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="/wiki/index.php?title=Staff:Home" title="About the project, what you can do, where to find things">Staff area</a></li>
+				<li id="n-currentevents"><a href="/wiki/index.php?title=Calendar" title="Find background information on current events">Calendar</a></li>
+				<li id="n-recentchanges"><a href="/wiki/index.php?title=Special:RecentChanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/index.php?title=Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search 6.034 Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/index.php?title=Special:WhatLinksHere/Lab_3" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/index.php?title=Special:RecentChangesLinked/Lab_3" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/wiki/index.php?title=Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/wiki/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/wiki/index.php?title=Lab_3&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/wiki/index.php?title=Lab_3&amp;oldid=7705" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>		<ul id="f-list">
+	  <li id="f-lastmod"> This page was last modified on 20 September 2019, at 18:41.</li>	  <li id="f-tagline"><i>Forsan et haec olim meminisse iuvabit<a
+	  href="index.php?title=Special:Userlogin">.</a></i></li>
+	</ul>
+      </div>
+
+
+
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served in 0.165 secs. --></body></html>
