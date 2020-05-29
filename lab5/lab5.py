@@ -155,6 +155,7 @@ DO_OPTIONAL_SECTION = False
 if DO_OPTIONAL_SECTION:
     from parse import *
     medical_id_tree = construct_greedy_id_tree(heart_training_data, heart_classifiers, heart_target_classifier_discrete)
+    print(medical_id_tree)
 
 
 ################################################################################
@@ -163,23 +164,23 @@ if DO_OPTIONAL_SECTION:
 
 #### Part 2A: Drawing Boundaries ###############################################
 
-BOUNDARY_ANS_1 = None
-BOUNDARY_ANS_2 = None
+BOUNDARY_ANS_1 = 3
+BOUNDARY_ANS_2 = 4
 
-BOUNDARY_ANS_3 = None
-BOUNDARY_ANS_4 = None
+BOUNDARY_ANS_3 = 1
+BOUNDARY_ANS_4 = 2
 
-BOUNDARY_ANS_5 = None
-BOUNDARY_ANS_6 = None
-BOUNDARY_ANS_7 = None
-BOUNDARY_ANS_8 = None
-BOUNDARY_ANS_9 = None
+BOUNDARY_ANS_5 = 2
+BOUNDARY_ANS_6 = 4
+BOUNDARY_ANS_7 = 1
+BOUNDARY_ANS_8 = 4
+BOUNDARY_ANS_9 = 4
 
-BOUNDARY_ANS_10 = None
-BOUNDARY_ANS_11 = None
-BOUNDARY_ANS_12 = None
-BOUNDARY_ANS_13 = None
-BOUNDARY_ANS_14 = None
+BOUNDARY_ANS_10 = 4
+BOUNDARY_ANS_11 = 2
+BOUNDARY_ANS_12 = 1
+BOUNDARY_ANS_13 = 4
+BOUNDARY_ANS_14 = 4
 
 
 #### Part 2B: Distance metrics #################################################
@@ -187,28 +188,28 @@ BOUNDARY_ANS_14 = None
 def dot_product(u, v):
     """Computes dot product of two vectors u and v, each represented as a tuple
     or list of coordinates.  Assume the two vectors are the same length."""
-    raise NotImplementedError
+    return sum([x[0]*x[1] for x in zip(u,v)])
 
 def norm(v):
     "Computes length of a vector v, represented as a tuple or list of coords."
-    raise NotImplementedError
+    return math.sqrt(dot_product(v,v))
 
 def euclidean_distance(point1, point2):
     "Given two Points, computes and returns the Euclidean distance between them."
-    raise NotImplementedError
+    return norm([x[0]-x[1] for x in zip(point1,point2)])
 
 def manhattan_distance(point1, point2):
     "Given two Points, computes and returns the Manhattan distance between them."
-    raise NotImplementedError
+    return sum([abs(x[0]-x[1]) for x in zip(point1,point2)])
 
 def hamming_distance(point1, point2):
     "Given two Points, computes and returns the Hamming distance between them."
-    raise NotImplementedError
+    return sum([(x[0]!=x[1])*1 for x in zip(point1,point2)])
 
 def cosine_distance(point1, point2):
     """Given two Points, computes and returns the cosine distance between them,
     where cosine distance is defined as 1-cos(angle_between(point1, point2))."""
-    raise NotImplementedError
+    return 1 - dot_product(point1.coords, point2.coords)/norm(point1.coords)/norm(point2.coords)
 
 
 #### Part 2C: Classifying points ###############################################
@@ -218,19 +219,22 @@ def get_k_closest_points(point, data, k, distance_metric):
     and a distance metric (a function), returns a list containing the k points
     from the data that are closest to the test point, according to the distance
     metric.  Breaks ties lexicographically by coordinates."""
-    raise NotImplementedError
+    data.sort(key = lambda p:p.coords)
+    return sorted(data, key = lambda p:distance_metric(point, p))[:k]
 
 def knn_classify_point(point, data, k, distance_metric):
     """Given a test point, a list of points (the data), an int 0 < k <= len(data),
     and a distance metric (a function), returns the classification of the test
     point based on its k nearest neighbors, as determined by the distance metric.
     Assumes there are no ties."""
-    raise NotImplementedError
+    k_best = get_k_closest_points(point, data, k, distance_metric)
+    classes = [x.classification for x in k_best]
+    return max(set(classes), key = classes.count)
 
 
 ## To run your classify function on the k-nearest neighbors problem from 2014 Q2
 ## part B2, uncomment the line below and try different values of k:
-# print(knn_classify_point(knn_tree_test_point, knn_tree_data, 1, euclidean_distance))
+print(knn_classify_point(knn_tree_test_point, knn_tree_data, 1, euclidean_distance))
 
 
 #### Part 2C: Choosing k #######################################################
@@ -239,37 +243,43 @@ def cross_validate(data, k, distance_metric):
     """Given a list of points (the data), an int 0 < k <= len(data), and a
     distance metric (a function), performs leave-one-out cross-validation.
     Return the fraction of points classified correctly, as a float."""
-    raise NotImplementedError
+    cnt=0
+    for i in range(len(data)):
+        lst = data[:i]+data[i+1:]
+        cnt += knn_classify_point(data[i], lst, k, distance_metric)==data[i].classification
+    return cnt/len(data)
+
 
 def find_best_k_and_metric(data):
     """Given a list of points (the data), uses leave-one-out cross-validation to
     determine the best value of k and distance_metric, choosing from among the
     four distance metrics defined above.  Returns a tuple (k, distance_metric),
     where k is an int and distance_metric is a function."""
-    raise NotImplementedError
+    metrics = [euclidean_distance, cosine_distance, hamming_distance, manhattan_distance]
+    return max([(k, metric) for k in range(1, len(data)+1) for metric in metrics], key=lambda km:cross_validate(data, km[0], km[1]))
 
 
 ## To find the best k and distance metric for 2014 Q2, part B, uncomment:
-# print(find_best_k_and_metric(knn_tree_data))
+print(find_best_k_and_metric(knn_tree_data))
 
 
 #### Part 2E: More multiple choice #############################################
 
-kNN_ANSWER_1 = None
-kNN_ANSWER_2 = None
-kNN_ANSWER_3 = None
+kNN_ANSWER_1 = 'Overfitting'
+kNN_ANSWER_2 = 'Underfitting'
+kNN_ANSWER_3 = 4
 
-kNN_ANSWER_4 = None
-kNN_ANSWER_5 = None
-kNN_ANSWER_6 = None
-kNN_ANSWER_7 = None
+kNN_ANSWER_4 = 4
+kNN_ANSWER_5 = 1
+kNN_ANSWER_6 = 3
+kNN_ANSWER_7 = 3
 
 
 #### SURVEY ####################################################################
 
-NAME = None
+NAME = 'Aleksandre Khokhiashvili'
 COLLABORATORS = None
-HOW_MANY_HOURS_THIS_LAB_TOOK = None
+HOW_MANY_HOURS_THIS_LAB_TOOK = 3
 WHAT_I_FOUND_INTERESTING = None
 WHAT_I_FOUND_BORING = None
 SUGGESTIONS = None
