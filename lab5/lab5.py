@@ -3,6 +3,7 @@
 
 from api import *
 from data import *
+from parse import *
 import math
 log2 = lambda x: math.log(x, 2)
 INF = float('inf')
@@ -18,7 +19,10 @@ INF = float('inf')
 def id_tree_classify_point(point, id_tree):
     """Uses the input ID tree (an IdentificationTreeNode) to classify the point.
     Returns the point's classification."""
-    raise NotImplementedError
+    if id_tree.is_leaf():
+        return id_tree.get_node_classification()
+    else:
+        return id_tree_classify_point(point, id_tree.apply_classifier(point))
 
 
 #### Part 1B: Splitting data with a classifier #################################
@@ -27,7 +31,14 @@ def split_on_classifier(data, classifier):
     """Given a set of data (as a list of points) and a Classifier object, uses
     the classifier to partition the data.  Returns a dict mapping each feature
     values to a list of points that have that value."""
-    raise NotImplementedError
+    classes = {}
+    for cur in data:
+        cur_class = classifier.classify(cur)
+        if cur_class not in classes:
+            classes[cur_class] = []
+        classes[cur_class].append(cur)
+    return classes
+        
 
 
 #### Part 1C: Calculating disorder #############################################
@@ -36,20 +47,27 @@ def branch_disorder(data, target_classifier):
     """Given a list of points representing a single branch and a Classifier
     for determining the true classification of each point, computes and returns
     the disorder of the branch."""
-    raise NotImplementedError
+    classes = split_on_classifier(data, target_classifier)
+    dis = 0
+    for c in classes:
+        dis += -(len(classes[c])/len(data))*log2(len(classes[c])/len(data))
+    return dis
+
+
 
 def average_test_disorder(data, test_classifier, target_classifier):
     """Given a list of points, a feature-test Classifier, and a Classifier
     for determining the true classification of each point, computes and returns
     the disorder of the feature-test stump."""
-    raise NotImplementedError
+    classes = split_on_classifier(data, test_classifier)
+    return sum([len(b)*branch_disorder(b, target_classifier) for b in classes.values()])/sum(map(len, classes.values()))
 
 
 ## To use your functions to solve part A2 of the "Identification of Trees"
 ## problem from 2014 Q2, uncomment the lines below and run lab5.py:
 
-# for classifier in tree_classifiers:
-#     print(classifier.name, average_test_disorder(tree_data, classifier, feature_test("tree_type")))
+for classifier in tree_classifiers:
+    print(classifier.name, average_test_disorder(tree_data, classifier, feature_test("tree_type")))
 
 
 #### Part 1D: Constructing an ID tree ##########################################
@@ -60,7 +78,11 @@ def find_best_classifier(data, possible_classifiers, target_classifier):
     finds and returns the classifier with the lowest disorder.  Breaks ties by
     preferring classifiers that appear earlier in the list.  If the best
     classifier has only one branch, raises NoGoodClassifiersError."""
-    raise NotImplementedError
+    best = min(possible_classifiers, key=lambda cfier:average_test_disorder(data, cfier, target_classifier))
+    classes = split_on_classifier(data, best)
+    if len(classes)==1:
+        raise NoGoodClassifiersError("no good classifier")
+    return best
 
 
 ## To find the best classifier from 2014 Q2, Part A, uncomment:
@@ -72,7 +94,28 @@ def construct_greedy_id_tree(data, possible_classifiers, target_classifier, id_t
     optionally a partially completed ID tree, returns a completed ID tree by
     adding classifiers and classifications until either perfect classification
     has been achieved, or there are no good classifiers left."""
-    raise NotImplementedError
+    if id_tree_node is None:
+        id_tree_node = IdentificationTreeNode(target_classifier)
+    classes = split_on_classifier(data, target_classifier)
+    if len(classes)==1:
+        id_tree_node.set_node_classification(list(classes.keys())[0])
+    else:
+        try:
+            best = find_best_classifier(data, possible_classifiers, target_classifier)
+            best_classes = split_on_classifier(data, best)
+            id_tree_node.set_classifier_and_expand(best, best_classes.keys())
+            branches = id_tree_node.get_branches()
+            for clas, child in branches.items():
+                construct_greedy_id_tree(best_classes[clas], possible_classifiers, target_classifier, child)
+        except NoGoodClassifiersError:
+            pass
+    return id_tree_node
+            
+
+
+
+
+
 
 
 ## To construct an ID tree for 2014 Q2, Part A:
@@ -85,6 +128,8 @@ def construct_greedy_id_tree(data, possible_classifiers, target_classifier, id_t
 ## To construct an ID tree for 2012 Q2 (Angels) or 2013 Q3 (numeric ID trees):
 # print(construct_greedy_id_tree(angel_data, angel_classifiers, feature_test("Classification")))
 # print(construct_greedy_id_tree(numeric_data, numeric_classifiers, feature_test("class")))
+
+print(construct_greedy_id_tree(heart_training_data, heart_classifiers, heart_target_classifier_binary).print_with_data(heart_training_data))
 
 
 #### Part 1E: Multiple choice ##################################################
