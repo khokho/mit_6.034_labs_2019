@@ -119,32 +119,32 @@ def construct_greedy_id_tree(data, possible_classifiers, target_classifier, id_t
 
 
 ## To construct an ID tree for 2014 Q2, Part A:
-# print(construct_greedy_id_tree(tree_data, tree_classifiers, feature_test("tree_type")))
+print(construct_greedy_id_tree(tree_data, tree_classifiers, feature_test("tree_type")))
 
 ## To use your ID tree to identify a mystery tree (2014 Q2, Part A4):
-# tree_tree = construct_greedy_id_tree(tree_data, tree_classifiers, feature_test("tree_type"))
-# print(id_tree_classify_point(tree_test_point, tree_tree))
+tree_tree = construct_greedy_id_tree(tree_data, tree_classifiers, feature_test("tree_type"))
+print(id_tree_classify_point(tree_test_point, tree_tree))
 
 ## To construct an ID tree for 2012 Q2 (Angels) or 2013 Q3 (numeric ID trees):
 # print(construct_greedy_id_tree(angel_data, angel_classifiers, feature_test("Classification")))
 # print(construct_greedy_id_tree(numeric_data, numeric_classifiers, feature_test("class")))
 
-print(construct_greedy_id_tree(heart_training_data, heart_classifiers, heart_target_classifier_binary).print_with_data(heart_training_data))
+#print(construct_greedy_id_tree(heart_training_data, heart_classifiers, heart_target_classifier_binary).print_with_data(heart_training_data))
 
 
 #### Part 1E: Multiple choice ##################################################
 
-ANSWER_1 = None
-ANSWER_2 = None
-ANSWER_3 = None
+ANSWER_1 = 'bark_texture'
+ANSWER_2 = 'leaf_shape'
+ANSWER_3 = 'orange_foliage'
 
-ANSWER_4 = None
-ANSWER_5 = None
-ANSWER_6 = None
-ANSWER_7 = None
+ANSWER_4 = [2,3]
+ANSWER_5 = [3]
+ANSWER_6 = [2]
+ANSWER_7 = 2
 
-ANSWER_8 = None
-ANSWER_9 = None
+ANSWER_8 = 'No'
+ANSWER_9 = 'No'
 
 
 #### OPTIONAL: Construct an ID tree with medical data ##########################
